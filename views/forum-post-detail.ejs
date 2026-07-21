@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= post.title %></title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #dae0e6;
+    }
+
+    .wrapper {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card-box {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .post-layout {
+      display: flex;
+    }
+
+    .vote-column {
+      width: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .vote-btn {
+      border: none;
+      background: transparent;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      line-height: 1;
+    }
+
+    .vote-btn:hover {
+      background: #f0f0f0;
+    }
+
+    .vote-btn.upvoted {
+      color: #ff4500;
+    }
+
+    .vote-btn.downvoted {
+      color: #7193ff;
+    }
+
+    .vote-count {
+      font-weight: bold;
+      font-size: 14px;
+      margin: 2px 0;
+    }
+
+    .post-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .comment-box {
+      border-top: 1px solid #ddd;
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .comment-layout {
+      display: flex;
+    }
+
+    .comment-vote-column {
+      width: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .comment-vote-column .vote-btn {
+      font-size: 16px;
+    }
+
+    .comment-vote-column .vote-count {
+      font-size: 12px;
+    }
+
+    .comment-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .comment-image {
+      max-width: 300px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<%- include('partials/navbar') %>
+
+<div class="wrapper">
+
+  <div class="card-box">
+    <div class="post-layout">
+
+      <div class="vote-column">
+        <button class="vote-btn <%= post.userVote === 'upvote' ? 'upvoted' : '' %>"
+                onclick="vote('post', <%= post.id %>, 'upvote', this)"
+                <%= !user ? 'disabled title="Login to vote"' : '' %>>&#9650;</button>
+        <div class="vote-count" id="post-votes-<%= post.id %>"><%= post.netVotes || 0 %></div>
+        <button class="vote-btn <%= post.userVote === 'downvote' ? 'downvoted' : '' %>"
+                onclick="vote('post', <%= post.id %>, 'downvote', this)"
+                <%= !user ? 'disabled title="Login to vote"' : '' %>>&#9660;</button>
+      </div>
+
+      <div class="post-body">
+        <h2><%= post.title %></h2>
+
+        <div class="text-muted mb-3">
+          Posted by u/<%= post.author %>
+          &bull;
+          <%= new Date(post.createdAt).toLocaleString() %>
+        </div>
+
+        <p><%= post.description %></p>
+
+        <% if(post.image){ %>
+          <img src="/images/<%= post.image %>" class="img-fluid rounded">
+        <% } %>
+
+        <% if(user && user.username === post.author){ %>
+          <div class="mt-4 d-flex gap-2">
+            <form action="/forum/posts/<%= post.id %>?_method=DELETE" method="POST">
+              <button class="btn btn-danger btn-sm">Delete Post</button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+
+  <% if(user){ %>
+  <div class="card-box">
+    <h4>Leave a Comment</h4>
+    <form action="/forum/posts/<%= post.id %>/comments" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <textarea class="form-control" rows="4" name="text" placeholder="What are your thoughts?" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-muted">Attach image <span class="fw-normal">(optional)</span></label>
+        <input type="file" class="form-control" name="image" accept="image/*">
+      </div>
+      <button class="btn btn-warning">Comment</button>
+    </form>
+  </div>
+  <% } %>
+
+  <div class="card-box">
+    <h4>Comments (<%= comments.length %>)</h4>
+
+    <% if(comments.length === 0){ %>
+      <p>No comments yet.</p>
+    <% } %>
+
+    <% comments.forEach(comment => { %>
+      <div class="comment-box">
+        <div class="comment-layout">
+
+          <div class="comment-vote-column">
+            <button class="vote-btn <%= comment.userVote === 'upvote' ? 'upvoted' : '' %>"
+                    onclick="vote('comment', <%= comment.id %>, 'upvote', this)"
+                    <%= !user ? 'disabled title="Login to vote"' : '' %>>&#9650;</button>
+            <div class="vote-count" id="comment-votes-<%= comment.id %>"><%= comment.netVotes || 0 %></div>
+            <button class="vote-btn <%= comment.userVote === 'downvote' ? 'downvoted' : '' %>"
+                    onclick="vote('comment', <%= comment.id %>, 'downvote', this)"
+                    <%= !user ? 'disabled title="Login to vote"' : '' %>>&#9660;</button>
+          </div>
+
+          <div class="comment-body">
+            <div class="fw-bold">u/<%= comment.author %></div>
+            <div class="text-muted small mb-2"><%= new Date(comment.createdAt).toLocaleString() %></div>
+            <p><%= comment.text %></p>
+
+            <% if(comment.image){ %>
+              <img src="/images/<%= comment.image %>" class="comment-image">
+            <% } %>
+
+            <% if(user && user.username === comment.author){ %>
+              <form action="/forum/comments/<%= comment.id %>?_method=DELETE" method="POST" class="mt-2">
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </form>
+            <% } %>
+          </div>
+
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+</div>
+
+<script>
+async function vote(type, id, direction, btn) {
+  const endpoint = type === 'post'
+    ? '/forum/posts/' + id + '/vote'
+    : '/forum/comments/' + id + '/vote';
+
+  // Determine current state from button classes
+  const parent = btn.parentElement;
+  const upBtn = parent.querySelector('.vote-btn:first-child');
+  const downBtn = parent.querySelector('.vote-btn:last-child');
+  const isUpvoted = upBtn.classList.contains('upvoted');
+  const isDownvoted = downBtn.classList.contains('downvoted');
+
+  let voteType;
+  if (direction === 'upvote') {
+    voteType = isUpvoted ? 'remove' : 'upvote';
+  } else {
+    voteType = isDownvoted ? 'remove' : 'downvote';
+  }
+
+  try {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ voteType })
+    });
+    const data = await res.json();
+    if (data.success) {
+      const countEl = document.getElementById(type + '-votes-' + id);
+      countEl.textContent = data.netVotes;
+
+      upBtn.classList.toggle('upvoted', data.userVote === 'upvote');
+      downBtn.classList.toggle('downvoted', data.userVote === 'downvote');
+    }
+  } catch (e) {
+    console.error('Vote failed', e);
+  }
+}
+</script>
+
+</body>
+</html>

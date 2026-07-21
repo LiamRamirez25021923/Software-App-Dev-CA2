@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #242e57;">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/" style="color: #ffb300;">bouTime</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      style="border-color: #ffb300;">
+      <span class="navbar-toggler-icon" style="filter: invert(75%) sepia(80%) saturate(500%) hue-rotate(5deg);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-2">
+        <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/shop">Shop</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/forum">Forum</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/explore">Explore Fights</a></li>
+        <li class="nav-item dropdown">
+          <a class="btn btn-sm dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown"
+            style="background-color: #ffb300; color: #242e57;">Gear</a>
+          <ul class="dropdown-menu" style="background-color: #242e57; border: 1px solid #ffb300;">
+            <li><a class="dropdown-item text-white" href="/gloves"
+              onmouseover="this.style.backgroundColor='#ffb300'; this.style.color='#242e57';"
+              onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">Gloves</a></li>
+            <li><a class="dropdown-item text-white" href="/shoes"
+              onmouseover="this.style.backgroundColor='#ffb300'; this.style.color='#242e57';"
+              onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">Shoes</a></li>
+            <li><a class="dropdown-item text-white" href="/headgear"
+              onmouseover="this.style.backgroundColor='#ffb300'; this.style.color='#242e57';"
+              onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">Headgear</a></li>
+            <li><a class="dropdown-item text-white" href="/groinwear"
+              onmouseover="this.style.backgroundColor='#ffb300'; this.style.color='#242e57';"
+              onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">Groinwear</a></li>
+            <li><a class="dropdown-item text-white" href="/handwraps"
+              onmouseover="this.style.backgroundColor='#ffb300'; this.style.color='#242e57';"
+              onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">Handwraps</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="/contact">Contact Us</a></li>
+        <li class="nav-item">
+          <a class="btn btn-sm fw-semibold" href="/cart"
+            style="border: 1px solid #ffb300; color: #ffb300; position: relative;">
+            🛒 Cart
+            <% if (cartCount && cartCount > 0) { %>
+              <span style="
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background-color: #dc3545;
+                color: white;
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                font-weight: 700;
+              "><%= cartCount %></span>
+            <% } %>
+          </a>
+        </li>
+        <% if (user) { %>
+        <li class="nav-item d-flex align-items-center">
+          <span class="nav-link text-white pe-0">Hi, <%= user.username %></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-sm fw-semibold" href="/seller/dashboard"
+            style="border: 1px solid #ffb300; color: #ffb300;">Sell</a>
+        </li>
+        <% if (isAdmin) { %>
+        <li class="nav-item">
+          <a class="btn btn-sm fw-semibold" href="/admin"
+            style="border: 1px solid #ffb300; color: #ffb300;">Admin</a>
+        </li>
+        <% } %>
+        <li class="nav-item">
+          <a class="btn btn-sm fw-semibold" href="/logout"
+            style="border: 1px solid #ffb300; color: #ffb300;">Logout</a>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="btn btn-sm fw-semibold" href="/login"
+            style="border: 1px solid #ffb300; color: #ffb300;">Login</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

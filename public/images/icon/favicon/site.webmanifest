@@ -1,0 +1,21 @@
+{
+  "name": "bouTime",
+  "short_name": "bT",
+  "icons": [
+    {
+      "src": "/C:\\Users\\liamr\\Documents\\REPUBLIC POLY\\YEAR 2 sem 1\\C237 Software Application Development\\CA1\\Submission\\bouTime\\public\\images\\icon/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/C:\\Users\\liamr\\Documents\\REPUBLIC POLY\\YEAR 2 sem 1\\C237 Software Application Development\\CA1\\Submission\\bouTime\\public\\images\\icon/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#11325e",
+  "background_color": "#11325e",
+  "display": "standalone"
+}
