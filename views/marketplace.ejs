@@ -1,0 +1,12 @@
+<%- include('partials/header') %><%- include('partials/nav') %>
+<main class="content-section page-top">
+  <div class="market-heading"><div><p class="eyebrow">PLAYER MARKET</p><h1>Retro Marketplace</h1><p class="lead">Browse games, consoles and collectibles added by SavePoint administrators.</p></div><% if(!isAdmin){ %><a class="primary-button" href="/cart">Cart (<%= cartCount %>)</a><% } %></div>
+  <% if(message){ %><div class="notice"><%= message %></div><% } %>
+  <form class="search-bar pixel-panel" action="/marketplace" method="GET"><input name="search" value="<%= search %>" placeholder="Search title, category or platform"><button class="secondary-button">Search</button><% if(search){ %><a href="/marketplace">Clear</a><% } %></form>
+  <% if(!products.length){ %><section class="pixel-panel empty-state"><h2>No products found</h2><p>Try another search or return later.</p></section><% } %>
+  <section class="product-grid"><% products.forEach(product=>{ %><article class="product-card pixel-panel">
+    <div class="product-image"><% if(product.image_url){ %><img src="<%= /^https?:\/\//i.test(product.image_url) ? product.image_url : '/images/' + product.image_url %>" alt="<%= product.title %>"><% } else { %><span>NO IMAGE<br>AVAILABLE</span><% } %></div>
+    <div class="product-copy"><span class="role-badge"><%= product.category %></span><h2><%= product.title %></h2><p><%= product.description || 'No description provided.' %></p><p class="product-meta"><%= product.platform || 'Various platforms' %> · <%= product.quantity %> in stock</p><strong class="price">$<%= Number(product.price).toFixed(2) %></strong>
+    <% if(!isAdmin){ %><form class="add-cart-form" action="/cart/add/<%= product.id %>" method="POST"><label>Quantity<input type="number" name="quantity" value="1" min="1" max="<%= product.quantity %>" required></label><button class="primary-button">Add to cart</button></form><% } else { %><p class="admin-note">Admin view: manage products from the Admin page.</p><% } %>
+    </div></article><% }) %></section>
+</main><%- include('partials/footer') %>
