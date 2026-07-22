@@ -6,7 +6,16 @@ const multer = require('multer');
 const path = require('path');
 const methodOverride = require('method-override');
 
-const pool = require('./config/db');
+let pool = null;
+let hasDatabase = false;
+try {
+  pool = require('./config/db');
+  hasDatabase = true;
+} catch (error) {
+  console.warn('Database configuration is unavailable. Running without MySQL:', error.message);
+}
+
+const hasFetch = typeof fetch === 'function';
 
 const app = express();
 
@@ -467,6 +476,8 @@ let forumComments = [];
 let postVotes = {}; // { postId: { username: 'upvote'|'downvote' } }
 let commentVotes = {}; // { commentId: { username: 'upvote'|'downvote' } }
 let nextPostId = 1;
+let userListings = [];
+let nextListingId = 1;
 let nextCommentId = 1;
 
 // Helper to manage user profiles (stored on the user object as `profile`)
@@ -1486,19 +1497,25 @@ const PORT = Number(process.env.PORT) || 3001;
 
 async function startServer() {
     try {
-        await pool.query('SELECT 1');
+        if (hasDatabase) {
+            await pool.query('SELECT 1');
 
-        console.log(
-            'Connected to MySQL database'
-        );
+            console.log(
+                'Connected to MySQL database'
+            );
 
-        await ensureProductsTable();
-        await seedProductsIfEmpty();
-        await loadProductsFromDatabase();
+            await ensureProductsTable();
+            await seedProductsIfEmpty();
+            await loadProductsFromDatabase();
 
-        console.log(
-            `Loaded ${products.length} products from MySQL`
-        );
+            console.log(
+                `Loaded ${products.length} products from MySQL`
+            );
+        } else {
+            console.warn(
+                'Database environment variables are missing. Running with in-memory products only.'
+            );
+        }
 
         app.listen(
             PORT,
@@ -1507,7 +1524,6 @@ async function startServer() {
                 console.log(
                     `bouTime is running on port ${PORT}`
                 );
-
                 console.log(
                     `Local URL: http://localhost:${PORT}`
                 );
