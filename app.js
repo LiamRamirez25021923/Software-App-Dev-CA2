@@ -8,9 +8,16 @@ const multer = require('multer');
 const pool = require('./config/db');
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
+const fs = require('fs');
 
 // Lesson 18-style product image uploads.
 const imageDirectory = path.join(__dirname, 'public', 'images');
+if (!fs.existsSync(imageDirectory)) {
+    fs.mkdirSync(imageDirectory, {
+        recursive: true
+    });
+}
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, imageDirectory),
     filename: (req, file, cb) => {
@@ -152,11 +159,44 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ secret: process.env.SESSION_SECRET || 'development-only-change-me', resave: false, saveUninitialized: false, cookie: { httpOnly: true, secure: false, sameSite: 'lax', maxAge: 86400000 } }));
 
-app.use((req, res, next) => { res.locals.currentUser = req.session.user || null; res.locals.isAdmin = req.session.user?.role === 'admin'; res.locals.currentPath = req.path; next(); });
+app.use((req, res, next) => {
+    res.locals.currentUser =
+        req.session.user || null;
+
+    res.locals.isAdmin =
+        req.session.user?.role === 'admin';
+
+    res.locals.currentPath = req.path;
+
+    res.locals.cartCount = Object.values(
+        req.session.cart || {}
+    ).reduce(
+        (sum, quantity) =>
+            sum + Number(quantity),
+        0
+    );
+
+    next();
+});
 
 function requireLogin(req, res, next) { if (!req.session.user) return res.redirect('/login'); next(); }
 
 function requireAdmin(req, res, next) { if (!req.session.user) return res.redirect('/login'); if (req.session.user.role !== 'admin') return res.status(403).render('error', { title: 'Access denied', message: 'This page is available only to SavePoint administrators.' }); next(); }
+
+function requireRegularUser(req, res, next) {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+
+    if (req.session.user.role === 'admin') {
+        return res.status(403).render('error', {
+            title: 'Admin restriction',
+            message: 'Administrator accounts cannot use shopping features.'
+        });
+    }
+
+    next();
+}
 
 async function seedAccount({ username, password, displayName, email, role }) { const [rows] = await pool.execute('SELECT id FROM users WHERE username=? LIMIT 1', [username]); if (rows.length) return; const hash = await bcrypt.hash(password, 12); await pool.execute('INSERT INTO users (username,password_hash,display_name,email,role) VALUES (?,?,?,?,?)', [username, hash, displayName, email, role]); }
 
@@ -172,8 +212,6 @@ async function initialiseDatabase() {
             NOT NULL DEFAULT 0,
         image VARCHAR(255),
         description TEXT,
-        features TEXT,
-        sizes VARCHAR(255),
         created_at TIMESTAMP
             DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP
@@ -186,16 +224,41 @@ async function initialiseDatabase() {
         ) NOT NULL DEFAULT 'active',
         quantity INT NOT NULL DEFAULT 1,
         seller_user_id INT NULL,
-        platform VARCHAR(80)
+        platform VARCHAR(80),
+
+        CONSTRAINT fk_products_seller
+            FOREIGN KEY (seller_user_id)
+            REFERENCES users(id)
+            ON DELETE SET NULL
         )
     `);
     await configureProductSchema();
     await pool.query(`CREATE TABLE IF NOT EXISTS forum_posts (id INT AUTO_INCREMENT PRIMARY KEY,author_user_id INT NULL,title VARCHAR(180) NOT NULL,body TEXT NOT NULL,status ENUM('visible','removed') NOT NULL DEFAULT 'visible',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,CONSTRAINT fk_forum_author FOREIGN KEY (author_user_id) REFERENCES users(id) ON DELETE SET NULL)`);
     await pool.query(`CREATE TABLE IF NOT EXISTS news_items (id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(200) NOT NULL,summary TEXT,source_name VARCHAR(120),source_url VARCHAR(500),published_at DATETIME,status ENUM('visible','hidden') NOT NULL DEFAULT 'visible',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
     await pool.query(`CREATE TABLE IF NOT EXISTS orders (id INT AUTO_INCREMENT PRIMARY KEY,user_id INT NOT NULL,customer_name VARCHAR(120) NOT NULL,customer_email VARCHAR(150) NOT NULL,delivery_address TEXT NOT NULL,card_last_four CHAR(4) NOT NULL,total_price DECIMAL(10,2) NOT NULL,status ENUM('confirmed','cancelled') NOT NULL DEFAULT 'confirmed',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,CONSTRAINT fk_orders_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE)`);
-    await pool.query(`CREATE TABLE IF NOT EXISTS order_items (id INT AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,product_id INT NULL,product_title VARCHAR(150) NOT NULL,unit_price DECIMAL(10,2) NOT NULL,quantity INT NOT NULL,line_total DECIMAL(10,2) NOT NULL,CONSTRAINT fk_order_items_order FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE)`);
+    await pool.query(`
+    CREATE TABLE IF NOT EXISTS order_items (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        order_id INT NOT NULL,
+        product_id INT NULL,
+        product_title VARCHAR(150) NOT NULL,
+        unit_price DECIMAL(10,2) NOT NULL,
+        quantity INT NOT NULL,
+        line_total DECIMAL(10,2) NOT NULL,
+
+        CONSTRAINT fk_order_items_order
+            FOREIGN KEY (order_id)
+            REFERENCES orders(id)
+            ON DELETE CASCADE,
+
+        CONSTRAINT fk_order_items_product
+            FOREIGN KEY (product_id)
+            REFERENCES products(id)
+            ON DELETE SET NULL
+        )
+    `);
     await seedAccount({ username: 'SavePoint', password: 'NintendoGamesTheyreSoFunToPlay', displayName: 'SavePoint Admin', email: 'admin@savepoint.local', role: 'admin' });
-    await seedAccount({ username: 'Dingleton', password: '123', displayName: 'Dingleton', email: 'dingleton@savepoint.local', role: 'user' });
+    await seedAccount({ username: 'Dingleton', password: 'Player123', displayName: 'Dingleton', email: 'dingleton@savepoint.local', role: 'user' });
     const [[pc]] = await pool.query('SELECT COUNT(*) total FROM products');
     if (!Number(pc.total)) {
         const [[u]] = await pool.execute('SELECT id FROM users WHERE username=?', ['SavePoint']);
@@ -245,12 +308,10 @@ app.get('/marketplace', requireLogin, async (req, res, next) => {
         sql += ' ORDER BY p.created_at DESC';
 
         const [products] = await pool.execute(sql, params);
-        const cartCount = Object.values(req.session.cart || {}).reduce((sum, quantity) => sum + Number(quantity), 0);
         res.render('marketplace', {
             title: 'Retro Marketplace',
             products,
             search,
-            cartCount,
             message: req.session.marketplaceMessage || null
         });
         delete req.session.marketplaceMessage;
@@ -283,16 +344,15 @@ app.post('/admin/products', requireAdmin, upload.single('image'), async (req, re
     } catch (e) { next(e); }
 });
 
-app.post('/cart/add/:id', requireLogin, async (req, res, next) => {
+app.post('/cart/add/:id', requireRegularUser, async (req, res, next) => {
     try {
-        if (req.session.user.role === 'admin') {
-            return res.status(403).render('error', {
-                title: 'Admin restriction',
-                message: 'Administrator accounts manage products and cannot purchase them.'
+        const productId = Number(req.params.id);
+        if (!Number.isInteger(productId) || productId < 1) {
+            return res.status(400).render('error', {
+                title: 'Invalid product',
+                message: 'The selected product ID is invalid.'
             });
         }
-
-        const productId = Number(req.params.id);
         const requestedQuantity = Number.parseInt(req.body.quantity, 10);
         const [rows] = await pool.execute(
             `SELECT \`${productSchema.id}\` AS id, \`${productSchema.name}\` AS title, quantity
@@ -355,15 +415,14 @@ async function getCartDetails(req) {
     return { items, total };
 }
 
-app.get('/cart', requireLogin, async (req, res, next) => {
+app.get('/cart', requireRegularUser, async (req, res, next) => {
     try {
-        if (req.session.user.role === 'admin') return res.status(403).render('error', { title: 'Admin restriction', message: 'Administrator accounts do not have shopping carts.' });
         const cart = await getCartDetails(req);
         res.render('cart', { title: 'Your Cart', ...cart });
     } catch (e) { next(e); }
 });
 
-app.post('/cart/:id/decrease', requireLogin, (req, res) => {
+app.post('/cart/:id/decrease', requireRegularUser, (req, res) => {
     const id = Number(req.params.id);
     req.session.cart = req.session.cart || {};
     if (req.session.cart[id]) {
@@ -373,55 +432,149 @@ app.post('/cart/:id/decrease', requireLogin, (req, res) => {
     res.redirect('/cart');
 });
 
-app.post('/cart/:id/remove', requireLogin, (req, res) => {
+app.post('/cart/:id/remove', requireRegularUser, (req, res) => {
     req.session.cart = req.session.cart || {};
     delete req.session.cart[Number(req.params.id)];
     res.redirect('/cart');
 });
 
-app.get('/purchase', requireLogin, async (req, res, next) => {
+app.get('/purchase', requireRegularUser, async (req, res, next) => {
     try {
-        if (req.session.user.role === 'admin') return res.status(403).render('error', { title: 'Admin restriction', message: 'Administrator accounts cannot make purchases.' });
         const cart = await getCartDetails(req);
         if (!cart.items.length) return res.redirect('/cart');
         res.render('purchase', { title: 'Checkout', ...cart, error: null, values: { name: req.session.user.displayName, email: req.session.user.email || '', address: '' } });
     } catch (e) { next(e); }
 });
 
-app.post('/purchase', requireLogin, async (req, res, next) => {
-    const connection = await pool.getConnection();
+app.post('/purchase', requireRegularUser, async (req, res, next) => {
+    let connection;
+    let transactionStarted = false;
+
     try {
-        if (req.session.user.role === 'admin') return res.status(403).render('error', { title: 'Admin restriction', message: 'Administrator accounts cannot make purchases.' });
         const name = String(req.body.name || '').trim();
         const email = String(req.body.email || '').trim();
         const address = String(req.body.address || '').trim();
         const cardNumber = String(req.body.cardNumber || '').replace(/[\s-]/g, '');
+
         const cart = await getCartDetails(req);
-        if (!cart.items.length) return res.redirect('/cart');
-        if (!name || !email || !address || !/^\S+@\S+\.\S+$/.test(email) || !/^\d{13,19}$/.test(cardNumber)) {
-            return res.status(400).render('purchase', { title: 'Checkout', ...cart, error: 'Enter a name, valid email, address and a 13–19 digit card number.', values: { name, email, address } });
+
+        if (!cart.items.length) {
+            return res.redirect('/cart');
         }
+
+        if (
+            !name ||
+            !email ||
+            !address ||
+            !/^\S+@\S+\.\S+$/.test(email) ||
+            !/^\d{13,19}$/.test(cardNumber)
+        ) {
+            return res.status(400).render('purchase', {
+                title: 'Checkout',
+                ...cart,
+                error: 'Enter a name, valid email, address and a 13–19 digit card number.',
+                values: { name, email, address }
+            });
+        }
+
+        connection = await pool.getConnection();
         await connection.beginTransaction();
+        transactionStarted = true;
+
         for (const item of cart.items) {
-            const [locked] = await connection.execute(`SELECT quantity,status FROM products WHERE \`${productSchema.id}\`=? FOR UPDATE`, [item.id]);
-            if (!locked.length || locked[0].status !== 'active' || locked[0].quantity < item.selectedQuantity) throw new Error(`${item.title} no longer has enough stock.`);
+            const [locked] = await connection.execute(
+                `SELECT quantity, status
+                 FROM products
+                 WHERE \`${productSchema.id}\` = ?
+                 FOR UPDATE`,
+                [item.id]
+            );
+
+            if (
+                !locked.length ||
+                locked[0].status !== 'active' ||
+                Number(locked[0].quantity) < item.selectedQuantity
+            ) {
+                throw new Error(`${item.title} no longer has enough stock.`);
+            }
         }
+
         const lastFour = cardNumber.slice(-4);
-        const [orderResult] = await connection.execute('INSERT INTO orders (user_id,customer_name,customer_email,delivery_address,card_last_four,total_price) VALUES (?,?,?,?,?,?)', [req.session.user.id, name, email, address, lastFour, cart.total]);
+
+        const [orderResult] = await connection.execute(
+            `INSERT INTO orders (
+                user_id,
+                customer_name,
+                customer_email,
+                delivery_address,
+                card_last_four,
+                total_price
+            )
+            VALUES (?, ?, ?, ?, ?, ?)`,
+            [
+                req.session.user.id,
+                name,
+                email,
+                address,
+                lastFour,
+                cart.total
+            ]
+        );
+
         for (const item of cart.items) {
-            await connection.execute('INSERT INTO order_items (order_id,product_id,product_title,unit_price,quantity,line_total) VALUES (?,?,?,?,?,?)', [orderResult.insertId, item.id, item.title, item.price, item.selectedQuantity, item.lineTotal]);
-            await connection.execute(`UPDATE products SET quantity=quantity-?, status=IF(quantity-?<=0,'sold','active') WHERE \`${productSchema.id}\`=?`, [item.selectedQuantity, item.selectedQuantity, item.id]);
+            await connection.execute(
+                `INSERT INTO order_items (
+                    order_id,
+                    product_id,
+                    product_title,
+                    unit_price,
+                    quantity,
+                    line_total
+                )
+                VALUES (?, ?, ?, ?, ?, ?)`,
+                [
+                    orderResult.insertId,
+                    item.id,
+                    item.title,
+                    item.price,
+                    item.selectedQuantity,
+                    item.lineTotal
+                ]
+            );
+
+            await connection.execute(
+                `UPDATE products
+                 SET
+                    quantity = quantity - ?,
+                    status = IF(quantity - ? <= 0, 'sold', 'active')
+                 WHERE \`${productSchema.id}\` = ?`,
+                [
+                    item.selectedQuantity,
+                    item.selectedQuantity,
+                    item.id
+                ]
+            );
         }
+
         await connection.commit();
+        transactionStarted = false;
+
         req.session.cart = {};
         res.redirect(`/confirmation/${orderResult.insertId}`);
-    } catch (e) {
-        await connection.rollback();
-        next(e);
-    } finally { connection.release(); }
+    } catch (error) {
+        if (connection && transactionStarted) {
+            await connection.rollback();
+        }
+
+        next(error);
+    } finally {
+        if (connection) {
+            connection.release();
+        }
+    }
 });
 
-app.get('/confirmation/:id', requireLogin, async (req, res, next) => {
+app.get('/confirmation/:id', requireRegularUser, async (req, res, next) => {
     try {
         const [orders] = await pool.execute('SELECT * FROM orders WHERE id=? AND user_id=? LIMIT 1', [Number(req.params.id), req.session.user.id]);
         if (!orders.length) return res.status(404).render('error', { title: 'Order not found', message: 'That confirmation could not be found.' });
@@ -434,7 +587,50 @@ app.get('/forum', requireLogin, async (req, res, next) => { try { const [rows] =
 
 app.get('/news', requireLogin, async (req, res, next) => { try { const [rows] = await pool.query("SELECT * FROM news_items WHERE status='visible' ORDER BY COALESCE(published_at,created_at) DESC"); res.render('placeholder', { title: 'News Hub', heading: 'Retro gaming news hub', description: 'News records are stored in MySQL. RSS/API integration can be added later.', items: rows.map(x => ({ title: x.title, detail: x.source_name || 'SavePoint' })) }); } catch (e) { next(e); } });
 
-app.get('/admin', requireAdmin, async (req, res, next) => { try { const [users] = await pool.query('SELECT id,username,display_name,role,created_at FROM users ORDER BY created_at DESC'), [products] = await pool.query(`SELECT \`${productSchema.id}\` AS id, \`${productSchema.name}\` AS title, status, created_at FROM products ORDER BY created_at DESC`), [posts] = await pool.query('SELECT id,title,status,created_at FROM forum_posts ORDER BY created_at DESC'); res.render('admin', { title: 'Admin Panel', users, products, posts }); } catch (e) { next(e); } });
+app.get('/admin', requireAdmin, async (req, res, next) => {
+    try {
+        const [users] = await pool.query(`
+            SELECT
+                id,
+                username,
+                display_name,
+                role,
+                created_at
+            FROM users
+            ORDER BY created_at DESC
+        `);
+
+        const [products] = await pool.query(`
+            SELECT
+                \`${productSchema.id}\` AS id,
+                \`${productSchema.name}\` AS title,
+                status,
+                created_at
+            FROM products
+            WHERE status != 'removed'
+            ORDER BY created_at DESC
+        `);
+
+        const [posts] = await pool.query(`
+            SELECT
+                id,
+                title,
+                status,
+                created_at
+            FROM forum_posts
+            ORDER BY created_at DESC
+        `);
+
+        res.render('admin', {
+            title: 'Admin Panel',
+            users,
+            products,
+            posts
+        });
+    } catch (error) {
+        next(error);
+    }
+});
 
 app.post('/admin/products/:id/delete', requireAdmin, async (req, res, next) => { try { await pool.execute(`UPDATE products SET status='removed' WHERE \`${productSchema.id}\`=?`, [Number(req.params.id)]); res.redirect('/admin'); } catch (e) { next(e); } });
 
