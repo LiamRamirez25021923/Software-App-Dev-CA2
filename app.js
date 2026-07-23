@@ -29,38 +29,98 @@ const upload = multer({
     }
 });
 
-// Some earlier lesson databases use productId/productName/image, while newer
-// SavePoint databases use id/title/image_url. This object is detected at startup
+// Detect the existing products-table column names.
+// This project's database uses id, name and image.
 // so all marketplace queries work with the existing products table.
 let productSchema = {
     id: 'id',
-    name: 'title',
-    image: 'image_url'
+    name: 'name',
+    image: 'image'
 };
 
 async function configureProductSchema() {
-    const [columns] = await pool.query('SHOW COLUMNS FROM products');
-    const names = new Set(columns.map(column => column.Field));
+    const [columns] = await pool.query(
+        'SHOW COLUMNS FROM products'
+    );
 
-    productSchema.id = names.has('productId') ? 'productId' : 'id';
-    productSchema.name = names.has('productName') ? 'productName' : 'title';
-    productSchema.image = names.has('image') ? 'image' : 'image_url';
+    const names = new Set(
+        columns.map(column => column.Field)
+    );
+
+    productSchema.id =
+        names.has('productId') ? 'productId'
+            : names.has('product_id') ? 'product_id'
+                : names.has('id') ? 'id'
+                    : null;
+
+    productSchema.name =
+        names.has('productName') ? 'productName'
+            : names.has('product_name') ? 'product_name'
+                : names.has('name') ? 'name'
+                    : names.has('title') ? 'title'
+                        : null;
+
+    productSchema.image =
+        names.has('image') ? 'image'
+            : names.has('image_url') ? 'image_url'
+                : names.has('imageUrl') ? 'imageUrl'
+                    : null;
+
+    if (!productSchema.id) {
+        throw new Error(
+            'Products table requires an id column.'
+        );
+    }
+
+    if (!productSchema.name) {
+        throw new Error(
+            'Products table requires a name column.'
+        );
+    }
+
+    if (!productSchema.image) {
+        await pool.query(`
+            ALTER TABLE products
+            ADD COLUMN image VARCHAR(255) NULL
+        `);
+
+        productSchema.image = 'image';
+        names.add('image');
+    }
 
     const additions = [
         ['seller_user_id', 'INT NULL'],
         ['description', 'TEXT NULL'],
-        ['category', "VARCHAR(80) NOT NULL DEFAULT 'Games'"],
+        [
+            'category',
+            "VARCHAR(80) NOT NULL DEFAULT 'Games'"
+        ],
         ['platform', 'VARCHAR(80) NULL'],
-        ['status', "ENUM('active','sold','removed') NOT NULL DEFAULT 'active'"],
-        ['created_at', 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP']
+        ['quantity', 'INT NOT NULL DEFAULT 1'],
+        ['price', 'DECIMAL(10,2) NOT NULL DEFAULT 0'],
+        [
+            'status',
+            "ENUM('active','sold','removed') "
+            + "NOT NULL DEFAULT 'active'"
+        ],
+        [
+            'created_at',
+            'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
+        ]
     ];
 
     for (const [column, definition] of additions) {
         if (!names.has(column)) {
-            await pool.query(`ALTER TABLE products ADD COLUMN \`${column}\` ${definition}`);
+            await pool.query(
+                `ALTER TABLE products
+                 ADD COLUMN \`${column}\` ${definition}`
+            );
+
             names.add(column);
         }
     }
+
+    console.log('Detected products schema:', productSchema);
 }
 
 function productSelectList(alias = 'p') {
@@ -102,7 +162,33 @@ async function seedAccount({ username, password, displayName, email, role }) { c
 
 async function initialiseDatabase() {
     await pool.query(`CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY,username VARCHAR(50) NOT NULL UNIQUE,password_hash VARCHAR(255) NOT NULL,display_name VARCHAR(100) NOT NULL,email VARCHAR(150),bio TEXT,favourite_console VARCHAR(100),role ENUM('user','admin') NOT NULL DEFAULT 'user',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
-    await pool.query(`CREATE TABLE IF NOT EXISTS products (productId INT AUTO_INCREMENT PRIMARY KEY,productName VARCHAR(150) NOT NULL,quantity INT NOT NULL DEFAULT 1,price DECIMAL(10,2) NOT NULL DEFAULT 0,image VARCHAR(255),seller_user_id INT NULL,description TEXT,category VARCHAR(80) NOT NULL DEFAULT 'Games',platform VARCHAR(80),status ENUM('active','sold','removed') NOT NULL DEFAULT 'active',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
+    await pool.query(`
+    CREATE TABLE IF NOT EXISTS products (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(150) NOT NULL,
+        category VARCHAR(80)
+            NOT NULL DEFAULT 'Games',
+        price DECIMAL(10,2)
+            NOT NULL DEFAULT 0,
+        image VARCHAR(255),
+        description TEXT,
+        features TEXT,
+        sizes VARCHAR(255),
+        created_at TIMESTAMP
+            DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP
+            DEFAULT CURRENT_TIMESTAMP
+            ON UPDATE CURRENT_TIMESTAMP,
+        status ENUM(
+            'active',
+            'sold',
+            'removed'
+        ) NOT NULL DEFAULT 'active',
+        quantity INT NOT NULL DEFAULT 1,
+        seller_user_id INT NULL,
+        platform VARCHAR(80)
+        )
+    `);
     await configureProductSchema();
     await pool.query(`CREATE TABLE IF NOT EXISTS forum_posts (id INT AUTO_INCREMENT PRIMARY KEY,author_user_id INT NULL,title VARCHAR(180) NOT NULL,body TEXT NOT NULL,status ENUM('visible','removed') NOT NULL DEFAULT 'visible',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,CONSTRAINT fk_forum_author FOREIGN KEY (author_user_id) REFERENCES users(id) ON DELETE SET NULL)`);
     await pool.query(`CREATE TABLE IF NOT EXISTS news_items (id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(200) NOT NULL,summary TEXT,source_name VARCHAR(120),source_url VARCHAR(500),published_at DATETIME,status ENUM('visible','hidden') NOT NULL DEFAULT 'visible',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
