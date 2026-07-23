@@ -4,6 +4,7 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const pool = require('./config/db');
+const newsHub = require('./src/services/newshub.service');
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 app.set('view engine','ejs');
@@ -39,12 +40,32 @@ app.get('/profile',requireLogin,async(req,res,next)=>{try{const [rows]=await poo
 app.post('/profile',requireLogin,async(req,res,next)=>{try{const displayName=String(req.body.displayName||'').trim(),email=String(req.body.email||'').trim(),bio=String(req.body.bio||'').trim(),fc=String(req.body.favouriteConsole||'').trim();if(!displayName)return res.status(400).render('error',{title:'Profile error',message:'Display name cannot be empty.'});await pool.execute('UPDATE users SET display_name=?,email=?,bio=?,favourite_console=? WHERE id=?',[displayName,email||null,bio||null,fc||null,req.session.user.id]);req.session.user.displayName=displayName;res.redirect('/profile');}catch(e){next(e);}});
 app.get('/marketplace',requireLogin,async(req,res,next)=>{try{const [rows]=await pool.query("SELECT p.*,u.username seller_username FROM products p LEFT JOIN users u ON u.id=p.seller_user_id WHERE p.status='active' ORDER BY p.created_at DESC");res.render('placeholder',{title:'Retro Marketplace',heading:'Buy and sell retro gaming gear',description:'The marketplace table and starter listing are ready.',items:rows.map(x=>({title:x.title,detail:`${x.category}${x.platform?' · '+x.platform:''} · $${Number(x.price).toFixed(2)}`}))});}catch(e){next(e);}});
 app.get('/forum',requireLogin,async(req,res,next)=>{try{const [rows]=await pool.query("SELECT f.*,u.username author_username FROM forum_posts f LEFT JOIN users u ON u.id=f.author_user_id WHERE f.status='visible' ORDER BY f.created_at DESC");res.render('placeholder',{title:'Community Forum',heading:'Discuss retro games with the community',description:'The forum table is ready for posts, comments and voting.',items:rows.map(x=>({title:x.title,detail:`Posted by ${x.author_username||'Deleted user'}`}))});}catch(e){next(e);}});
-app.get('/news',requireLogin,async(req,res,next)=>{try{const [rows]=await pool.query("SELECT * FROM news_items WHERE status='visible' ORDER BY COALESCE(published_at,created_at) DESC");res.render('placeholder',{title:'News Hub',heading:'Retro gaming news hub',description:'News records are stored in MySQL. RSS/API integration can be added later.',items:rows.map(x=>({title:x.title,detail:x.source_name||'SavePoint'}))});}catch(e){next(e);}});
+app.get('/news',(req,res)=>res.redirect('/newshub'));
+app.get('/newshub',requireLogin,(req,res)=>{
+  newsHub.startBackgroundRefresh();
+  const initialNews=newsHub.getNewsPage({page:1,limit:6,type:req.query.type||'all',source:req.query.source||'all'});
+  res.render('newshub/index',{title:'NewsHub',initialNews,newsTypes:newsHub.NEWS_TYPES,sources:newsHub.TRUSTED_SOURCES});
+});
+app.get('/api/newshub/news',requireLogin,async(req,res,next)=>{try{
+  if(req.query.force==='1') await newsHub.refreshArticles({force:true});
+  else if(newsHub.getNewsPage({page:1,limit:1}).total===0) await newsHub.refreshArticles();
+  res.json(newsHub.getNewsPage({page:req.query.page||1,limit:req.query.limit||6,type:req.query.type||'all',source:req.query.source||'all'}));
+}catch(e){next(e);}});
+app.get('/api/newshub/daily-report',requireLogin,async(req,res,next)=>{try{
+  if(req.query.force==='1') await newsHub.refreshArticles({force:true});
+  else await newsHub.refreshArticles();
+  res.json({report:newsHub.buildDailyReport()});
+}catch(e){next(e);}});
+app.get('/api/newshub/monthly-report',requireLogin,async(req,res,next)=>{try{
+  if(req.query.force==='1') await newsHub.refreshArticles({force:true});
+  else await newsHub.refreshArticles();
+  res.json({report:newsHub.buildMonthlyReport()});
+}catch(e){next(e);}});
 app.get('/admin',requireAdmin,async(req,res,next)=>{try{const [users]=await pool.query('SELECT id,username,display_name,role,created_at FROM users ORDER BY created_at DESC'),[products]=await pool.query('SELECT id,title,status,created_at FROM products ORDER BY created_at DESC'),[posts]=await pool.query('SELECT id,title,status,created_at FROM forum_posts ORDER BY created_at DESC');res.render('admin',{title:'Admin Panel',users,products,posts});}catch(e){next(e);}});
 app.post('/admin/products/:id/delete',requireAdmin,async(req,res,next)=>{try{await pool.execute("UPDATE products SET status='removed' WHERE id=?",[Number(req.params.id)]);res.redirect('/admin');}catch(e){next(e);}});
 app.post('/admin/posts/:id/delete',requireAdmin,async(req,res,next)=>{try{await pool.execute("UPDATE forum_posts SET status='removed' WHERE id=?",[Number(req.params.id)]);res.redirect('/admin');}catch(e){next(e);}});
 app.get('/health',async(req,res)=>{try{await pool.query('SELECT 1');res.json({ok:true,database:'connected'});}catch(e){res.status(500).json({ok:false,database:'disconnected'});}});
 app.use((req,res)=>res.status(404).render('error',{title:'Page not found',message:'That save file does not exist.'}));
 app.use((e,req,res,next)=>{console.error(e);res.status(500).render('error',{title:'Application error',message:process.env.NODE_ENV==='production'?'SavePoint ran into an unexpected error.':e.message});});
-async function startServer(){try{await pool.query('SELECT 1');console.log('Connected to MySQL database');await initialiseDatabase();console.log('SavePoint database tables are ready');app.listen(PORT,'0.0.0.0',()=>console.log(`SavePoint is running at http://localhost:${PORT}`));}catch(e){console.error('Could not start SavePoint:',e);process.exit(1);}}
+async function startServer(){try{await pool.query('SELECT 1');console.log('Connected to MySQL database');await initialiseDatabase();await newsHub.ensureNewsHubStorage();await newsHub.hydrateCacheFromDatabase();newsHub.startBackgroundRefresh();console.log('SavePoint database tables are ready');app.listen(PORT,'0.0.0.0',()=>console.log(`SavePoint is running at http://localhost:${PORT}`));}catch(e){console.error('Could not start SavePoint:',e);process.exit(1);}}
 startServer();

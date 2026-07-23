@@ -1,6 +1,7 @@
 const mysql = require('mysql2/promise');
 const required = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME'];
 const missing = required.filter((key) => !process.env[key]);
+
 if (missing.length > 0) throw new Error(`Missing database environment variables: ${missing.join(', ')}`);
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
