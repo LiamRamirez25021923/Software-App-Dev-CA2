@@ -324,9 +324,24 @@ function decorateArticle(article, now = new Date()) {
   return { ...article, isFresh24h: fresh, freshnessLabel: fresh ? 'Last 24h' : 'Trusted recent fallback' };
 }
 
-function getNewsPage({ page = 1, limit = 6, type = 'all', source = 'all' } = {}) {
+function normaliseSelectedSources(selectedSources) {
+  if (!Array.isArray(selectedSources)) return null;
+  const trustedNames = new Set(TRUSTED_SOURCES.map((source) => source.name));
+  const cleaned = [...new Set(selectedSources.map((name) => String(name).trim()).filter((name) => trustedNames.has(name)))];
+  return cleaned;
+}
+
+function filterBySelectedSources(articles, selectedSources) {
+  const cleaned = normaliseSelectedSources(selectedSources);
+  if (cleaned === null) return articles;
+  if (cleaned.length === 0) return [];
+  const allowed = new Set(cleaned);
+  return articles.filter((article) => allowed.has(article.sourceName));
+}
+
+function getNewsPage({ page = 1, limit = 6, type = 'all', source = 'all', selectedSources = null } = {}) {
   const cache = readCache();
-  let articles = dedupeArticles(cache.articles || []);
+  let articles = filterBySelectedSources(dedupeArticles(cache.articles || []), selectedSources);
   if (type !== 'all') articles = articles.filter((article) => article.newsTypes.includes(type));
   if (source !== 'all') articles = articles.filter((article) => article.sourceName === source);
   const now = new Date();
@@ -373,9 +388,10 @@ function chooseReportArticles(kind, articles, now = new Date()) {
   };
 }
 
-function buildReport(kind = 'daily') {
+function buildReport(kind = 'daily', selectedSources = null) {
   const cache = readCache();
-  const chosen = chooseReportArticles(kind, cache.articles || []);
+  const filteredArticles = filterBySelectedSources(cache.articles || [], selectedSources);
+  const chosen = chooseReportArticles(kind, filteredArticles);
   const typeMap = new Map();
   const sourceMap = new Map();
   for (const article of chosen.articles) {
@@ -407,6 +423,6 @@ module.exports = {
   refreshArticles,
   startBackgroundRefresh,
   getNewsPage,
-  buildDailyReport: () => buildReport('daily'),
-  buildMonthlyReport: () => buildReport('monthly')
+  buildDailyReport: (selectedSources = null) => buildReport('daily', selectedSources),
+  buildMonthlyReport: (selectedSources = null) => buildReport('monthly', selectedSources)
 };

@@ -9,6 +9,62 @@
   const typeFilter = document.getElementById('nh-type-filter');
   const sourceFilter = document.getElementById('nh-source-filter');
   const cacheNote = document.getElementById('nh-cache-note');
+  const sourceChecklist = document.getElementById('nh-source-checklist');
+  const sourceSummary = document.getElementById('nh-source-summary');
+  const sourceFeedback = document.getElementById('nh-source-feedback');
+  const selectAllSourcesButton = document.getElementById('nh-select-all-sources');
+  const clearAllSourcesButton = document.getElementById('nh-clear-all-sources');
+  const applySourcesButton = document.getElementById('nh-apply-sources');
+  const SOURCE_STORAGE_KEY = 'savepoint.newshub.enabledSources';
+
+  function sourceCheckboxes() {
+    return Array.from(sourceChecklist?.querySelectorAll('input[type="checkbox"]') || []);
+  }
+
+  function allSourceNames() {
+    return sourceCheckboxes().map((checkbox) => checkbox.value);
+  }
+
+  function selectedSourceNames() {
+    return sourceCheckboxes().filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value);
+  }
+
+  function updateSourceSummary() {
+    const total = sourceCheckboxes().length;
+    const selected = selectedSourceNames().length;
+    if (sourceSummary) sourceSummary.textContent = `${selected} of ${total} sources enabled`;
+    if (sourceFeedback) {
+      sourceFeedback.textContent = selected
+        ? `${selected} trusted source${selected === 1 ? '' : 's'} will be included in your NewsHub.`
+        : 'No sources are selected. Reports and Game News will remain empty until at least one outlet is enabled.';
+    }
+  }
+
+  function restoreSourcePreferences() {
+    const boxes = sourceCheckboxes();
+    if (!boxes.length) return;
+    try {
+      const stored = JSON.parse(localStorage.getItem(SOURCE_STORAGE_KEY));
+      if (!Array.isArray(stored)) {
+        updateSourceSummary();
+        return;
+      }
+      const allowed = new Set(stored);
+      boxes.forEach((checkbox) => { checkbox.checked = allowed.has(checkbox.value); });
+    } catch {
+      boxes.forEach((checkbox) => { checkbox.checked = true; });
+    }
+    updateSourceSummary();
+  }
+
+  function persistSourcePreferences() {
+    localStorage.setItem(SOURCE_STORAGE_KEY, JSON.stringify(selectedSourceNames()));
+  }
+
+  function appendSourceParams(params) {
+    params.set('sources', selectedSourceNames().join(','));
+    return params;
+  }
 
   function reportConfig(prefix) {
     return {
@@ -73,7 +129,9 @@
   async function loadReport(config, force = false) {
     setReportLoading(config, true);
     try {
-      const response = await fetch(`/api/newshub/${config.prefix}-report${force ? '?force=1' : ''}`);
+      const params = appendSourceParams(new URLSearchParams());
+      if (force) params.set('force', '1');
+      const response = await fetch(`/api/newshub/${config.prefix}-report?${params}`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       renderReport(config, data.report);
@@ -93,7 +151,7 @@
   }
 
   async function loadNews({ page = 1, replace = false, force = false } = {}) {
-    const params = new URLSearchParams({ page: String(page), limit: '6', type: typeFilter.value, source: sourceFilter.value });
+    const params = appendSourceParams(new URLSearchParams({ page: String(page), limit: '6', type: typeFilter.value, source: sourceFilter.value }));
     if (force) params.set('force', '1');
     if (newsStatus) newsStatus.textContent = force ? 'Refreshing trusted RSS feeds…' : 'Loading articles…';
     if (loadMoreButton) loadMoreButton.disabled = true;
@@ -129,15 +187,39 @@
     refreshAllButton.textContent = 'Refresh trusted feeds';
   }
 
+  async function applySourcePreferences() {
+    persistSourcePreferences();
+    updateSourceSummary();
+    if (applySourcesButton) {
+      applySourcesButton.disabled = true;
+      applySourcesButton.textContent = 'Applying…';
+    }
+    await Promise.all([
+      loadNews({ page: 1, replace: true }),
+      loadReport(daily, false),
+      loadReport(monthly, false)
+    ]);
+    if (applySourcesButton) {
+      applySourcesButton.disabled = false;
+      applySourcesButton.textContent = 'Apply sources';
+    }
+  }
+
   daily.refresh?.addEventListener('click', () => loadReport(daily, true));
   monthly.refresh?.addEventListener('click', () => loadReport(monthly, true));
   refreshAllButton?.addEventListener('click', refreshEverything);
   loadMoreButton?.addEventListener('click', () => loadNews({ page: Number(loadMoreButton.dataset.nextPage || 2) }));
   typeFilter?.addEventListener('change', () => loadNews({ page: 1, replace: true }));
   sourceFilter?.addEventListener('change', () => loadNews({ page: 1, replace: true }));
+  sourceChecklist?.addEventListener('change', updateSourceSummary);
+  selectAllSourcesButton?.addEventListener('click', () => { sourceCheckboxes().forEach((checkbox) => { checkbox.checked = true; }); updateSourceSummary(); });
+  clearAllSourcesButton?.addEventListener('click', () => { sourceCheckboxes().forEach((checkbox) => { checkbox.checked = false; }); updateSourceSummary(); });
+  applySourcesButton?.addEventListener('click', applySourcePreferences);
+
+  restoreSourcePreferences();
 
   if (loadMoreButton) loadMoreButton.classList.toggle('nh-hidden', loadMoreButton.dataset.hasMore !== 'true');
   loadReport(daily, false);
   loadReport(monthly, false);
-  if (!newsList.children.length) loadNews({ page: 1, replace: true, force: true });
+  loadNews({ page: 1, replace: true, force: !newsList.children.length });
 })();

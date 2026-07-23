@@ -1,6 +1,54 @@
 {
   "articles": [
     {
+      "id": "ffc4286cae396b9e9575f1e74ca8ccdb48a7666e",
+      "title": "How to play with friends in Splatoon Raiders",
+      "summary": "You can play with friends in Splatoon Raiders' multiplayer, even though it's a single-player game. Here's how to play with friends in Splatoon Raiders",
+      "link": "https://www.polygon.com/splatoon-raiders-multiplayer-how-to-play-with-friends/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-23T04:01:12.000Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "5caf529f04126880774b175c5d6ff855269e2c57",
+      "title": "Which gadget tank should you pick in Splatoon Raiders?",
+      "summary": "Splatoon Raiders' gadget tanks are an important part of each raid. Here's which gadget tank you should pick in Splatoon Raiders",
+      "link": "https://www.polygon.com/splatoon-raiders-gadget-tank-speed-power-technical/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-23T04:01:12.000Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "c57a5f782e3e1014fe444446ed531e33ca6aef82",
+      "title": "10 Splatoon Raiders beginner tips to help you beat back the hordes in style",
+      "summary": "Our Splatoon Raiders beginner guide includes 10 tips and tricks to get the most out of your weapons and gadgets",
+      "link": "https://www.polygon.com/splatoon-raiders-beginner-tips-tricks/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-23T04:01:12.000Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
       "id": "239532a1c212e9b1fa4ac77429428236ec63fedd",
       "title": "Donkey Kong Arcade LEGO Set Officially Revealed, Available August 2026",
       "summary": "A legendary DK player has already put it to the test. After all sorts of leaks, LEGO and Nintendo have now officially revealed the Donkey Kong Arcade set. Read the full article on nintendolife.com",
@@ -11,7 +59,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-23T03:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.421Z",
+      "fetchedAt": "2026-07-23T04:18:20.088Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -27,7 +75,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-23T02:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.421Z",
+      "fetchedAt": "2026-07-23T04:18:20.088Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -45,7 +93,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T01:39:27.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.209Z",
+      "fetchedAt": "2026-07-23T04:18:20.046Z",
       "newsTypes": [
         "Patches & Updates",
         "Company & Business News",
@@ -63,7 +111,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-23T01:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.421Z",
+      "fetchedAt": "2026-07-23T04:18:20.088Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -80,7 +128,7 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-23T01:09:45.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.058Z",
+      "fetchedAt": "2026-07-23T04:18:19.832Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -97,7 +145,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T01:08:01.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.209Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -114,7 +162,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T00:51:15.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.209Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -131,7 +179,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T00:33:31.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.134Z",
+      "fetchedAt": "2026-07-23T04:18:19.916Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -147,7 +195,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-23T00:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.421Z",
+      "fetchedAt": "2026-07-23T04:18:20.088Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -164,7 +212,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T23:40:07.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.134Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -180,7 +228,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T23:00:12.000Z",
-      "fetchedAt": "2026-07-23T03:58:03.354Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -196,7 +244,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T23:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.117Z",
+      "fetchedAt": "2026-07-23T04:18:19.903Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -212,7 +260,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T22:41:40.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.135Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -228,7 +276,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T22:30:38.000Z",
-      "fetchedAt": "2026-07-23T03:58:03.355Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
       "newsTypes": [
         "Patches & Updates",
         "Community & Dev Blogs"
@@ -245,7 +293,7 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-22T22:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.263Z",
+      "fetchedAt": "2026-07-23T04:18:20.673Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -261,7 +309,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T22:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.882Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -277,7 +325,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T21:41:36.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.117Z",
+      "fetchedAt": "2026-07-23T04:18:19.903Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -293,7 +341,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T21:31:24.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.135Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -310,7 +358,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T21:17:55.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.135Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -327,7 +375,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T21:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.882Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -343,7 +391,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T20:58:24.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -361,7 +409,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T20:53:29.000Z",
-      "fetchedAt": "2026-07-23T03:58:03.355Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -377,7 +425,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T20:47:59.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -393,7 +441,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T20:39:37.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.117Z",
+      "fetchedAt": "2026-07-23T04:18:19.903Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -412,7 +460,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T20:37:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.299Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -429,7 +477,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T20:36:19.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.037Z",
+      "fetchedAt": "2026-07-23T04:18:19.828Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -445,7 +493,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T20:35:39.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.118Z",
+      "fetchedAt": "2026-07-23T04:18:19.904Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -464,7 +512,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T20:32:01.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.086Z",
+      "fetchedAt": "2026-07-23T04:18:19.858Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -480,7 +528,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T20:30:27.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.118Z",
+      "fetchedAt": "2026-07-23T04:18:19.904Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -499,7 +547,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T20:00:12.000Z",
-      "fetchedAt": "2026-07-23T03:58:03.355Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -516,7 +564,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T20:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.882Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -532,7 +580,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T19:21:05.000Z",
-      "fetchedAt": "2026-07-23T03:58:03.355Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
       "newsTypes": [
         "Patches & Updates",
         "Community & Dev Blogs"
@@ -549,7 +597,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T19:08:35.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.119Z",
+      "fetchedAt": "2026-07-23T04:18:19.905Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -566,7 +614,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T19:05:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.435Z",
+      "fetchedAt": "2026-07-23T04:18:20.311Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -582,7 +630,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T19:04:30.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -598,7 +646,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T19:00:12.000Z",
-      "fetchedAt": "2026-07-23T03:58:03.355Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -614,7 +662,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T19:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.414Z",
+      "fetchedAt": "2026-07-23T04:18:20.293Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -631,7 +679,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T19:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.882Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -647,7 +695,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T18:34:44.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports"
@@ -664,7 +712,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T18:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.299Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -680,7 +728,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T18:21:49.000Z",
-      "fetchedAt": "2026-07-23T03:58:03.355Z",
+      "fetchedAt": "2026-07-23T04:18:20.591Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -712,7 +760,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T18:08:32.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.119Z",
+      "fetchedAt": "2026-07-23T04:18:19.905Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -731,7 +779,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T18:07:14.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.119Z",
+      "fetchedAt": "2026-07-23T04:18:19.905Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -749,7 +797,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T18:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.882Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -781,7 +829,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T17:54:52.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.086Z",
+      "fetchedAt": "2026-07-23T04:18:19.859Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -798,7 +846,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T17:51:21.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -831,7 +879,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T17:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.414Z",
+      "fetchedAt": "2026-07-23T04:18:20.293Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -847,7 +895,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T17:20:46.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.120Z",
+      "fetchedAt": "2026-07-23T04:18:19.905Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -865,7 +913,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T17:18:36.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -881,7 +929,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T17:11:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.209Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -899,7 +947,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T17:08:51.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.086Z",
+      "fetchedAt": "2026-07-23T04:18:19.859Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports",
@@ -917,7 +965,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T17:08:08.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.121Z",
+      "fetchedAt": "2026-07-23T04:18:19.906Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -936,7 +984,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.414Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -953,7 +1001,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.299Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -970,7 +1018,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -986,7 +1034,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.121Z",
+      "fetchedAt": "2026-07-23T04:18:19.906Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1002,7 +1050,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.882Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1018,7 +1066,7 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-22T16:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.263Z",
+      "fetchedAt": "2026-07-23T04:18:20.673Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1034,7 +1082,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T16:24:15.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.136Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1050,7 +1098,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T16:15:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.421Z",
+      "fetchedAt": "2026-07-23T04:18:20.088Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1066,7 +1114,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T16:15:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.414Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1082,7 +1130,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T16:06:33.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.122Z",
+      "fetchedAt": "2026-07-23T04:18:19.906Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1101,7 +1149,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T16:03:29.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.122Z",
+      "fetchedAt": "2026-07-23T04:18:19.907Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1120,7 +1168,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T16:02:38.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.122Z",
+      "fetchedAt": "2026-07-23T04:18:19.907Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports"
@@ -1137,7 +1185,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T16:01:08.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.086Z",
+      "fetchedAt": "2026-07-23T04:18:19.859Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1153,7 +1201,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T16:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.435Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -1170,7 +1218,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T16:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -1187,7 +1235,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T15:55:20.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.104Z",
+      "fetchedAt": "2026-07-23T04:18:19.888Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -1204,7 +1252,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T15:54:37.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1220,7 +1268,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T15:45:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.414Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1239,7 +1287,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T15:45:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.435Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1255,7 +1303,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T15:40:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.299Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1271,7 +1319,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T15:39:15.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.086Z",
+      "fetchedAt": "2026-07-23T04:18:19.859Z",
       "newsTypes": [
         "Company & Business News"
       ]
@@ -1287,7 +1335,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T15:15:23.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.917Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1303,7 +1351,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T15:13:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.299Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1319,7 +1367,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T15:10:02.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1338,7 +1386,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T15:08:12.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1354,7 +1402,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T15:05:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.435Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1370,7 +1418,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T15:00:13.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1386,7 +1434,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T15:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.421Z",
+      "fetchedAt": "2026-07-23T04:18:20.088Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1402,7 +1450,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T15:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.414Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -1419,7 +1467,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T15:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1435,7 +1483,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T15:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.048Z",
+      "fetchedAt": "2026-07-23T04:18:19.873Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1451,7 +1499,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T14:55:16.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.104Z",
+      "fetchedAt": "2026-07-23T04:18:19.888Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -1468,7 +1516,7 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-22T14:55:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.263Z",
+      "fetchedAt": "2026-07-23T04:18:20.673Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1484,7 +1532,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T14:51:10.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1500,7 +1548,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T14:40:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.421Z",
+      "fetchedAt": "2026-07-23T04:18:20.089Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1516,7 +1564,7 @@
       "platform": "PlayStation",
       "official": true,
       "publishedAt": "2026-07-22T14:30:44.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.815Z",
+      "fetchedAt": "2026-07-23T04:18:21.098Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1532,7 +1580,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T14:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1548,7 +1596,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T14:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.299Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -1565,7 +1613,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T14:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.435Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1583,7 +1631,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T14:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.086Z",
+      "fetchedAt": "2026-07-23T04:18:19.859Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1599,7 +1647,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T14:22:50.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1617,7 +1665,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T14:13:16.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1633,7 +1681,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T14:03:51.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.104Z",
+      "fetchedAt": "2026-07-23T04:18:19.888Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1649,7 +1697,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T14:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -1666,7 +1714,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T14:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1682,7 +1730,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T13:55:33.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.104Z",
+      "fetchedAt": "2026-07-23T04:18:19.889Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -1699,7 +1747,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T13:52:10.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.086Z",
+      "fetchedAt": "2026-07-23T04:18:19.859Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1715,7 +1763,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T13:35:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -1732,7 +1780,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T13:31:40.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1748,7 +1796,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T13:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.435Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports",
@@ -1766,7 +1814,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1784,7 +1832,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-22T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.100Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1800,7 +1848,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T12:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -1817,7 +1865,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T12:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.435Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1833,7 +1881,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T12:19:08.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.104Z",
+      "fetchedAt": "2026-07-23T04:18:19.889Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1849,7 +1897,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T12:15:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.436Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1865,7 +1913,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T12:03:41.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1881,7 +1929,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T12:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.089Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports",
@@ -1899,7 +1947,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-22T12:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1915,7 +1963,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T12:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.455Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1933,7 +1981,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T11:49:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.089Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1951,7 +1999,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T11:43:48.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -1967,7 +2015,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T11:39:51.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Company & Business News"
       ]
@@ -1983,7 +2031,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T11:30:35.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1999,7 +2047,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T11:30:11.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.104Z",
+      "fetchedAt": "2026-07-23T04:18:19.889Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2015,7 +2063,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T11:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.436Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2031,7 +2079,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T11:23:14.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2047,7 +2095,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T11:17:05.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2063,7 +2111,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T11:12:41.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -2079,7 +2127,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T11:06:35.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.137Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Company & Business News"
       ]
@@ -2095,7 +2143,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T11:04:31.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2111,7 +2159,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T11:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -2128,7 +2176,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T11:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.436Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -2145,7 +2193,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T10:59:55.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.138Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2161,7 +2209,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T10:58:18.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.104Z",
+      "fetchedAt": "2026-07-23T04:18:19.889Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2177,7 +2225,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T10:36:09.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.889Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2193,7 +2241,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T10:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.436Z",
+      "fetchedAt": "2026-07-23T04:18:20.312Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -2210,7 +2258,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-22T10:23:29.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.903Z",
+      "fetchedAt": "2026-07-23T04:18:20.723Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2226,7 +2274,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T10:15:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.089Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -2244,7 +2292,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T10:12:45.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.138Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -2260,7 +2308,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-22T10:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2276,7 +2324,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-22T09:30:49.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -2294,7 +2342,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T09:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.089Z",
       "newsTypes": [
         "Company & Business News"
       ]
@@ -2310,7 +2358,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T09:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.436Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -2328,7 +2376,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T09:28:39.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.889Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2344,7 +2392,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T09:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.889Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2360,7 +2408,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-22T08:47:03.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.903Z",
+      "fetchedAt": "2026-07-23T04:18:20.723Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2376,7 +2424,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-22T08:45:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.436Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2392,7 +2440,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-22T08:36:07.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -2410,7 +2458,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-22T08:28:34.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.903Z",
+      "fetchedAt": "2026-07-23T04:18:20.723Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2426,7 +2474,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-22T08:06:30.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.903Z",
+      "fetchedAt": "2026-07-23T04:18:20.723Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -2445,7 +2493,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T08:06:13.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.047Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2461,7 +2509,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-22T07:28:31.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.903Z",
+      "fetchedAt": "2026-07-23T04:18:20.723Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2477,7 +2525,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-22T07:13:55.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.903Z",
+      "fetchedAt": "2026-07-23T04:18:20.723Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -2494,7 +2542,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T05:45:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.090Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -2510,7 +2558,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T03:55:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.090Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -2527,7 +2575,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T03:43:03.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2543,7 +2591,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T03:33:07.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2559,7 +2607,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T02:55:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.090Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -2576,7 +2624,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T02:47:44.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -2593,7 +2641,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T01:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.422Z",
+      "fetchedAt": "2026-07-23T04:18:20.090Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -2610,7 +2658,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-22T00:42:16.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2626,7 +2674,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-22T00:35:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.423Z",
+      "fetchedAt": "2026-07-23T04:18:20.090Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2642,7 +2690,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T23:29:13.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.138Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2658,7 +2706,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T23:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -2675,7 +2723,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T22:42:01.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.138Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Company & Business News",
         "Events & Esports"
@@ -2692,7 +2740,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T21:54:57.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2708,7 +2756,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T21:06:22.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.138Z",
+      "fetchedAt": "2026-07-23T04:18:19.918Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2724,7 +2772,7 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-21T21:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.263Z",
+      "fetchedAt": "2026-07-23T04:18:20.673Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2740,7 +2788,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-21T21:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.101Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2756,7 +2804,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T20:38:28.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Patches & Updates"
       ]
@@ -2772,7 +2820,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-21T20:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.101Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2788,7 +2836,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T19:07:20.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -2806,7 +2854,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-21T19:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.101Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -2822,7 +2870,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-21T18:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -2839,7 +2887,7 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-21T18:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.263Z",
+      "fetchedAt": "2026-07-23T04:18:20.673Z",
       "newsTypes": [
         "Patches & Updates"
       ]
@@ -2855,7 +2903,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T18:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2871,7 +2919,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-21T18:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.101Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Events & Esports",
         "Community & Dev Blogs"
@@ -2888,7 +2936,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T17:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.294Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -2904,7 +2952,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T17:12:34.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.037Z",
+      "fetchedAt": "2026-07-23T04:18:19.829Z",
       "newsTypes": [
         "Company & Business News"
       ]
@@ -2920,7 +2968,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.415Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -2937,7 +2985,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-21T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2953,7 +3001,7 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-21T17:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.101Z",
+      "fetchedAt": "2026-07-23T04:18:19.883Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2969,7 +3017,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T16:56:27.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -2988,7 +3036,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T16:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.416Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -3006,7 +3054,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-21T16:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.437Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -3023,7 +3071,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-21T16:20:36.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3039,7 +3087,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T16:19:59.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.087Z",
+      "fetchedAt": "2026-07-23T04:18:19.860Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -3056,7 +3104,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T16:13:15.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Patches & Updates",
         "Company & Business News",
@@ -3074,7 +3122,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T16:09:30.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Company & Business News"
       ]
@@ -3090,7 +3138,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T16:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.416Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Patches & Updates"
       ]
@@ -3106,7 +3154,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T15:50:54.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3122,7 +3170,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T15:47:09.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.088Z",
+      "fetchedAt": "2026-07-23T04:18:19.861Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports",
@@ -3140,7 +3188,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-21T15:43:57.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.904Z",
+      "fetchedAt": "2026-07-23T04:18:20.723Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3156,7 +3204,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T15:32:05.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3172,7 +3220,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T15:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.416Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3188,7 +3236,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-21T15:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3204,7 +3252,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-21T15:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.437Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -3221,7 +3269,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T15:28:17.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.088Z",
+      "fetchedAt": "2026-07-23T04:18:19.861Z",
       "newsTypes": [
         "Company & Business News",
         "Community & Dev Blogs"
@@ -3238,7 +3286,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-21T15:15:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.423Z",
+      "fetchedAt": "2026-07-23T04:18:20.090Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -3255,7 +3303,7 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-21T15:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.263Z",
+      "fetchedAt": "2026-07-23T04:18:20.673Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3271,7 +3319,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T15:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.416Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -3288,7 +3336,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-21T15:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.437Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -3304,7 +3352,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-21T14:42:17.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.904Z",
+      "fetchedAt": "2026-07-23T04:18:20.724Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3320,7 +3368,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-21T14:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.423Z",
+      "fetchedAt": "2026-07-23T04:18:20.091Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3336,7 +3384,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-21T14:27:36.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.904Z",
+      "fetchedAt": "2026-07-23T04:18:20.724Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3352,7 +3400,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T14:09:55.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3368,7 +3416,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-21T14:07:44.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -3386,7 +3434,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T14:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.416Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -3403,7 +3451,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-21T14:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -3420,7 +3468,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-21T14:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.437Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -3437,7 +3485,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T14:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports"
@@ -3454,7 +3502,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T13:59:47.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.105Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Events & Esports"
       ]
@@ -3470,7 +3518,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-21T13:41:49.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -3487,7 +3535,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T13:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.416Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -3505,7 +3553,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-21T13:29:06.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.904Z",
+      "fetchedAt": "2026-07-23T04:18:20.724Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3521,7 +3569,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T13:27:32.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.048Z",
+      "fetchedAt": "2026-07-23T04:18:19.873Z",
       "newsTypes": [
         "Company & Business News"
       ]
@@ -3537,7 +3585,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-21T13:19:43.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.210Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -3554,7 +3602,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-21T13:12:54.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.211Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3570,7 +3618,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-21T13:10:09.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.211Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3586,7 +3634,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-21T13:07:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.300Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3602,7 +3650,7 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-21T13:03:42.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.211Z",
+      "fetchedAt": "2026-07-23T04:18:20.048Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -3619,7 +3667,7 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-21T13:02:21.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.058Z",
+      "fetchedAt": "2026-07-23T04:18:19.832Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3635,7 +3683,7 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-21T13:01:03.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.058Z",
+      "fetchedAt": "2026-07-23T04:18:19.832Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3651,7 +3699,7 @@
       "platform": "PlayStation",
       "official": true,
       "publishedAt": "2026-07-21T13:00:47.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.815Z",
+      "fetchedAt": "2026-07-23T04:18:21.098Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -3668,7 +3716,7 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-21T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.263Z",
+      "fetchedAt": "2026-07-23T04:18:20.673Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3684,7 +3732,7 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-21T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.423Z",
+      "fetchedAt": "2026-07-23T04:18:20.091Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports",
@@ -3702,7 +3750,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-21T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.437Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3718,7 +3766,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.088Z",
+      "fetchedAt": "2026-07-23T04:18:19.861Z",
       "newsTypes": [
         "Patches & Updates",
         "Company & Business News"
@@ -3735,7 +3783,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.106Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3751,7 +3799,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.048Z",
+      "fetchedAt": "2026-07-23T04:18:19.874Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3767,7 +3815,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T13:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.048Z",
+      "fetchedAt": "2026-07-23T04:18:19.874Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3783,7 +3831,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T12:27:50.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.106Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3799,7 +3847,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T12:22:49.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.106Z",
+      "fetchedAt": "2026-07-23T04:18:19.890Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -3816,7 +3864,7 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-21T12:15:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.456Z",
+      "fetchedAt": "2026-07-23T04:18:20.301Z",
       "newsTypes": [
         "Company & Business News",
         "Events & Esports",
@@ -3834,7 +3882,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T12:05:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.088Z",
+      "fetchedAt": "2026-07-23T04:18:19.861Z",
       "newsTypes": [
         "Patches & Updates"
       ]
@@ -3850,7 +3898,7 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-21T12:00:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.437Z",
+      "fetchedAt": "2026-07-23T04:18:20.313Z",
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -3866,7 +3914,7 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-21T11:58:54.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.106Z",
+      "fetchedAt": "2026-07-23T04:18:19.891Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3882,7 +3930,7 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-21T11:54:17.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.904Z",
+      "fetchedAt": "2026-07-23T04:18:20.724Z",
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -3898,7 +3946,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-21T11:45:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.416Z",
+      "fetchedAt": "2026-07-23T04:18:20.295Z",
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -3915,7 +3963,7 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-21T11:34:39.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.088Z",
+      "fetchedAt": "2026-07-23T04:18:19.861Z",
       "newsTypes": [
         "Company & Business News",
         "Events & Esports"
@@ -3932,64 +3980,13 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-21T11:31:13.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.904Z",
+      "fetchedAt": "2026-07-23T04:18:20.724Z",
       "newsTypes": [
         "Community & Dev Blogs"
-      ]
-    },
-    {
-      "id": "8447928c27a75c894a60638321158d2a44e83120",
-      "title": "Latest Physical Sales Data Proves The Format Is, In Fact, Dying",
-      "summary": "Oof... Big oof. When Sony recently announced it would be ending the production of physical media for the PS5 (and presumably the PS6) from January 2028, the gaming community was quite rightly up in arms. Yet despite the ongoing backlash, the actual data indicating how poorly physical media sells these days doesn't lie. And it's looking grim, indeed. According to Mat Piscatella from Circana, just two PS5 games sold more than 10,000 physical copies in the US during the week ending 11th July 2026. In addition, only seven have sold more than 100,000 physical copies year-to-date. Read the full article on nintendolife.com",
-      "link": "https://www.nintendolife.com/news/2026/07/latest-physical-sales-data-proves-the-format-is-in-fact-dying",
-      "sourceName": "Nintendo Life",
-      "sourceUrl": "https://www.nintendolife.com/",
-      "language": "English",
-      "platform": "Nintendo",
-      "official": false,
-      "publishedAt": "2026-07-21T11:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.423Z",
-      "newsTypes": [
-        "Game Releases & Launches",
-        "Company & Business News",
-        "Community & Dev Blogs"
-      ]
-    },
-    {
-      "id": "791004fcd1f9f074c5c370a522ec1ff9529bc2d8",
-      "title": "The Witcher 3's Big New Expansion Makes Its Debut at Gamescom Opening Night Live",
-      "summary": "Songs of the Past shows itself. The Witcher 3: Wild Hunt is over a decade old, but even so, it's getting a brand new expansion next year, Songs of the Past , and our first chance to see it arrives next month. As it does every year, Gamescom takes place in late August, and it always kicks things off with Geoff Keighley's Opening Night Live showcase. Read the full article on pushsquare.com",
-      "link": "https://www.pushsquare.com/news/2026/07/the-witcher-3s-big-new-expansion-makes-its-debut-at-gamescom-opening-night-live",
-      "sourceName": "Push Square",
-      "sourceUrl": "https://www.pushsquare.com/",
-      "language": "English",
-      "platform": "PlayStation",
-      "official": false,
-      "publishedAt": "2026-07-21T11:30:00.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.417Z",
-      "newsTypes": [
-        "Patches & Updates",
-        "Events & Esports"
-      ]
-    },
-    {
-      "id": "bcd8ec3bbd2356e4b548d5e85586d51eb8038b41",
-      "title": "007 First Light's secret best character was a perfect way for IO Interactive to celebrate British writing and \"restrained emotion\"",
-      "summary": "IO Interactive has shared more development insight about arguably the stand-out character in 007 First Light: James Bond's mentor figure, John Greenway. This is the character played brilliantly by Walking Dead and Line of Duty actor Lennie James - a character as welcoming as a locked door when Bond initially joins the resurrected double-O secret agent training programme at the beginning of the game, but who gradually opens up. Read more",
-      "link": "https://www.eurogamer.net/007-first-light-britishness-john-greenway",
-      "sourceName": "Eurogamer",
-      "sourceUrl": "https://www.eurogamer.net/",
-      "language": "English",
-      "platform": "Multi-platform",
-      "official": false,
-      "publishedAt": "2026-07-21T11:09:04.000Z",
-      "fetchedAt": "2026-07-23T03:58:01.106Z",
-      "newsTypes": [
-        "Game Releases & Launches"
       ]
     }
   ],
-  "lastFetchedAt": "2026-07-23T03:58:03.360Z",
+  "lastFetchedAt": "2026-07-23T04:18:21.102Z",
   "sourceRuns": [
     {
       "source": "Nintendo Official News",

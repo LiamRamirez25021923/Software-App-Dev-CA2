@@ -36,3 +36,7 @@ Optional `.env` controls:
 NEWSHUB_REFRESH_MINUTES=30
 NEWSHUB_SOURCE_TIMEOUT_MS=8000
 ```
+
+## Personalised NewsHub sources
+
+The NewsHub includes a collapsible source checklist. Selections are saved in the browser with localStorage and are sent to the backend so Game News, Daily Report, and Monthly Report all use the same enabled-source list.

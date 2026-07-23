@@ -13,6 +13,40 @@
 
   <p id="nh-cache-note" class="newshub-cache-note"><%= initialNews.cacheMeta.note %></p>
 
+  <details class="newshub-source-picker pixel-panel" id="nh-source-picker">
+    <summary>
+      <span>Choose News Sources</span>
+      <small id="nh-source-summary"><%= sources.length %> of <%= sources.length %> sources enabled</small>
+    </summary>
+    <div class="newshub-source-picker-body">
+      <div class="newshub-source-picker-head">
+        <div>
+          <h2>Build your NewsHub feed</h2>
+          <p>Tick the outlets you want included. Your choices update Game News, Daily Report and Monthly Report.</p>
+        </div>
+        <div class="newshub-source-actions">
+          <button id="nh-select-all-sources" class="secondary-button" type="button">Select all</button>
+          <button id="nh-clear-all-sources" class="secondary-button" type="button">Clear all</button>
+          <button id="nh-apply-sources" class="primary-button" type="button">Apply sources</button>
+        </div>
+      </div>
+
+      <div id="nh-source-checklist" class="newshub-source-checklist">
+        <% sources.forEach((source) => { %>
+          <label class="newshub-source-option">
+            <input type="checkbox" value="<%= source.name %>" checked>
+            <span>
+              <strong><%= source.name %></strong>
+              <small><%= source.platform %> · <%= source.language %><%= source.official ? ' · Official' : '' %></small>
+            </span>
+          </label>
+        <% }) %>
+      </div>
+
+      <p id="nh-source-feedback" class="muted" aria-live="polite">All trusted sources are currently enabled.</p>
+    </div>
+  </details>
+
   <section class="newshub-report pixel-panel" aria-labelledby="daily-report-heading">
     <div class="newshub-section-head">
       <div>

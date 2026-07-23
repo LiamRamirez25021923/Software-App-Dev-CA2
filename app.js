@@ -29,6 +29,12 @@ async function initialiseDatabase(){
  const [[nc]]=await pool.query('SELECT COUNT(*) total FROM news_items');if(!Number(nc.total))await pool.execute('INSERT INTO news_items (title,summary,source_name,published_at) VALUES (?,?,?,NOW())',['SavePoint News Hub is ready','This confirms that retro gaming news can be stored in MySQL.','SavePoint']);
 }
 const sessionUser=u=>({id:u.id,username:u.username,displayName:u.display_name,email:u.email,role:u.role});
+function parseSelectedNewsSources(value) {
+  if (value === undefined || value === null || value === '') return null;
+  if (Array.isArray(value)) return value;
+  return String(value).split(',').map((item) => item.trim()).filter(Boolean);
+}
+
 app.get('/',(req,res)=>res.redirect(req.session.user?'/dashboard':'/login'));
 app.get('/login',(req,res)=>{if(req.session.user)return res.redirect('/dashboard');res.render('auth',{title:'Log in',mode:'login',error:null,values:{}});});
 app.get('/signup',(req,res)=>{if(req.session.user)return res.redirect('/dashboard');res.render('auth',{title:'Create account',mode:'signup',error:null,values:{}});});
@@ -43,23 +49,23 @@ app.get('/forum',requireLogin,async(req,res,next)=>{try{const [rows]=await pool.
 app.get('/news',(req,res)=>res.redirect('/newshub'));
 app.get('/newshub',requireLogin,(req,res)=>{
   newsHub.startBackgroundRefresh();
-  const initialNews=newsHub.getNewsPage({page:1,limit:6,type:req.query.type||'all',source:req.query.source||'all'});
+  const initialNews=newsHub.getNewsPage({page:1,limit:6,type:req.query.type||'all',source:req.query.source||'all',selectedSources:parseSelectedNewsSources(req.query.sources)});
   res.render('newshub/index',{title:'NewsHub',initialNews,newsTypes:newsHub.NEWS_TYPES,sources:newsHub.TRUSTED_SOURCES});
 });
 app.get('/api/newshub/news',requireLogin,async(req,res,next)=>{try{
   if(req.query.force==='1') await newsHub.refreshArticles({force:true});
   else if(newsHub.getNewsPage({page:1,limit:1}).total===0) await newsHub.refreshArticles();
-  res.json(newsHub.getNewsPage({page:req.query.page||1,limit:req.query.limit||6,type:req.query.type||'all',source:req.query.source||'all'}));
+  res.json(newsHub.getNewsPage({page:req.query.page||1,limit:req.query.limit||6,type:req.query.type||'all',source:req.query.source||'all',selectedSources:parseSelectedNewsSources(req.query.sources)}));
 }catch(e){next(e);}});
 app.get('/api/newshub/daily-report',requireLogin,async(req,res,next)=>{try{
   if(req.query.force==='1') await newsHub.refreshArticles({force:true});
   else await newsHub.refreshArticles();
-  res.json({report:newsHub.buildDailyReport()});
+  res.json({report:newsHub.buildDailyReport(parseSelectedNewsSources(req.query.sources))});
 }catch(e){next(e);}});
 app.get('/api/newshub/monthly-report',requireLogin,async(req,res,next)=>{try{
   if(req.query.force==='1') await newsHub.refreshArticles({force:true});
   else await newsHub.refreshArticles();
-  res.json({report:newsHub.buildMonthlyReport()});
+  res.json({report:newsHub.buildMonthlyReport(parseSelectedNewsSources(req.query.sources))});
 }catch(e){next(e);}});
 app.get('/admin',requireAdmin,async(req,res,next)=>{try{const [users]=await pool.query('SELECT id,username,display_name,role,created_at FROM users ORDER BY created_at DESC'),[products]=await pool.query('SELECT id,title,status,created_at FROM products ORDER BY created_at DESC'),[posts]=await pool.query('SELECT id,title,status,created_at FROM forum_posts ORDER BY created_at DESC');res.render('admin',{title:'Admin Panel',users,products,posts});}catch(e){next(e);}});
 app.post('/admin/products/:id/delete',requireAdmin,async(req,res,next)=>{try{await pool.execute("UPDATE products SET status='removed' WHERE id=?",[Number(req.params.id)]);res.redirect('/admin');}catch(e){next(e);}});
