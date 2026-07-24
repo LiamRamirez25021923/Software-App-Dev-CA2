@@ -1,0 +1,95 @@
+'use strict';
+
+// Shared suggestions for the optional SavePoint Profile survey.
+// Inputs remain open-ended: these arrays only provide convenient examples.
+module.exports = Object.freeze({
+    platforms: Object.freeze([
+        'Nintendo',
+        'PlayStation',
+        'Xbox',
+        'PC / Computer',
+        'SEGA',
+        'Arcade',
+        'Mobile',
+        'Other'
+    ]),
+
+    gameCompanies: Object.freeze([
+        'Nintendo',
+        'Sony Interactive Entertainment',
+        'Microsoft / Xbox Game Studios',
+        'SEGA',
+        'Capcom',
+        'Square Enix',
+        'Bandai Namco',
+        'Konami',
+        'Atlus',
+        'SNK',
+        'id Software',
+        'Valve',
+        'Ubisoft',
+        'Electronic Arts',
+        'Bethesda Game Studios',
+        'Naughty Dog',
+        'FromSoftware',
+        'Other'
+    ]),
+
+    gameGenres: Object.freeze([
+        'Action',
+        'Adventure',
+        'Action-adventure',
+        'Role-playing game (RPG)',
+        'JRPG',
+        'Strategy',
+        'Shooter',
+        'Fighting',
+        'Platformer',
+        'Puzzle',
+        'Simulation',
+        'Racing',
+        'Sports',
+        'Survival horror',
+        'Visual novel',
+        'Rhythm',
+        'Sandbox',
+        'Other'
+    ]),
+
+    gameConsoles: Object.freeze([
+        'Nintendo Entertainment System (NES)',
+        'Super Nintendo Entertainment System (SNES)',
+        'Nintendo 64',
+        'Nintendo GameCube',
+        'Nintendo Wii',
+        'Nintendo Wii U',
+        'Nintendo Switch',
+        'Game Boy',
+        'Game Boy Color',
+        'Game Boy Advance',
+        'Nintendo DS',
+        'Nintendo DSi',
+        'Nintendo 3DS',
+        'PlayStation',
+        'PlayStation 2',
+        'PlayStation 3',
+        'PlayStation 4',
+        'PlayStation 5',
+        'PlayStation Portable (PSP)',
+        'PlayStation Vita',
+        'Xbox',
+        'Xbox 360',
+        'Xbox One',
+        'Xbox Series X/S',
+        'SEGA Master System',
+        'SEGA Mega Drive / Genesis',
+        'SEGA Saturn',
+        'SEGA Dreamcast',
+        'Atari 2600',
+        'Neo Geo',
+        'Steam Deck',
+        'PC / MS-DOS',
+        'Arcade hardware',
+        'Other'
+    ])
+});

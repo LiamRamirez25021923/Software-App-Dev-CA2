@@ -11,6 +11,11 @@ CREATE TABLE IF NOT EXISTS users (
   role ENUM('admin','user') NOT NULL DEFAULT 'user',
   bio TEXT,
   favourite_console VARCHAR(100),
+  favorite_game_company VARCHAR(120) NULL,
+  favorite_game_genre VARCHAR(120) NULL,
+  favorite_game VARCHAR(180) NULL,
+  consoles_owned TEXT NULL,
+  consoles_wanted TEXT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

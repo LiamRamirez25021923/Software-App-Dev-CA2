@@ -1,109 +1,117 @@
 <%- include('partials/header') %>
 <%- include('partials/nav') %>
-<style>
-    .profile-form {
-        display: grid;
-        gap: 1rem;
-    }
-
-    .profile-form-header {
-        display: grid;
-        gap: .35rem;
-        margin-bottom: .3rem;
-    }
-
-    .profile-form-help {
-        margin: 0;
-        color: #bfc3df;
-        line-height: 1.6;
-    }
-
-    .profile-upload-grid {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .upload-card {
-        display: grid;
-        gap: .45rem;
-        padding: 1rem;
-        border: 2px dashed rgba(92, 225, 230, .35);
-        background: rgba(16, 18, 41, .55);
-        border-radius: 10px;
-    }
-
-    .upload-card small {
-        color: #bfc3df;
-        font-size: .84rem;
-    }
-
-    .upload-card input[type="file"] {
-        padding: .55rem;
-        border-radius: 8px;
-        background: rgba(16, 18, 41, .8);
-        color: var(--cream);
-    }
-
-    @media (max-width: 700px) {
-        .profile-upload-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
 <main class="content-section page-top">
-    <p class="eyebrow">PLAYER PROFILE</p>
-    <h1><%= profile.username %></h1>
-    <section class="profile-layout">
-        <div class="profile-card pixel-panel">
-            <div class="profile-banner">
-                <img src="<%= profile.banner_image || '/icons/icon-512.png' %>" alt="Profile banner">
-            </div>
-            <div class="profile-summary">
-                <img class="profile-avatar" src="<%= profile.profile_image || '/icons/icon-192.png' %>" alt="Profile picture">
-                <div>
-                    <h2><%= profile.username %></h2>
-                    <p class="role-badge"><%= profile.role %></p>
-                    <p>Joined <%= new Date(profile.created_at).toLocaleDateString() %></p>
-                </div>
-            </div>
+  <p class="eyebrow">PLAYER PROFILE</p>
+  <h1><%= profile.username %></h1>
+
+  <% if (welcome) { %>
+    <div class="forum-flash profile-welcome">
+      Account created! Your SavePoint Profile is optional. Review it below or leave everything blank and continue later.
+    </div>
+  <% } %>
+
+  <section class="profile-layout">
+    <div class="profile-card pixel-panel">
+      <div class="profile-banner">
+        <img src="<%= profile.banner_image || '/icons/icon-512.png' %>" alt="Profile banner">
+      </div>
+      <div class="profile-summary">
+        <img class="profile-avatar" src="<%= profile.profile_image || '/icons/icon-192.png' %>" alt="Profile picture">
+        <div>
+          <h2><%= profile.username %></h2>
+          <p class="role-badge"><%= profile.role %></p>
+          <p>Joined <%= new Date(profile.created_at).toLocaleDateString() %></p>
         </div>
-        <form action="/profile" method="POST" enctype="multipart/form-data" class="stack-form pixel-panel profile-form">
-            <div class="profile-form-header">
-                <p class="eyebrow">PROFILE SETTINGS</p>
-                <h2>Personalise your page</h2>
-                <p class="profile-form-help">Upload a fresh image. Leave the fields blank to keep your current artwork.</p>
-            </div>
-            <label>
-                Username
-                <input name="username" value="<%= profile.username||'' %>" required>
-            </label>
-            <div class="profile-upload-grid">
-                <label class="upload-card">
-                    <span>Profile picture</span>
-                    <input type="file" name="profileImage" accept="image/*">
-                    <small>PNG, JPG, GIF, or WEBP</small>
-                </label>
-                <label class="upload-card">
-                    <span>Profile banner</span>
-                    <input type="file" name="bannerImage" accept="image/*">
-                    <small>PNG, JPG, GIF, or WEBP</small>
-                </label>
-            </div>
-            <label>
-                Email
-                <input type="email" name="email" value="<%= profile.email||'' %>">
-            </label>
-            <label>
-                Favourite console
-                <input name="favouriteConsole" value="<%= profile.favourite_console||'' %>" placeholder="e.g. Sega Dreamcast">
-            </label>
-            <label>
-                Bio
-                <textarea name="bio" rows="5"><%= profile.bio||'' %></textarea>
-            </label>
-            <button class="primary-button" type="submit">Save Profile</button>
-        </form>
-    </section>
+      </div>
+
+      <section class="savepoint-profile-summary">
+        <p class="eyebrow">SAVEPOINT PROFILE</p>
+        <dl>
+          <div><dt>Favorite company</dt><dd><%= profile.favorite_game_company || 'Not set' %></dd></div>
+          <div><dt>Favorite genre</dt><dd><%= profile.favorite_game_genre || 'Not set' %></dd></div>
+          <div><dt>Favorite game</dt><dd><%= profile.favorite_game || 'Not set' %></dd></div>
+          <div><dt>Consoles owned</dt><dd><%= profile.consoles_owned || 'Not set' %></dd></div>
+          <div><dt>Consoles wanted</dt><dd><%= profile.consoles_wanted || 'Not set' %></dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <form action="/profile" method="POST" enctype="multipart/form-data" class="stack-form pixel-panel profile-form">
+      <div class="profile-form-header">
+        <p class="eyebrow">PROFILE SETTINGS</p>
+        <h2>Personalise your page</h2>
+        <p class="profile-form-help">Every SavePoint Profile answer is optional and can be changed whenever you like.</p>
+      </div>
+
+      <label>Username<input name="username" value="<%= profile.username || '' %>" required></label>
+
+      <div class="profile-upload-grid">
+        <label class="upload-card">
+          <span>Profile picture</span>
+          <input type="file" name="profileImage" accept="image/*">
+          <small>PNG, JPG, GIF, or WEBP</small>
+        </label>
+        <label class="upload-card">
+          <span>Profile banner</span>
+          <input type="file" name="bannerImage" accept="image/*">
+          <small>PNG, JPG, GIF, or WEBP</small>
+        </label>
+      </div>
+
+      <label>Email<input type="email" name="email" value="<%= profile.email || '' %>"></label>
+      <label>Favourite console<input name="favouriteConsole" list="game-console-options" value="<%= profile.favourite_console || '' %>" placeholder="e.g. Sega Dreamcast"></label>
+      <label>Bio<textarea name="bio" rows="5"><%= profile.bio || '' %></textarea></label>
+
+      <fieldset class="savepoint-survey-fieldset">
+        <legend>Build User Profile</legend>
+        <p>These questions help other SavePoint users discover players with similar tastes.</p>
+
+        <label>
+          Favorite game company?
+          <input name="favoriteGameCompany" list="game-company-options" value="<%= profile.favorite_game_company || '' %>" placeholder="e.g. Square Enix">
+        </label>
+
+        <label>
+          Favorite game genre?
+          <input name="favoriteGameGenre" list="game-genre-options" value="<%= profile.favorite_game_genre || '' %>" placeholder="e.g. Fighter">
+        </label>
+
+        <label>
+          Favorite game?
+          <input name="favoriteGame" value="<%= profile.favorite_game || '' %>" placeholder="e.g. Fear & Hunger">
+        </label>
+
+        <label>
+          What consoles do you own?
+          <textarea name="consolesOwned" rows="3" placeholder="Separate multiple consoles with commas"><%= profile.consoles_owned || '' %></textarea>
+        </label>
+
+        <label>
+          Eyeing any consoles?
+          <textarea name="consolesWanted" rows="3" placeholder="Separate multiple consoles with commas"><%= profile.consoles_wanted || '' %></textarea>
+        </label>
+
+        <div class="survey-reference-grid">
+          <div><strong>Platforms</strong><span><%= profileOptions.platforms.join(' · ') %></span></div>
+          <div><strong>Companies</strong><span><%= profileOptions.gameCompanies.slice(0, 8).join(' · ') %></span></div>
+          <div><strong>Genres</strong><span><%= profileOptions.gameGenres.slice(0, 10).join(' · ') %></span></div>
+          <div><strong>Consoles</strong><span><%= profileOptions.gameConsoles.slice(0, 12).join(' · ') %></span></div>
+        </div>
+      </fieldset>
+
+      <button class="primary-button" type="submit">Save Profile</button>
+    </form>
+  </section>
 </main>
+
+<datalist id="game-company-options">
+  <% profileOptions.gameCompanies.forEach((company) => { %><option value="<%= company %>"></option><% }) %>
+</datalist>
+<datalist id="game-genre-options">
+  <% profileOptions.gameGenres.forEach((genre) => { %><option value="<%= genre %>"></option><% }) %>
+</datalist>
+<datalist id="game-console-options">
+  <% profileOptions.gameConsoles.forEach((consoleName) => { %><option value="<%= consoleName %>"></option><% }) %>
+</datalist>
+
 <%- include('partials/footer') %>

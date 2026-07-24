@@ -9,6 +9,7 @@ const mysql = require('mysql2/promise');
 const pool = require('./config/db');
 const newsHub = require('./src/services/newshub.service');
 const createForumFeature = require('./src/forum/forum');
+const profileOptions = require('./src/data/profileOptions');
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 const fs = require('fs');
@@ -176,6 +177,8 @@ app.use((req, res, next) => {
 
     res.locals.currentPath = req.path;
 
+    res.locals.profileOptions = profileOptions;
+
     res.locals.cartCount = Object.values(
         req.session.cart || {}
     ).reduce(
@@ -225,6 +228,11 @@ async function ensureUsersTableSchema() {
             role ENUM('admin','user') NOT NULL DEFAULT 'user',
             bio TEXT,
             favourite_console VARCHAR(100),
+            favorite_game_company VARCHAR(120) NULL,
+            favorite_game_genre VARCHAR(120) NULL,
+            favorite_game VARCHAR(180) NULL,
+            consoles_owned TEXT NULL,
+            consoles_wanted TEXT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     `);
@@ -253,6 +261,21 @@ async function ensureUsersTableSchema() {
     }
     if (!existing.has('favourite_console')) {
         migrations.push('ALTER TABLE users ADD COLUMN favourite_console VARCHAR(100) NULL');
+    }
+    if (!existing.has('favorite_game_company')) {
+        migrations.push('ALTER TABLE users ADD COLUMN favorite_game_company VARCHAR(120) NULL');
+    }
+    if (!existing.has('favorite_game_genre')) {
+        migrations.push('ALTER TABLE users ADD COLUMN favorite_game_genre VARCHAR(120) NULL');
+    }
+    if (!existing.has('favorite_game')) {
+        migrations.push('ALTER TABLE users ADD COLUMN favorite_game VARCHAR(180) NULL');
+    }
+    if (!existing.has('consoles_owned')) {
+        migrations.push('ALTER TABLE users ADD COLUMN consoles_owned TEXT NULL');
+    }
+    if (!existing.has('consoles_wanted')) {
+        migrations.push('ALTER TABLE users ADD COLUMN consoles_wanted TEXT NULL');
     }
     if (!existing.has('created_at')) {
         migrations.push('ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
@@ -458,12 +481,17 @@ app.post('/signup', async (req, res, next) => {
         const displayName = String(req.body.displayName || '').trim();
         const email = String(req.body.email || '').trim();
         const password = String(req.body.password || '');
+        const favoriteGameCompany = String(req.body.favoriteGameCompany || '').trim();
+        const favoriteGameGenre = String(req.body.favoriteGameGenre || '').trim();
+        const favoriteGame = String(req.body.favoriteGame || '').trim();
+        const consolesOwned = String(req.body.consolesOwned || '').trim();
+        const consolesWanted = String(req.body.consolesWanted || '').trim();
 
         if (!username || !displayName || !password) {
             return res.status(400).render('auth', {
                 title: 'Create account', mode: 'signup',
                 error: 'Username, display name and password are required.',
-                values: { username, displayName, email }
+                values: { username, displayName, email, favoriteGameCompany, favoriteGameGenre, favoriteGame, consolesOwned, consolesWanted }
             });
         }
 
@@ -471,7 +499,7 @@ app.post('/signup', async (req, res, next) => {
             return res.status(400).render('auth', {
                 title: 'Create account', mode: 'signup',
                 error: 'Username must be at least 3 characters and password at least 6 characters.',
-                values: { username, displayName, email }
+                values: { username, displayName, email, favoriteGameCompany, favoriteGameGenre, favoriteGame, consolesOwned, consolesWanted }
             });
         }
 
@@ -483,15 +511,28 @@ app.post('/signup', async (req, res, next) => {
             return res.status(409).render('auth', {
                 title: 'Create account', mode: 'signup',
                 error: 'That username is already taken.',
-                values: { username, displayName, email }
+                values: { username, displayName, email, favoriteGameCompany, favoriteGameGenre, favoriteGame, consolesOwned, consolesWanted }
             });
         }
 
         const hash = await bcrypt.hash(password, 12);
         const normalizedEmail = email || `${username}@savepoint.local`;
         const [result] = await pool.execute(
-            "INSERT INTO users (username,email,password,role) VALUES (?,?,?,'user')",
-            [username, normalizedEmail, hash]
+            `INSERT INTO users (
+                username, email, password, role,
+                favorite_game_company, favorite_game_genre, favorite_game,
+                consoles_owned, consoles_wanted
+             ) VALUES (?, ?, ?, 'user', ?, ?, ?, ?, ?)`,
+            [
+                username,
+                normalizedEmail,
+                hash,
+                favoriteGameCompany || null,
+                favoriteGameGenre || null,
+                favoriteGame || null,
+                consolesOwned || null,
+                consolesWanted || null
+            ]
         );
 
         req.session.user = {
@@ -501,7 +542,7 @@ app.post('/signup', async (req, res, next) => {
             email: normalizedEmail,
             role: 'user'
         };
-        res.redirect('/dashboard');
+        res.redirect('/profile?welcome=1');
     } catch (error) {
         next(error);
     }
@@ -576,11 +617,19 @@ app.get('/dashboard', requireLogin, async (req, res, next) => {
 app.get('/profile', requireLogin, async (req, res, next) => {
     try {
         const [rows] = await pool.execute(
-            'SELECT id,username,email,bio,favourite_console,profile_image,banner_image,role,created_at FROM users WHERE id=? LIMIT 1',
+            `SELECT id, username, email, bio, favourite_console,
+                    favorite_game_company, favorite_game_genre, favorite_game,
+                    consoles_owned, consoles_wanted, profile_image, banner_image,
+                    role, created_at
+             FROM users WHERE id=? LIMIT 1`,
             [req.session.user.id]
         );
         if (!rows.length) return res.redirect('/logout');
-        res.render('profile', { title: 'Profile', profile: rows[0] });
+        res.render('profile', {
+            title: 'Profile',
+            profile: rows[0],
+            welcome: req.query.welcome === '1'
+        });
     } catch (error) {
         next(error);
     }
@@ -592,6 +641,11 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
         const email = String(req.body.email || '').trim();
         const bio = String(req.body.bio || '').trim();
         const favouriteConsole = String(req.body.favouriteConsole || '').trim();
+        const favoriteGameCompany = String(req.body.favoriteGameCompany || '').trim();
+        const favoriteGameGenre = String(req.body.favoriteGameGenre || '').trim();
+        const favoriteGame = String(req.body.favoriteGame || '').trim();
+        const consolesOwned = String(req.body.consolesOwned || '').trim();
+        const consolesWanted = String(req.body.consolesWanted || '').trim();
         const uploadedProfileImage = req.files?.profileImage?.[0];
         const uploadedBannerImage = req.files?.bannerImage?.[0];
         const profileImage = uploadedProfileImage
@@ -626,6 +680,11 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
                  email=?,
                  bio=?,
                  favourite_console=?,
+                 favorite_game_company=?,
+                 favorite_game_genre=?,
+                 favorite_game=?,
+                 consoles_owned=?,
+                 consoles_wanted=?,
                  profile_image=COALESCE(NULLIF(?, ''), profile_image, 'default_profile.png'),
                  banner_image=COALESCE(NULLIF(?, ''), banner_image, 'default_banner.png')
              WHERE id=?`,
@@ -634,6 +693,11 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
                 normalizedEmail,
                 bio || null,
                 favouriteConsole || null,
+                favoriteGameCompany || null,
+                favoriteGameGenre || null,
+                favoriteGame || null,
+                consolesOwned || null,
+                consolesWanted || null,
                 profileImage,
                 bannerImage,
                 req.session.user.id

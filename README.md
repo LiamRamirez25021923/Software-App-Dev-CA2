@@ -67,3 +67,15 @@ Forum tables are created automatically when `node app.js` starts. The related ro
 - Long community posts can now be expanded with **See full post** and collapsed with **Show less**.
 
 - Forum posts automatically embed the first supported YouTube link as a responsive miniplayer.
+
+## Build User Profile survey
+
+New accounts can optionally complete a SavePoint Profile during sign-up. The five nullable fields are:
+
+- Favorite game company
+- Favorite game genre
+- Favorite game
+- Consoles owned
+- Consoles wanted / being considered
+
+The profile can be changed later from **Profile** in the navbar. Suggestion arrays are maintained in `src/data/profileOptions.js`; inputs remain open-ended. Existing databases are upgraded automatically when `node app.js` starts.

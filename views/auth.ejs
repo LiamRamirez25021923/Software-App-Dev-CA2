@@ -1,1 +1,89 @@
-<%- include('partials/header') %><main class="auth-page"><section class="auth-card pixel-panel"><div class="auth-copy"><p class="eyebrow">PRESS START</p><h1>SavePoint</h1><p>Your all-in-one hub for retro games, hardware, community discussions and news.</p><div class="console-art"><span>●</span><span class="screen">READY</span><span>◆</span></div></div><div class="auth-form-wrap"><div class="auth-tabs"><a class="<%= mode==='login'?'active':'' %>" href="/login">Log in</a><a class="<%= mode==='signup'?'active':'' %>" href="/signup">Sign up</a></div><% if(error){ %><div class="alert"><%= error %></div><% } %><form action="/<%= mode %>" method="POST" class="stack-form"><% if(mode==='signup'){ %><label>Display name<input name="displayName" value="<%= values.displayName||'' %>" required></label><label>Email<input type="email" name="email" value="<%= values.email||'' %>"></label><% } %><label>Username<input name="username" value="<%= values.username||'' %>" required></label><label>Password<input type="password" name="password" required></label><button class="primary-button"><%= mode==='signup'?'Create Save File':'Load Save File' %></button></form></div></section></main><%- include('partials/footer') %>
+<%- include('partials/header') %>
+<main class="auth-page">
+  <section class="auth-card pixel-panel">
+    <div class="auth-copy">
+      <p class="eyebrow">PRESS START</p>
+      <h1>SavePoint</h1>
+      <p>Your all-in-one hub for retro games, hardware, community discussions and news.</p>
+      <div class="console-art"><span>●</span><span class="screen">READY</span><span>◆</span></div>
+    </div>
+
+    <div class="auth-form-wrap">
+      <div class="auth-tabs">
+        <a class="<%= mode === 'login' ? 'active' : '' %>" href="/login">Log in</a>
+        <a class="<%= mode === 'signup' ? 'active' : '' %>" href="/signup">Sign up</a>
+      </div>
+
+      <% if (error) { %><div class="alert"><%= error %></div><% } %>
+
+      <form action="/<%= mode %>" method="POST" class="stack-form">
+        <% if (mode === 'signup') { %>
+          <label>Display name<input name="displayName" value="<%= values.displayName || '' %>" required></label>
+          <label>Email<input type="email" name="email" value="<%= values.email || '' %>"></label>
+        <% } %>
+
+        <label>Username<input name="username" value="<%= values.username || '' %>" required></label>
+        <label>Password<input type="password" name="password" required></label>
+
+        <% if (mode === 'signup') { %>
+          <details class="profile-survey pixel-inset">
+            <summary>
+              <span>Build your SavePoint Profile</span>
+              <small>Optional — you can edit this later</small>
+            </summary>
+
+            <div class="profile-survey-fields">
+              <p class="profile-survey-help">
+                Tell the community what kind of player you are. Every answer is optional and remains open-ended.
+              </p>
+
+              <label>
+                Favorite game company?
+                <input name="favoriteGameCompany" list="game-company-options" value="<%= values.favoriteGameCompany || '' %>" placeholder="e.g. Nintendo or Capcom">
+              </label>
+
+              <label>
+                Favorite game genre?
+                <input name="favoriteGameGenre" list="game-genre-options" value="<%= values.favoriteGameGenre || '' %>" placeholder="e.g. RPG or survival horror">
+              </label>
+
+              <label>
+                Favorite game?
+                <input name="favoriteGame" value="<%= values.favoriteGame || '' %>" placeholder="e.g. Chrono Trigger">
+              </label>
+
+              <label>
+                What consoles do you own?
+                <textarea name="consolesOwned" rows="3" placeholder="Separate multiple consoles with commas"><%= values.consolesOwned || '' %></textarea>
+              </label>
+
+              <label>
+                Eyeing any consoles?
+                <textarea name="consolesWanted" rows="3" placeholder="e.g. Dreamcast, PS Vita, Steam Deck"><%= values.consolesWanted || '' %></textarea>
+              </label>
+
+              <div class="survey-suggestion-box">
+                <strong>Console suggestions</strong>
+                <p><%= profileOptions.gameConsoles.slice(0, 12).join(' · ') %> · and more</p>
+              </div>
+            </div>
+          </details>
+        <% } %>
+
+        <button class="primary-button"><%= mode === 'signup' ? 'Create Save File' : 'Load Save File' %></button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<datalist id="game-company-options">
+  <% profileOptions.gameCompanies.forEach((company) => { %><option value="<%= company %>"></option><% }) %>
+</datalist>
+<datalist id="game-genre-options">
+  <% profileOptions.gameGenres.forEach((genre) => { %><option value="<%= genre %>"></option><% }) %>
+</datalist>
+<datalist id="game-console-options">
+  <% profileOptions.gameConsoles.forEach((consoleName) => { %><option value="<%= consoleName %>"></option><% }) %>
+</datalist>
+
+<%- include('partials/footer') %>
