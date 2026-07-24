@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS products (
   foreign key (seller_id) references users(id) on delete cascade
 );
 
-CREATE TABLE order_items (
+CREATE TABLE if not exists order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
     product_id INT NULL,
@@ -93,7 +93,7 @@ create table if not exists shopping_cart (
   foreign key (product_id) references products(id) on delete cascade
 ); 
 
-CREATE TABLE orders (
+CREATE TABLE if not exists orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     customer_name VARCHAR(120) NOT NULL,
