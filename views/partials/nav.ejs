@@ -5,10 +5,20 @@
             <div class="nav-links">
                 <a href="/dashboard">Dashboard</a>
                 <a href="/marketplace">Marketplace</a>
+<<<<<<< HEAD
                 <a href="/forum">Forum</a>
                 <a href="/newshub">NewsHub</a>
                 <a href="/profile">Profile</a>
                 <a href="/contact">Contact us</a>
+=======
+                <% if(!isAdmin){ %>
+                    <a href="/cart">Cart (<%= cartCount || 0 %>)</a>
+                <% } %>
+                <a href="/forum">Forum</a>
+                <a href="/newshub">NewsHub</a>
+                <a href="/profile">Profile</a>
+                <a href="/contact">Contact Us</a>
+>>>>>>> 62a7642584602e15e4a4f5e9023d760abfacdc3b
                 <% if(isAdmin){ %>
                     <a class="admin-link" href="/admin">Admin</a>
                 <% } %>

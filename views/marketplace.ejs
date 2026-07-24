@@ -1,0 +1,191 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+
+<main class="content-section page-top">
+  <div class="market-heading">
+    <div>
+      <p class="eyebrow">PLAYER MARKET</p>
+      <h1>Retro Marketplace</h1>
+      <p class="lead">Browse games, consoles and collectibles added by SavePoint administrators.</p>
+    </div>
+
+    <% if (!isAdmin) { %>
+      <a class="primary-button" href="/cart">Cart (<%= cartCount %>)</a>
+    <% } %>
+  </div>
+
+  <% if (message) { %>
+    <div class="notice"><%= message %></div>
+  <% } %>
+
+  <% if (isAdmin) { %>
+    <details class="market-admin-panel pixel-panel">
+      <summary>
+        <span>
+          <strong>Create marketplace listing</strong>
+          <small>Add a new retro game, console, accessory or collectible.</small>
+        </span>
+        <span aria-hidden="true">＋</span>
+      </summary>
+
+      <form class="stack-form admin-product-form marketplace-product-form"
+            action="/marketplace/products"
+            method="POST"
+            enctype="multipart/form-data">
+        <label>
+          Product title
+          <input name="title" maxlength="150" required>
+        </label>
+
+        <label>
+          Description
+          <textarea name="description" rows="4"></textarea>
+        </label>
+
+        <div class="form-grid">
+          <label>
+            Category
+            <input name="category" placeholder="Console, Game, Accessory" required>
+          </label>
+
+          <label>
+            Platform
+            <input name="platform" placeholder="Nintendo DS, Mega Drive, PlayStation">
+          </label>
+
+          <label>
+            Price ($)
+            <input type="number" name="price" min="0.01" step="0.01" required>
+          </label>
+
+          <label>
+            Quantity
+            <input type="number" name="quantity" min="0" step="1" value="1" required>
+          </label>
+        </div>
+
+        <label>
+          Product image
+          <input type="file" name="image" accept="image/*">
+        </label>
+
+        <p class="security-note">Upload a JPG, PNG, GIF or WebP image up to 5 MB.</p>
+        <button class="primary-button" type="submit">Create listing</button>
+      </form>
+    </details>
+  <% } %>
+
+  <form class="search-bar pixel-panel" action="/marketplace" method="GET">
+    <input name="search" value="<%= search %>" placeholder="Search title, category or platform">
+    <button class="secondary-button" type="submit">Search</button>
+    <% if (search) { %><a href="/marketplace">Clear</a><% } %>
+  </form>
+
+  <% if (!products.length) { %>
+    <section class="pixel-panel empty-state">
+      <h2>No products found</h2>
+      <p>Try another search or return later.</p>
+    </section>
+  <% } %>
+
+  <section class="product-grid">
+    <% products.forEach(product => { %>
+      <article class="product-card pixel-panel">
+        <div class="product-image">
+          <% if (product.image_url) { %>
+            <img src="<%= /^https?:\/\//i.test(product.image_url) ? product.image_url : '/images/' + product.image_url %>"
+                 alt="<%= product.title %>">
+          <% } else { %>
+            <span>NO IMAGE<br>AVAILABLE</span>
+          <% } %>
+        </div>
+
+        <div class="product-copy">
+          <div class="product-badges"><span class="role-badge"><%= product.category %></span><% if (isAdmin) { %><span class="status-badge status-<%= product.status %>"><%= product.status %></span><% } %></div>
+          <h2><%= product.title %></h2>
+          <p><%= product.description || 'No description provided.' %></p>
+          <p class="product-meta"><%= product.platform || 'Various platforms' %> · <%= product.quantity %> in stock</p>
+          <strong class="price">$<%= Number(product.price).toFixed(2) %></strong>
+
+          <% if (!isAdmin) { %>
+            <form class="add-cart-form" action="/cart/add/<%= product.id %>" method="POST">
+              <label>
+                Quantity
+                <input type="number" name="quantity" value="1" min="1" max="<%= product.quantity %>" required>
+              </label>
+              <button class="primary-button" type="submit">Add to cart</button>
+            </form>
+          <% } else { %>
+            <div class="market-admin-actions">
+              <details class="listing-editor">
+                <summary class="secondary-button">Edit listing</summary>
+
+                <form class="stack-form marketplace-product-form"
+                      action="/marketplace/products/<%= product.id %>/edit"
+                      method="POST"
+                      enctype="multipart/form-data">
+                  <label>
+                    Product title
+                    <input name="title" value="<%= product.title %>" maxlength="150" required>
+                  </label>
+
+                  <label>
+                    Description
+                    <textarea name="description" rows="4"><%= product.description || '' %></textarea>
+                  </label>
+
+                  <div class="form-grid">
+                    <label>
+                      Category
+                      <input name="category" value="<%= product.category %>" required>
+                    </label>
+
+                    <label>
+                      Platform
+                      <input name="platform" value="<%= product.platform || '' %>">
+                    </label>
+
+                    <label>
+                      Price ($)
+                      <input type="number" name="price" min="0.01" step="0.01" value="<%= Number(product.price).toFixed(2) %>" required>
+                    </label>
+
+                    <label>
+                      Quantity
+                      <input type="number" name="quantity" min="0" step="1" value="<%= product.quantity %>" required>
+                    </label>
+
+                    <label>
+                      Status
+                      <select name="status">
+                        <option value="active" <%= product.status === 'active' ? 'selected' : '' %>>Active</option>
+                        <option value="sold" <%= product.status === 'sold' ? 'selected' : '' %>>Sold</option>
+                        <option value="removed" <%= product.status === 'removed' ? 'selected' : '' %>>Removed</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <label>
+                    Replace image
+                    <input type="file" name="image" accept="image/*">
+                  </label>
+
+                  <p class="security-note">Leave the image field empty to keep the current image.</p>
+                  <button class="primary-button" type="submit">Save changes</button>
+                </form>
+              </details>
+
+              <form action="/marketplace/products/<%= product.id %>/delete"
+                    method="POST"
+                    onsubmit="return confirm('Remove this marketplace listing?');">
+                <button class="danger-button" type="submit">Delete listing</button>
+              </form>
+            </div>
+          <% } %>
+        </div>
+      </article>
+    <% }) %>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
