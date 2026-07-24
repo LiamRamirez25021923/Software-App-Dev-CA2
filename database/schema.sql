@@ -18,7 +18,7 @@ create table if not exists users (
   id int auto_increment primary key,
   username varchar(50) not null unique,
   email varchar(100) not null unique,
-  password varchar(255) not null,aa
+  password varchar(255) not null,
   profile_image text default 'default_profile.png',
   banner_image text default 'default_banner.png',
   role enum('admin', 'user') not null default 'user'
