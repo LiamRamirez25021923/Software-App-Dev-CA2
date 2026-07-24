@@ -5,6 +5,7 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const multer = require('multer');
+const mysql = require('mysql2/promise');
 const pool = require('./config/db');
 const newsHub = require('./src/services/newshub.service');
 const app = express();
@@ -36,6 +37,11 @@ const upload = multer({
         cb(null, true);
     }
 });
+
+const profileUpload = upload.fields([
+    { name: 'profileImage', maxCount: 1 },
+    { name: 'bannerImage', maxCount: 1 }
+]);
 
 // Detect the existing products-table column names.
 // This project's database uses id, name and image.
@@ -572,14 +578,20 @@ app.get('/profile', requireLogin, async (req, res, next) => {
     }
 });
 
-app.post('/profile', requireLogin, async (req, res, next) => {
+app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
     try {
         const username = String(req.body.username || req.session.user.username || '').trim();
         const email = String(req.body.email || '').trim();
         const bio = String(req.body.bio || '').trim();
         const favouriteConsole = String(req.body.favouriteConsole || '').trim();
-        const profileImage = String(req.body.profileImage || '').trim();
-        const bannerImage = String(req.body.bannerImage || '').trim();
+        const uploadedProfileImage = req.files?.profileImage?.[0];
+        const uploadedBannerImage = req.files?.bannerImage?.[0];
+        const profileImage = uploadedProfileImage
+            ? `/images/${uploadedProfileImage.filename}`
+            : String(req.body.profileImageUrl || req.body.profileImage || '').trim();
+        const bannerImage = uploadedBannerImage
+            ? `/images/${uploadedBannerImage.filename}`
+            : String(req.body.bannerImageUrl || req.body.bannerImage || '').trim();
 
         if (!username) {
             return res.status(400).render('error', {
@@ -1178,6 +1190,8 @@ app.get('/api/newshub/monthly-report', requireLogin, async (req, res, next) => {
     }
 });
 
+app.get('/contact', (req, res) => res.render('contact', { title: 'Contact Us' }));
+
 app.get('/admin', requireAdmin, async (req, res, next) => {
     try {
         const [users] = await pool.query(`
@@ -1238,4 +1252,38 @@ app.use((req, res) => res.status(404).render('error', { title: 'Page not found',
 
 app.use((e, req, res, next) => { console.error(e); res.status(500).render('error', { title: 'Application error', message: process.env.NODE_ENV === 'production' ? 'SavePoint ran into an unexpected error.' : e.message }); });
 
-async function startServer() { try { await pool.query('SELECT 1'); console.log('Connected to MySQL database'); await initialiseDatabase(); await newsHub.ensureNewsHubStorage(); await newsHub.hydrateCacheFromDatabase(); newsHub.startBackgroundRefresh(); console.log('SavePoint database tables are ready'); app.listen(PORT, '0.0.0.0', () => console.log(`SavePoint is running at http://localhost:${PORT}`)); } catch (e) { console.error('Could not start SavePoint:', e); process.exit(1); } } startServer();
+async function ensureDatabaseExists() {
+    const connection = await mysql.createConnection({
+        host: process.env.DB_HOST,
+        port: Number(process.env.DB_PORT) || 3306,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        ssl: { rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED !== 'false' }
+    });
+
+    try {
+        await connection.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME}\``);
+        console.log(`Database ${process.env.DB_NAME} is ready`);
+    } finally {
+        await connection.end();
+    }
+}
+
+async function startServer() {
+    try {
+        await ensureDatabaseExists();
+        await pool.query('SELECT 1');
+        console.log('Connected to MySQL database');
+        await initialiseDatabase();
+        await newsHub.ensureNewsHubStorage();
+        await newsHub.hydrateCacheFromDatabase();
+        newsHub.startBackgroundRefresh();
+        console.log('SavePoint database tables are ready');
+        app.listen(PORT, '0.0.0.0', () => console.log(`SavePoint is running at http://localhost:${PORT}`));
+    } catch (e) {
+        console.error('Could not start SavePoint:', e);
+        process.exit(1);
+    }
+}
+
+startServer();

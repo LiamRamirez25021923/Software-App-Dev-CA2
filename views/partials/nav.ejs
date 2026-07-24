@@ -1,1 +1,23 @@
-<nav class="navbar"><a class="brand" href="/dashboard"><span>◆</span> SavePoint</a><% if(currentUser){ %><div class="nav-links"><a href="/dashboard">Dashboard</a><a href="/marketplace">Marketplace</a><% if(!isAdmin){ %><a href="/cart">Cart (<%= cartCount || 0 %>)</a><% } %><a href="/forum">Forum</a><a href="/newshub">NewsHub</a><a href="/profile">Profile</a><% if(isAdmin){ %><a class="admin-link" href="/admin">Admin</a><% } %><form action="/logout" method="POST"><button class="link-button">Log out</button></form></div><% } %></nav>
+<nav class="navbar">
+    <a class="brand" href="/dashboard">
+        <span>◆</span> SavePoint</a>
+        <% if(currentUser){ %>
+            <div class="nav-links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/marketplace">Marketplace</a>
+                <% if(!isAdmin){ %>
+                    <a href="/cart">Cart (<%= cartCount || 0 %>)</a>
+                <% } %>
+                <a href="/forum">Forum</a>
+                <a href="/newshub">NewsHub</a>
+                <a href="/profile">Profile</a>
+                <a href="/contact">Contact Us</a>
+                <% if(isAdmin){ %>
+                    <a class="admin-link" href="/admin">Admin</a>
+                <% } %>
+                <form action="/logout" method="POST">
+                    <button class="link-button">Log out</button>
+                </form>
+            </div>
+        <% } %>
+    </nav>

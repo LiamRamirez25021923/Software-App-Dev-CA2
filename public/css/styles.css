@@ -114,6 +114,72 @@
   .profile-layout { grid-template-columns: 1fr; }
 }
 
+.contact-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.contact-hero {
+  padding-bottom: 2.5rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-card {
+  padding: 1.75rem;
+  border: 2px solid rgba(92, 225, 230, .24);
+  background: rgba(16, 18, 41, .78);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .22);
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: .8rem;
+  color: #d7d9ef;
+}
+
+.contact-form {
+  display: grid;
+  gap: .9rem;
+}
+
+.contact-form label {
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: .8rem 1rem;
+  border: 2px solid rgba(92, 225, 230, .35);
+  background: rgba(16, 18, 41, .55);
+  color: var(--cream);
+  border-radius: 8px;
+}
+
+.contact-form textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.contact-form .primary-button {
+  margin-top: .3rem;
+}
+
+@media (max-width: 780px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* E-commerce feature styles merged from Ryan's branch */
 .market-heading {

@@ -1,5 +1,56 @@
 <%- include('partials/header') %>
 <%- include('partials/nav') %>
+<style>
+    .profile-form {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .profile-form-header {
+        display: grid;
+        gap: .35rem;
+        margin-bottom: .3rem;
+    }
+
+    .profile-form-help {
+        margin: 0;
+        color: #bfc3df;
+        line-height: 1.6;
+    }
+
+    .profile-upload-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .upload-card {
+        display: grid;
+        gap: .45rem;
+        padding: 1rem;
+        border: 2px dashed rgba(92, 225, 230, .35);
+        background: rgba(16, 18, 41, .55);
+        border-radius: 10px;
+    }
+
+    .upload-card small {
+        color: #bfc3df;
+        font-size: .84rem;
+    }
+
+    .upload-card input[type="file"] {
+        padding: .55rem;
+        border-radius: 8px;
+        background: rgba(16, 18, 41, .8);
+        color: var(--cream);
+    }
+
+    @media (max-width: 700px) {
+        .profile-upload-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 <main class="content-section page-top">
     <p class="eyebrow">PLAYER PROFILE</p>
     <h1><%= profile.username %></h1>
@@ -17,19 +68,28 @@
                 </div>
             </div>
         </div>
-        <form action="/profile" method="POST" class="stack-form pixel-panel profile-form">
+        <form action="/profile" method="POST" enctype="multipart/form-data" class="stack-form pixel-panel profile-form">
+            <div class="profile-form-header">
+                <p class="eyebrow">PROFILE SETTINGS</p>
+                <h2>Personalise your page</h2>
+                <p class="profile-form-help">Upload a fresh image. Leave the fields blank to keep your current artwork.</p>
+            </div>
             <label>
                 Username
                 <input name="username" value="<%= profile.username||'' %>" required>
             </label>
-            <label>
-                Profile picture URL
-                <input type="url" name="profileImage" value="<%= profile.profile_image||'' %>" placeholder="https://example.com/avatar.png">
-            </label>
-            <label>
-                Profile banner URL
-                <input type="url" name="bannerImage" value="<%= profile.banner_image||'' %>" placeholder="https://example.com/banner.jpg">
-            </label>
+            <div class="profile-upload-grid">
+                <label class="upload-card">
+                    <span>Profile picture</span>
+                    <input type="file" name="profileImage" accept="image/*">
+                    <small>PNG, JPG, GIF, or WEBP</small>
+                </label>
+                <label class="upload-card">
+                    <span>Profile banner</span>
+                    <input type="file" name="bannerImage" accept="image/*">
+                    <small>PNG, JPG, GIF, or WEBP</small>
+                </label>
+            </div>
             <label>
                 Email
                 <input type="email" name="email" value="<%= profile.email||'' %>">
@@ -42,7 +102,7 @@
                 Bio
                 <textarea name="bio" rows="5"><%= profile.bio||'' %></textarea>
             </label>
-            <button class="primary-button">Save Profile</button>
+            <button class="primary-button" type="submit">Save Profile</button>
         </form>
     </section>
 </main>
