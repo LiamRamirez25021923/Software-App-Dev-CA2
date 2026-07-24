@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 create database if not exists c237_017_team5_savepoint;
 use c237_017_team5_savepoint;
 
@@ -66,7 +65,3 @@ create table if not exists shopping_cart (
   foreign key (user_id) references users(id) on delete cascade,
   foreign key (product_id) references products(id) on delete cascade
 ); 
-=======
--- SavePoint tables are also created automatically by app.js on startup.
--- This file is provided for inspection and manual setup.
->>>>>>> 1baade9e804acd22a340912c0af2658cf22a8d69
