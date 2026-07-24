@@ -1,1 +1,47 @@
-<%- include('partials/header') %><%- include('partials/nav') %><main><section class="hero"><div class="hero-grid"><div><p class="eyebrow">PLAYER ONE READY</p><h1>Welcome back, <%= currentUser.displayName %>.</h1><p>SavePoint is your checkpoint for collecting, trading, discussing and keeping up with retro games.</p><div class="hero-actions"><a class="primary-button" href="/marketplace">Browse Marketplace</a><a class="secondary-button" href="/forum">Visit Forum</a></div></div><div class="pixel-monitor"><div class="monitor-screen"><span>SAVEPOINT</span><strong>CONTINUE?</strong><small>▶ YES&nbsp;&nbsp;NO</small></div></div></div></section><section class="content-section"><div class="section-heading"><p class="eyebrow">SELECT MODE</p><h2>Where are you heading?</h2></div><div class="feature-grid"><a class="feature-card pixel-panel" href="/marketplace"><span>🕹️</span><h3>Retro Marketplace</h3><p>Buy and sell games, consoles, accessories and apparel.</p><strong><%= stats.products %> active listings</strong></a><a class="feature-card pixel-panel" href="/forum"><span>💬</span><h3>Community Forum</h3><p>Share finds, ask for help and discuss retro gaming history.</p><strong><%= stats.posts %> visible posts</strong></a><a class="feature-card pixel-panel" href="/news"><span>📡</span><h3>News Hub</h3><p>A future home for RSS feeds, releases and preservation news.</p><strong><%= stats.news %> news items</strong></a></div></section></main><%- include('partials/footer') %>
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<main>
+    <section class="hero">
+        <div class="hero-grid">
+            <div><p class="eyebrow">PLAYER ONE READY</p>
+                <h1>Welcome back, <%= currentUser.displayName %>.</h1>
+                <p>SavePoint is your checkpoint for collecting, trading, discussing and keeping up with retro games.</p>
+                <div class="hero-actions">
+                    <a class="primary-button" href="/marketplace">Browse Marketplace</a>
+                    <a class="secondary-button" href="/forum">Visit Forum</a>
+                </div>
+            </div>
+            <div class="pixel-monitor">
+                <div class="monitor-screen">
+                    <span>SAVEPOINT</span>
+                    <strong>CONTINUE?</strong>
+                    <small>▶ YES&nbsp;&nbsp;NO</small>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content-section">
+        <div class="section-heading">
+            <p class="eyebrow">SELECT MODE</p>
+            <h2>Where are you heading?</h2>
+        </div><div class="feature-grid">
+            <a class="feature-card pixel-panel" href="/marketplace">
+                <span>🕹️</span>
+                <h3>Retro Marketplace</h3>
+                <p>Buy and sell games, consoles, accessories and apparel.</p>
+                <strong><%= stats.products %> active listings</strong>
+            </a><a class="feature-card pixel-panel" href="/forum">
+                <span>💬</span>
+                <h3>Community Forum</h3>
+                <p>Share finds, ask for help and discuss retro gaming history.</p>
+                <strong><%= stats.posts %> visible posts</strong>
+            </a><a class="feature-card pixel-panel" href="/news">
+                <span>📡</span>
+                <h3>News Hub</h3>
+                <p>A future home for RSS feeds, releases and preservation news.</p>
+                <strong><%= stats.news %> news items</strong>
+            </a>
+        </div>
+    </section>
+</main>
+<%- include('partials/footer') %>

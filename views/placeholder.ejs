@@ -1,1 +1,19 @@
-<%- include('partials/header') %><%- include('partials/nav') %><main class="content-section page-top"><p class="eyebrow">MODULE ONLINE</p><h1><%= heading %></h1><p class="lead"><%= description %></p><div class="placeholder-banner pixel-panel"><strong>Framework ready.</strong><span>Your team can build the full feature from this route and database table.</span></div><div class="item-grid"><% if(!items.length){ %><div class="empty-state pixel-panel">No records yet.</div><% } %><% items.forEach(item=>{ %><article class="item-card pixel-panel"><h3><%= item.title %></h3><p><%= item.detail %></p></article><% }) %></div></main><%- include('partials/footer') %>
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<main class="content-section page-top">
+    <p class="eyebrow">MODULE ONLINE</p>
+    <h1><%= heading %></h1><p class="lead">
+        <%= description %></p>
+        <div class="placeholder-banner pixel-panel">
+            <strong>Framework ready.</strong>
+            <span>Your team can build the full feature from this route and database table.</span>
+        </div>
+        <div class="item-grid">
+            <% if(!items.length){ %>
+                <div class="empty-state pixel-panel">No records yet.</div>
+                <% } %>
+                <% items.forEach(item=>{ %>
+                    <article class="item-card pixel-panel">
+                        <h3><%= item.title %></h3>
+                        <p><%= item.detail %></p></article>
+                        <% }) %></div></main><%- include('partials/footer') %>

@@ -14,6 +14,10 @@ const connection = mysql.createConnection({
  user: 'c237_007',
  password: 'c237017@2026',
  database: 'c237_017_team5_savepoint'
+
+ ssl: {
+    rejectUnauthorized: false
+    }
 });
 connection.connect((err) => {
     if (err) {
