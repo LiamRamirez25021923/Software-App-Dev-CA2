@@ -23,10 +23,6 @@
                 <input name="username" value="<%= profile.username||'' %>" required>
             </label>
             <label>
-                Display name
-                <input name="displayName" value="<%= profile.display_name||profile.username||'' %>">
-            </label>
-            <label>
                 Profile picture
                 <input type="file" name="profileImage" accept="image/*">
             </label>
@@ -35,20 +31,8 @@
                 <input type="file" name="bannerImage" accept="image/*">
             </label>
             <label>
-                Current profile picture URL
-                <input type="url" name="profileImageUrl" value="<%= profile.profile_image||'' %>" placeholder="https://example.com/avatar.png">
-            </label>
-            <label>
-                Current banner URL
-                <input type="url" name="bannerImageUrl" value="<%= profile.banner_image||'' %>" placeholder="https://example.com/banner.jpg">
-            </label>
-            <label>
                 Email
                 <input type="email" name="email" value="<%= profile.email||'' %>">
-            </label>
-            <label>
-                New password
-                <input type="password" name="password" placeholder="Leave blank to keep current password">
             </label>
             <label>
                 Favourite console
