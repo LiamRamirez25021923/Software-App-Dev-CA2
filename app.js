@@ -8,6 +8,7 @@ const multer = require('multer');
 const mysql = require('mysql2/promise');
 const pool = require('./config/db');
 const newsHub = require('./src/services/newshub.service');
+const createForumFeature = require('./src/forum/forum');
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 const fs = require('fs');
@@ -189,6 +190,13 @@ app.use((req, res, next) => {
 function requireLogin(req, res, next) { if (!req.session.user) return res.redirect('/login'); next(); }
 
 function requireAdmin(req, res, next) { if (!req.session.user) return res.redirect('/login'); if (req.session.user.role !== 'admin') return res.status(403).render('error', { title: 'Access denied', message: 'This page is available only to SavePoint administrators.' }); next(); }
+
+const forumFeature = createForumFeature({
+    pool,
+    requireLogin,
+    requireAdmin,
+    projectRoot: __dirname
+});
 
 function requireRegularUser(req, res, next) {
     if (!req.session.user) {
@@ -1127,7 +1135,9 @@ app.get('/confirmation/:id', requireRegularUser, async (req, res, next) => {
     } catch (e) { next(e); }
 });
 
-app.get('/forum', requireLogin, async (req, res, next) => { try { const [rows] = await pool.query("SELECT f.*,u.username author_username FROM forum_posts f LEFT JOIN users u ON u.id=f.author_user_id WHERE f.status='visible' ORDER BY f.created_at DESC"); res.render('placeholder', { title: 'Community Forum', heading: 'Discuss retro games with the community', description: 'The forum table is ready for posts, comments and voting.', items: rows.map(x => ({ title: x.title, detail: `Posted by ${x.author_username || 'Deleted user'}` })) }); } catch (e) { next(e); } });
+
+
+app.use(forumFeature.router);
 
 function parseSelectedNewsSources(value) {
     if (value === undefined || value === null || value === '') return null;
@@ -1275,6 +1285,7 @@ async function startServer() {
         await pool.query('SELECT 1');
         console.log('Connected to MySQL database');
         await initialiseDatabase();
+        await forumFeature.ensureForumStorage();
         await newsHub.ensureNewsHubStorage();
         await newsHub.hydrateCacheFromDatabase();
         newsHub.startBackgroundRefresh();

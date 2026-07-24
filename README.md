@@ -55,3 +55,15 @@ Included:
 - NewsHub, profile, admin controls and SavePoint app icon preserved
 
 Run `npm install` after extracting so the Multer dependency is installed.
+
+## Community Forum implementation
+
+The Forum now supports communities, searching, joining/leaving, image posts, comments, upvotes/downvotes, notifications and community-specific RBAC.
+
+Community owners receive permanent Owner authority and cannot be kicked, banned or assigned another role. Owners can create roles with toggleable permissions, assign roles, appoint Co-Owners, moderate posts and members, and transfer ownership. SavePoint administrators can enter community management, delete communities and transfer ownership.
+
+Forum tables are created automatically when `node app.js` starts. The related routes and schema logic live in `src/forum/forum.js`, and the EJS pages are under `views/forum/`.
+
+- Long community posts can now be expanded with **See full post** and collapsed with **Show less**.
+
+- Forum posts automatically embed the first supported YouTube link as a responsive miniplayer.

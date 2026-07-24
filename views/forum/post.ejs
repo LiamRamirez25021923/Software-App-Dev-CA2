@@ -1,0 +1,56 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<main class="content-section page-top forum-shell">
+  <a class="forum-back" href="/forum/communities/<%= post.community_slug %>">← <%= post.community_name %></a>
+  <article class="forum-post-card forum-post-full pixel-panel">
+    <div class="vote-stack">
+      <form method="POST" action="/forum/posts/<%= post.id %>/vote"><input type="hidden" name="vote" value="1"><button class="vote-button <%= Number(post.current_vote) === 1 ? 'selected' : '' %>">▲</button></form>
+      <strong><%= post.score %></strong>
+      <form method="POST" action="/forum/posts/<%= post.id %>/vote"><input type="hidden" name="vote" value="-1"><button class="vote-button <%= Number(post.current_vote) === -1 ? 'selected' : '' %>">▼</button></form>
+    </div>
+    <div class="forum-post-content">
+      <small><a href="/forum/communities/<%= post.community_slug %>"><%= post.community_name %></a> · posted by <%= post.author_username %> · <%= new Date(post.created_at).toLocaleString() %></small>
+      <h1><%= post.title %></h1>
+      <p class="forum-post-body"><%= post.body %></p>
+      <% if (post.image_url) { %><img class="forum-post-image forum-post-image-full" src="/images/forum/<%= post.image_url %>" alt="Image attached to <%= post.title %>"><% } %>
+      <% const youtubeEmbedUrl = getYouTubeEmbedUrl(post.body); %>
+      <% if (youtubeEmbedUrl) { %>
+        <div class="forum-video-embed forum-video-embed-full">
+          <iframe
+            src="<%= youtubeEmbedUrl %>"
+            title="YouTube video attached to <%= post.title %>"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      <% } %>
+      <% if (Number(post.author_user_id) === Number(currentUser.id) || access.can_manage_posts) { %>
+        <form method="POST" action="/forum/posts/<%= post.id %>/delete" onsubmit="return confirm('Remove this post?')"><button class="danger-button">Delete Post</button></form>
+      <% } %>
+    </div>
+  </article>
+
+  <section class="comment-section">
+    <h2>Comments</h2>
+    <% if (access.isMember && access.can_comment) { %>
+      <form method="POST" action="/forum/posts/<%= post.id %>/comments" class="comment-form pixel-panel">
+        <label for="comment-body">Add a comment</label>
+        <textarea id="comment-body" name="body" rows="4" required></textarea>
+        <button class="primary-button">Comment</button>
+      </form>
+    <% } %>
+    <div class="comment-list">
+      <% if (!comments.length) { %><div class="pixel-panel empty-state">No comments yet.</div><% } %>
+      <% comments.forEach((comment) => { %>
+        <article class="comment-card pixel-panel">
+          <strong><%= comment.author_username %></strong>
+          <small><%= new Date(comment.created_at).toLocaleString() %></small>
+          <p><%= comment.body %></p>
+        </article>
+      <% }) %>
+    </div>
+  </section>
+</main>
+<%- include('../partials/footer') %>

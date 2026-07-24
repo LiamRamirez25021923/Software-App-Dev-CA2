@@ -1,0 +1,80 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<main class="content-section page-top forum-shell">
+  <a class="forum-back" href="/forum/communities/<%= community.slug %>">← Return to <%= community.name %></a>
+  <p class="eyebrow">COMMUNITY CONTROL ROOM</p><h1>Manage <%= community.name %></h1>
+
+  <% if (access.isOwner || access.isAdmin || access.isCoOwner || access.can_manage_roles) { %>
+  <details class="forum-management-panel pixel-panel">
+    <summary>Create a role</summary>
+    <form method="POST" action="/forum/communities/<%= community.slug %>/roles" class="stack-form">
+      <div class="forum-form-grid">
+        <label>Role name<input name="name" maxlength="80" required></label>
+        <label>Role colour<input type="color" name="role_color" value="#5ce1e6"></label>
+        <label>Hierarchy position<input type="number" name="position" value="10"></label>
+      </div>
+      <% if (access.isOwner || access.isAdmin) { %><label class="permission-switch"><input type="checkbox" name="is_co_owner"><span>Co-Owner authority</span></label><% } %>
+      <div class="permission-grid">
+        <% permissionFields.forEach((permission) => { %>
+          <label class="permission-switch"><input type="checkbox" name="<%= permission %>" <%= ['can_create_posts','can_comment','can_vote'].includes(permission) ? 'checked' : '' %>><span><%= permission.replaceAll('_',' ') %></span></label>
+        <% }) %>
+      </div>
+      <button class="primary-button">Create Role</button>
+    </form>
+  </details>
+  <% } %>
+
+  <section class="forum-management-panel pixel-panel">
+    <h2>Members and RBAC</h2>
+    <div class="member-management-list">
+      <% members.forEach((member) => { %>
+        <article class="member-row">
+          <div><strong><%= member.username %></strong><span><%= member.is_owner ? 'Owner' : (member.role_name || 'No role') %> · <%= member.membership_status %></span></div>
+          <% if (!member.is_owner) { %>
+            <div class="member-actions">
+              <% if (access.isOwner || access.isAdmin || access.isCoOwner || access.can_manage_roles) { %>
+                <form method="POST" action="/forum/communities/<%= community.slug %>/members/<%= member.user_id %>/role">
+                  <select name="role_id"><option value="">No role</option><% roles.forEach((role) => { %><option value="<%= role.id %>" <%= Number(member.role_id) === Number(role.id) ? 'selected' : '' %>><%= role.name %></option><% }) %></select><button class="secondary-button">Assign</button>
+                </form>
+              <% } %>
+              <% if (access.isOwner || access.isAdmin || access.can_manage_members) { %>
+                <% if (member.membership_status === 'active') { %>
+                  <form method="POST" action="/forum/communities/<%= community.slug %>/members/<%= member.user_id %>/kick"><button class="secondary-button">Kick</button></form>
+                  <form method="POST" action="/forum/communities/<%= community.slug %>/members/<%= member.user_id %>/ban"><button class="danger-button">Ban</button></form>
+                <% } else { %>
+                  <form method="POST" action="/forum/communities/<%= community.slug %>/members/<%= member.user_id %>/restore"><button class="primary-button">Restore</button></form>
+                <% } %>
+              <% } %>
+            </div>
+          <% } else { %><span class="owner-protection">OWNER PROTECTED</span><% } %>
+        </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <% if (access.isOwner || access.isAdmin) { %>
+  <section class="forum-management-panel pixel-panel">
+    <h2>Transfer ownership</h2>
+    <p>The original owner cannot be kicked, banned or demoted. Transfer ownership deliberately to an active member.</p>
+    <form method="POST" action="/forum/communities/<%= community.slug %>/transfer" class="forum-inline-form">
+      <select name="user_id" required><option value="">Choose active member</option><% members.filter(m => !m.is_owner && m.membership_status === 'active').forEach((member) => { %><option value="<%= member.user_id %>"><%= member.username %></option><% }) %></select>
+      <button class="danger-button" onclick="return confirm('Transfer ownership?')">Transfer</button>
+    </form>
+  </section>
+  <% } %>
+
+  <% if (access.isAdmin) { %>
+  <section class="forum-management-panel pixel-panel danger-zone">
+    <h2>SavePoint admin controls</h2>
+    <p>Restricting a community blocks new members while keeping existing discussions accessible.</p>
+    <div class="member-actions">
+      <form method="POST" action="/admin/forum/communities/<%= community.id %>/restrict">
+        <input type="hidden" name="status" value="<%= community.status === 'restricted' ? 'active' : 'restricted' %>">
+        <button class="secondary-button"><%= community.status === 'restricted' ? 'Lift Restriction' : 'Restrict Community' %></button>
+      </form>
+      <form method="POST" action="/admin/forum/communities/<%= community.id %>/delete"><button class="danger-button" onclick="return confirm('Remove this entire community?')">Delete Community</button></form>
+    </div>
+  </section>
+  <% } %>
+</main>
+<%- include('../partials/footer') %>
