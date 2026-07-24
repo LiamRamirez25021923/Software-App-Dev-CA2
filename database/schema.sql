@@ -14,16 +14,6 @@ CREATE TABLE IF NOT EXISTS products (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-<<<<<<< HEAD
-create table if not exists users (
-  id int auto_increment primary key,
-  username varchar(50) not null unique,
-  email varchar(100) not null unique,
-  password varchar(255) not null,
-  profile_image text default 'default_profile.png',
-  banner_image text default 'default_banner.png',
-  role enum('admin', 'user') not null default 'user'
-=======
 CREATE TABLE if not exists order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -40,7 +30,6 @@ CREATE TABLE if not exists order_items (
     FOREIGN KEY (product_id)
         REFERENCES products(id)
         ON DELETE SET NULL
->>>>>>> 44b0f9dad49978eca690fd08368c0809855def6e
 );
 
 create table if not exists forums (
@@ -84,8 +73,6 @@ create table if not exists shopping_cart (
   foreign key (user_id) references users(id) on delete cascade,
   foreign key (product_id) references products(id) on delete cascade
 ); 
-<<<<<<< HEAD
-=======
 
 CREATE TABLE if not exists orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -102,4 +89,3 @@ CREATE TABLE if not exists orders (
         REFERENCES users(id)
         ON DELETE CASCADE
 );
->>>>>>> 44b0f9dad49978eca690fd08368c0809855def6e
