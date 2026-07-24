@@ -1,0 +1,157 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<main class="content-section page-top newshub-page">
+  <section class="newshub-hero">
+    <div>
+      <p class="eyebrow">LIVE RSS INTELLIGENCE</p>
+      <h1>NewsHub</h1>
+      <p class="lead">Gaming headlines from trusted official, retro, console and PC sources — automatically collected and categorised for SavePoint.</p>
+    </div>
+    <button id="nh-refresh-all" class="primary-button" type="button">Refresh trusted feeds</button>
+  </section>
+
+  <p id="nh-cache-note" class="newshub-cache-note"><%= initialNews.cacheMeta.note %></p>
+
+  <details class="newshub-source-picker pixel-panel" id="nh-source-picker">
+    <summary>
+      <span>Choose News Sources</span>
+      <small id="nh-source-summary"><%= sources.length %> of <%= sources.length %> sources enabled</small>
+    </summary>
+    <div class="newshub-source-picker-body">
+      <div class="newshub-source-picker-head">
+        <div>
+          <h2>Build your NewsHub feed</h2>
+          <p>Tick the outlets you want included. Your choices update Game News, Daily Report and Monthly Report.</p>
+        </div>
+        <div class="newshub-source-actions">
+          <button id="nh-select-all-sources" class="secondary-button" type="button">Select all</button>
+          <button id="nh-clear-all-sources" class="secondary-button" type="button">Clear all</button>
+          <button id="nh-apply-sources" class="primary-button" type="button">Apply sources</button>
+        </div>
+      </div>
+
+      <div id="nh-source-checklist" class="newshub-source-checklist">
+        <% sources.forEach((source) => { %>
+          <label class="newshub-source-option">
+            <input type="checkbox" value="<%= source.name %>" checked>
+            <span>
+              <strong><%= source.name %></strong>
+              <small><%= source.platform %> · <%= source.language %><%= source.official ? ' · Official' : '' %></small>
+            </span>
+          </label>
+        <% }) %>
+      </div>
+
+      <p id="nh-source-feedback" class="muted" aria-live="polite">All trusted sources are currently enabled.</p>
+    </div>
+  </details>
+
+  <section class="newshub-report pixel-panel" aria-labelledby="daily-report-heading">
+    <div class="newshub-section-head">
+      <div>
+        <p class="eyebrow">TODAY'S SIGNAL</p>
+        <h2 id="daily-report-heading">Daily Report</h2>
+      </div>
+      <button id="nh-refresh-daily" class="secondary-button" type="button">Refresh report</button>
+    </div>
+
+    <div id="nh-daily-loading" class="newshub-loading">
+      <span class="pixel-spinner" aria-hidden="true"></span>
+      <div><strong>Scanning trusted feeds…</strong><p>The Game News list below remains usable while this report is prepared.</p></div>
+    </div>
+
+    <div id="nh-daily-content" class="nh-hidden">
+      <div class="newshub-metrics">
+        <article><span>Articles analysed</span><strong id="nh-daily-total">0</strong></article>
+        <article><span>Leading news type</span><strong id="nh-daily-leading">Waiting…</strong></article>
+        <article><span>Leading source</span><strong id="nh-daily-source">Waiting…</strong></article>
+      </div>
+      <p id="nh-daily-window" class="muted"></p>
+      <p id="nh-daily-fallback" class="newshub-fallback"></p>
+      <div class="newshub-chart-grid">
+        <div><h3>News types</h3><div id="nh-daily-type-bars"></div></div>
+        <div><h3>Sources</h3><div id="nh-daily-source-bars"></div></div>
+      </div>
+      <details class="newshub-tray"><summary>Articles used in the Daily Report</summary><div id="nh-daily-articles"></div></details>
+    </div>
+  </section>
+
+  <section class="newshub-report pixel-panel" aria-labelledby="monthly-report-heading">
+    <div class="newshub-section-head">
+      <div>
+        <p class="eyebrow">LONGER TREND</p>
+        <h2 id="monthly-report-heading">Monthly Report</h2>
+      </div>
+      <button id="nh-refresh-monthly" class="secondary-button" type="button">Refresh report</button>
+    </div>
+
+    <div id="nh-monthly-loading" class="newshub-loading">
+      <span class="pixel-spinner" aria-hidden="true"></span>
+      <div><strong>Building the monthly overview…</strong><p>NewsHub will widen its time window honestly if the current month is quiet.</p></div>
+    </div>
+
+    <div id="nh-monthly-content" class="nh-hidden">
+      <div class="newshub-metrics">
+        <article><span>Articles analysed</span><strong id="nh-monthly-total">0</strong></article>
+        <article><span>Leading news type</span><strong id="nh-monthly-leading">Waiting…</strong></article>
+        <article><span>Leading source</span><strong id="nh-monthly-source">Waiting…</strong></article>
+      </div>
+      <p id="nh-monthly-window" class="muted"></p>
+      <p id="nh-monthly-fallback" class="newshub-fallback"></p>
+      <div class="newshub-chart-grid">
+        <div><h3>News types</h3><div id="nh-monthly-type-bars"></div></div>
+        <div><h3>Sources</h3><div id="nh-monthly-source-bars"></div></div>
+      </div>
+      <details class="newshub-tray"><summary>Articles used in the Monthly Report</summary><div id="nh-monthly-articles"></div></details>
+    </div>
+  </section>
+
+  <section class="newshub-news" aria-labelledby="game-news-heading">
+    <div class="newshub-section-head">
+      <div>
+        <p class="eyebrow">LATEST CHECKPOINTS</p>
+        <h2 id="game-news-heading">Game News</h2>
+      </div>
+      <div class="newshub-filters">
+        <label>News type
+          <select id="nh-type-filter">
+            <option value="all">All types</option>
+            <% newsTypes.forEach((type) => { %><option value="<%= type %>"><%= type %></option><% }) %>
+          </select>
+        </label>
+        <label>Source
+          <select id="nh-source-filter">
+            <option value="all">All sources</option>
+            <% sources.forEach((source) => { %><option value="<%= source.name %>"><%= source.name %></option><% }) %>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <p class="newshub-policy">NewsHub prefers articles from the last 24 hours. If fewer than six are available, it fills the remaining slots with the newest trusted articles and labels them as recent fallbacks.</p>
+
+    <div id="nh-news-status" class="muted" aria-live="polite"></div>
+    <div id="nh-news-list" class="newshub-news-grid">
+      <% initialNews.articles.forEach((article) => { %>
+        <article class="newshub-article pixel-panel">
+          <div class="newshub-article-meta"><span><%= article.sourceName %></span><span><%= article.freshnessLabel %></span><span><%= new Date(article.publishedAt).toLocaleString() %></span></div>
+          <h3><a href="<%= article.link %>" target="_blank" rel="noopener noreferrer"><%= article.title %></a></h3>
+          <p><%= article.summary %></p>
+          <div class="newshub-chip-row"><% article.newsTypes.forEach((type) => { %><span><%= type %></span><% }) %></div>
+        </article>
+      <% }) %>
+    </div>
+
+    <div id="nh-empty" class="placeholder-banner pixel-panel <%= initialNews.articles.length ? 'nh-hidden' : '' %>">
+      <strong>No cached articles yet.</strong><span>NewsHub is refreshing the RSS feeds now. The list will populate when trusted sources respond.</span>
+    </div>
+
+    <div class="newshub-load-more-wrap">
+      <button id="nh-load-more" class="primary-button" type="button" data-next-page="2" data-has-more="<%= initialNews.hasMore %>">View another 6 articles</button>
+    </div>
+  </section>
+</main>
+
+<script src="/js/newshub.js" defer></script>
+<%- include('../partials/footer') %>

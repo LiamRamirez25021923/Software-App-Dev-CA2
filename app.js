@@ -1,36 +1,17 @@
 require('dotenv').config();
-
 const express = require('express');
 const session = require('express-session');
-const multer = require('multer');
+const bcrypt = require('bcryptjs');
 const path = require('path');
 const methodOverride = require('method-override');
 
-let pool = null;
-let hasDatabase = false;
-try {
-  pool = require('./config/db');
-  hasDatabase = true;
-} catch (error) {
-  console.warn('Database configuration is unavailable. Running without MySQL:', error.message);
-}
-
-const hasFetch = typeof fetch === 'function';
+const pool = require('./config/db');
 
 const app = express();
-
-
-// Configure multer for image uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'public/images/'),
-  filename: (req, file, cb) => {
-    const unique = Date.now() + '-' + file.originalname.replace(/\s+/g, '_');
-    cb(null, unique);
-  }
-});
-const upload = multer({ storage });
-
-app.set('view engine', 'ejs');
+const PORT = Number(process.env.PORT) || 3001;
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'));
+app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -476,8 +457,6 @@ let forumComments = [];
 let postVotes = {}; // { postId: { username: 'upvote'|'downvote' } }
 let commentVotes = {}; // { commentId: { username: 'upvote'|'downvote' } }
 let nextPostId = 1;
-let userListings = [];
-let nextListingId = 1;
 let nextCommentId = 1;
 
 // Helper to manage user profiles (stored on the user object as `profile`)
@@ -1497,25 +1476,19 @@ const PORT = Number(process.env.PORT) || 3001;
 
 async function startServer() {
     try {
-        if (hasDatabase) {
-            await pool.query('SELECT 1');
+        await pool.query('SELECT 1');
 
-            console.log(
-                'Connected to MySQL database'
-            );
+        console.log(
+            'Connected to MySQL database'
+        );
 
-            await ensureProductsTable();
-            await seedProductsIfEmpty();
-            await loadProductsFromDatabase();
+        await ensureProductsTable();
+        await seedProductsIfEmpty();
+        await loadProductsFromDatabase();
 
-            console.log(
-                `Loaded ${products.length} products from MySQL`
-            );
-        } else {
-            console.warn(
-                'Database environment variables are missing. Running with in-memory products only.'
-            );
-        }
+        console.log(
+            `Loaded ${products.length} products from MySQL`
+        );
 
         app.listen(
             PORT,
@@ -1524,6 +1497,7 @@ async function startServer() {
                 console.log(
                     `bouTime is running on port ${PORT}`
                 );
+
                 console.log(
                     `Local URL: http://localhost:${PORT}`
                 );
