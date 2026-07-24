@@ -1,77 +1,114 @@
 <%- include('partials/header') %>
 <%- include('partials/nav') %>
 <main class="content-section page-top">
-  <section class="survey-intro">
-    <p class="eyebrow">NEW PLAYER SETUP</p>
-    <h1>Build User Profile</h1>
-    <p class="lead">Tell the SavePoint community what kind of retro games and hardware you enjoy.</p>
-  </section>
+    <section class="survey-intro">
+        <p class="eyebrow">OPTIONAL NEW PLAYER SETUP</p>
+        <h1>Build Your SavePoint Profile</h1>
+        <p class="lead">
+            Share your gaming interests now, or skip this step and edit them
+            later from Profile in the navbar.
+        </p>
+    </section>
 
-  <% if (error) { %>
-    <div class="alert"><%= error %></div>
-  <% } %>
+    <% if (error) { %>
+        <div class="alert"><%= error %></div>
+    <% } %>
 
-  <form action="/profile/setup" method="POST" class="stack-form pixel-panel survey-form">
-    <label>
-      Favorite console company?
-      <select name="favoriteConsoleCompany" required>
-        <option value="">Choose one</option>
-        <% options.consoleCompanies.forEach((company) => { %>
-          <option value="<%= company %>" <%= profile.favorite_console_company === company ? 'selected' : '' %>><%= company %></option>
-        <% }) %>
-      </select>
-    </label>
+    <section class="pixel-panel savepoint-survey">
+        <form action="/profile/setup" method="POST" class="stack-form">
+            <p class="profile-form-help">
+                Every question is optional. The suggestions are examples;
+                you may enter any answer.
+            </p>
 
-    <label>
-      Favorite game company?
-      <select name="favoriteGameCompany" required>
-        <option value="">Choose one</option>
-        <% options.gameCompanies.forEach((company) => { %>
-          <option value="<%= company %>" <%= profile.favorite_game_company === company ? 'selected' : '' %>><%= company %></option>
-        <% }) %>
-      </select>
-    </label>
+            <label>
+                Favorite game company?
+                <input
+                    name="favoriteGameCompany"
+                    value="<%= profile.favorite_game_company || '' %>"
+                    list="game-company-options"
+                    maxlength="150"
+                    placeholder="e.g. Capcom"
+                >
+            </label>
 
-    <label>
-      Favorite game genre?
-      <select name="favoriteGameGenre" required>
-        <option value="">Choose one</option>
-        <% options.gameGenres.forEach((genre) => { %>
-          <option value="<%= genre %>" <%= profile.favorite_game_genre === genre ? 'selected' : '' %>><%= genre %></option>
-        <% }) %>
-      </select>
-    </label>
+            <label>
+                Favorite game genre?
+                <input
+                    name="favoriteGameGenre"
+                    value="<%= profile.favorite_game_genre || '' %>"
+                    list="game-genre-options"
+                    maxlength="150"
+                    placeholder="e.g. RPG"
+                >
+            </label>
 
-    <label>
-      Favorite game?
-      <input name="favoriteGame" maxlength="150" value="<%= profile.favorite_game || '' %>" placeholder="e.g. Chrono Trigger" required>
-    </label>
+            <label>
+                Favorite game?
+                <input
+                    name="favoriteGame"
+                    value="<%= profile.favorite_game || '' %>"
+                    maxlength="150"
+                    placeholder="e.g. Chrono Trigger"
+                >
+            </label>
 
-    <fieldset class="choice-group">
-      <legend>What consoles do you own?</legend>
-      <div class="choice-grid">
-        <% options.gameConsoles.forEach((consoleName) => { %>
-          <label class="choice-card">
-            <input type="checkbox" name="consolesOwned" value="<%= consoleName %>" <%= profile.consoles_owned.includes(consoleName) ? 'checked' : '' %>>
-            <span><%= consoleName %></span>
-          </label>
-        <% }) %>
-      </div>
-    </fieldset>
+            <label>
+                What consoles do you own?
+                <textarea
+                    name="consolesOwned"
+                    rows="3"
+                    maxlength="1000"
+                    placeholder="e.g. Nintendo DS, PSP, PlayStation 2"
+                ><%= profile.consoles_owned || '' %></textarea>
+            </label>
 
-    <fieldset class="choice-group">
-      <legend>Eyeing any consoles?</legend>
-      <div class="choice-grid">
-        <% options.gameConsoles.forEach((consoleName) => { %>
-          <label class="choice-card">
-            <input type="checkbox" name="consolesWanted" value="<%= consoleName %>" <%= profile.consoles_wanted.includes(consoleName) ? 'checked' : '' %>>
-            <span><%= consoleName %></span>
-          </label>
-        <% }) %>
-      </div>
-    </fieldset>
+            <label>
+                Eyeing any consoles?
+                <textarea
+                    name="consolesWanted"
+                    rows="3"
+                    maxlength="1000"
+                    placeholder="e.g. Sega Dreamcast"
+                ><%= profile.consoles_wanted || '' %></textarea>
+            </label>
 
-    <button class="primary-button" type="submit">Save Player Profile</button>
-  </form>
+            <datalist id="game-company-options">
+                <% suggestions.gameCompanies.forEach((company) => { %>
+                    <option value="<%= company %>"></option>
+                <% }) %>
+            </datalist>
+
+            <datalist id="game-genre-options">
+                <% suggestions.gameGenres.forEach((genre) => { %>
+                    <option value="<%= genre %>"></option>
+                <% }) %>
+            </datalist>
+
+            <datalist id="platform-options">
+                <% suggestions.platforms.forEach((platform) => { %>
+                    <option value="<%= platform %>"></option>
+                <% }) %>
+            </datalist>
+
+            <datalist id="console-options">
+                <% suggestions.gameConsoles.forEach((consoleName) => { %>
+                    <option value="<%= consoleName %>"></option>
+                <% }) %>
+            </datalist>
+
+            <div class="survey-actions">
+                <button class="primary-button" type="submit">
+                    Save Profile
+                </button>
+            </div>
+        </form>
+
+        <form action="/profile/setup/skip" method="POST" class="skip-survey-form">
+            <button class="secondary-button" type="submit">
+                Skip for now
+            </button>
+        </form>
+    </section>
 </main>
 <%- include('partials/footer') %>
