@@ -79,3 +79,16 @@ New accounts can optionally complete a SavePoint Profile during sign-up. The fiv
 - Consoles wanted / being considered
 
 The profile can be changed later from **Profile** in the navbar. Suggestion arrays are maintained in `src/data/profileOptions.js`; inputs remain open-ended. Existing databases are upgraded automatically when `node app.js` starts.
+
+
+## Legacy database collation repair
+
+If MySQL reports `Illegal mix of collations`, run:
+
+```sql
+SOURCE database/repair_collations.sql;
+```
+
+or open `database/repair_collations.sql` in MySQL Workbench and execute it.
+The application profile update no longer uses cross-collation `COALESCE`,
+and forum voting now toggles like Reddit.

@@ -306,11 +306,24 @@ async function ensureUsersTableSchema() {
     }
 
     // Repair values left null by older versions of the project.
+    // Separate updates avoid COALESCE comparing columns that may have
+    // inherited different collations from older team schemas.
     await pool.query(`
         UPDATE users
-        SET profile_image = COALESCE(NULLIF(profile_image, ''), 'default_profile.png'),
-            banner_image = COALESCE(NULLIF(banner_image, ''), 'default_banner.png'),
-            role = COALESCE(role, 'user')
+        SET profile_image = '/icons/icon-192.png'
+        WHERE profile_image IS NULL OR CHAR_LENGTH(profile_image) = 0
+    `);
+
+    await pool.query(`
+        UPDATE users
+        SET banner_image = '/icons/icon-512.png'
+        WHERE banner_image IS NULL OR CHAR_LENGTH(banner_image) = 0
+    `);
+
+    await pool.query(`
+        UPDATE users
+        SET role = 'user'
+        WHERE role IS NULL
     `);
 }
 
@@ -674,6 +687,34 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
             });
         }
 
+        // Read the current image values first, then send concrete strings in
+        // the UPDATE. This avoids MySQL trying to COALESCE values that came
+        // from legacy columns with different collations.
+        const [currentProfileRows] = await pool.execute(
+            `SELECT profile_image, banner_image
+             FROM users
+             WHERE id=?
+             LIMIT 1`,
+            [req.session.user.id]
+        );
+
+        if (!currentProfileRows.length) {
+            return res.status(404).render('error', {
+                title: 'Profile not found',
+                message: 'Your account could not be found.'
+            });
+        }
+
+        const finalProfileImage =
+            profileImage ||
+            currentProfileRows[0].profile_image ||
+            '/icons/icon-192.png';
+
+        const finalBannerImage =
+            bannerImage ||
+            currentProfileRows[0].banner_image ||
+            '/icons/icon-512.png';
+
         await pool.execute(
             `UPDATE users
              SET username=?,
@@ -685,8 +726,8 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
                  favorite_game=?,
                  consoles_owned=?,
                  consoles_wanted=?,
-                 profile_image=COALESCE(NULLIF(?, ''), profile_image, 'default_profile.png'),
-                 banner_image=COALESCE(NULLIF(?, ''), banner_image, 'default_banner.png')
+                 profile_image=?,
+                 banner_image=?
              WHERE id=?`,
             [
                 username,
@@ -698,8 +739,8 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
                 favoriteGame || null,
                 consolesOwned || null,
                 consolesWanted || null,
-                profileImage,
-                bannerImage,
+                finalProfileImage,
+                finalBannerImage,
                 req.session.user.id
             ]
         );

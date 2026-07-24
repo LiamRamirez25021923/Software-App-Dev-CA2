@@ -13,10 +13,20 @@
   <section class="profile-layout">
     <div class="profile-card pixel-panel">
       <div class="profile-banner">
-        <img src="<%= profile.banner_image || '/icons/icon-512.png' %>" alt="Profile banner">
+        <%
+          const bannerSrc = profile.banner_image
+            ? (profile.banner_image.startsWith('/') ? profile.banner_image : `/images/${profile.banner_image}`)
+            : '/icons/icon-512.png';
+        %>
+        <img src="<%= bannerSrc %>" alt="Profile banner">
       </div>
       <div class="profile-summary">
-        <img class="profile-avatar" src="<%= profile.profile_image || '/icons/icon-192.png' %>" alt="Profile picture">
+        <%
+          const avatarSrc = profile.profile_image
+            ? (profile.profile_image.startsWith('/') ? profile.profile_image : `/images/${profile.profile_image}`)
+            : '/icons/icon-192.png';
+        %>
+        <img class="profile-avatar" src="<%= avatarSrc %>" alt="Profile picture">
         <div>
           <h2><%= profile.username %></h2>
           <p class="role-badge"><%= profile.role %></p>

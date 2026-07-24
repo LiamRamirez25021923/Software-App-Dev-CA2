@@ -599,15 +599,37 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
             if (!posts.length) return res.status(404).send('Post not found');
             const access = await getAccess(req.session.user, posts[0].community_id);
             if (!access.isMember || !access.can_vote) return res.status(403).send('Voting denied');
-            if (vote === 0) {
-                await pool.execute('DELETE FROM forum_votes WHERE post_id=? AND user_id=?', [postId, req.session.user.id]);
+            const [existingVotes] = await pool.execute(
+                `SELECT vote_value
+                 FROM forum_votes
+                 WHERE post_id=? AND user_id=?
+                 LIMIT 1`,
+                [postId, req.session.user.id]
+            );
+
+            const previousVote = existingVotes.length
+                ? Number(existingVotes[0].vote_value)
+                : 0;
+
+            // Clicking the currently selected arrow again removes the vote.
+            const shouldRemoveVote = vote === 0 || previousVote === vote;
+
+            if (shouldRemoveVote) {
+                await pool.execute(
+                    'DELETE FROM forum_votes WHERE post_id=? AND user_id=?',
+                    [postId, req.session.user.id]
+                );
             } else {
                 await pool.execute(
                     `INSERT INTO forum_votes (post_id, user_id, vote_value)
                      VALUES (?, ?, ?)
-                     ON DUPLICATE KEY UPDATE vote_value=VALUES(vote_value)`,
-                    [postId, req.session.user.id, vote]
+                     ON DUPLICATE KEY UPDATE
+                         vote_value=?,
+                         updated_at=CURRENT_TIMESTAMP`,
+                    [postId, req.session.user.id, vote, vote]
                 );
+
+                // Notify only when a new/different vote is applied.
                 if (Number(posts[0].author_user_id) !== Number(req.session.user.id)) {
                     await notifyUser(
                         posts[0].author_user_id,
