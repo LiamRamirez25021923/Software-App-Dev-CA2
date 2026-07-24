@@ -357,3 +357,107 @@
         flex-direction: column
     }
 }
+/* Marketplace admin controls */
+.market-admin-panel {
+  margin: 0 0 2rem;
+  overflow: hidden;
+}
+
+.market-admin-panel > summary,
+.listing-editor > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.market-admin-panel > summary::-webkit-details-marker,
+.listing-editor > summary::-webkit-details-marker {
+  display: none;
+}
+
+.market-admin-panel > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  color: var(--yellow);
+}
+
+.market-admin-panel > summary span:first-child {
+  display: grid;
+  gap: .35rem;
+}
+
+.market-admin-panel > summary small {
+  color: #d7d9ef;
+  font-weight: 400;
+}
+
+.market-admin-panel[open] > summary {
+  border-bottom: 2px solid var(--cyan);
+}
+
+.marketplace-product-form {
+  padding: 1.5rem;
+  background: rgba(16, 18, 41, .52);
+}
+
+.marketplace-product-form select {
+  width: 100%;
+  padding: .8rem;
+  border: 3px solid var(--ink);
+  background: white;
+  color: var(--ink);
+}
+
+.market-admin-actions {
+  display: grid;
+  gap: .85rem;
+  margin-top: 1.25rem;
+}
+
+.listing-editor {
+  width: 100%;
+}
+
+.listing-editor > summary {
+  width: 100%;
+}
+
+.listing-editor[open] > summary {
+  margin-bottom: .75rem;
+}
+
+.listing-editor .marketplace-product-form {
+  border: 2px solid var(--cyan);
+}
+
+.market-admin-actions form > .danger-button {
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .market-admin-panel > summary {
+    align-items: flex-start;
+  }
+}
+
+.product-badges {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: .25rem .6rem;
+  border: 2px solid currentColor;
+  font-size: .78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.status-active { color: #79f2a5; }
+.status-sold { color: var(--yellow); }
+.status-removed { color: #ff8a8a; }

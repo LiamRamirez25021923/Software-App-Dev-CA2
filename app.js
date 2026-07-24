@@ -635,9 +635,15 @@ app.get('/marketplace', requireLogin, async (req, res, next) => {
         const like = `%${search}%`;
         let sql = `SELECT ${productSelectList('p')}, u.username AS seller_username
                    FROM products p
-                   LEFT JOIN users u ON u.id = p.seller_user_id
-                   WHERE p.status='active' AND p.quantity>0`;
+                   LEFT JOIN users u ON u.id = p.seller_user_id`;
         const params = [];
+
+        if (req.session.user.role === 'admin') {
+            // Admins can see and restore sold/removed/out-of-stock listings.
+            sql += ' WHERE 1=1';
+        } else {
+            sql += ` WHERE p.status='active' AND p.quantity>0`;
+        }
 
         if (search) {
             sql += ` AND (p.\`${productSchema.name}\` LIKE ? OR p.category LIKE ? OR p.platform LIKE ?)`;
@@ -656,7 +662,7 @@ app.get('/marketplace', requireLogin, async (req, res, next) => {
     } catch (e) { next(e); }
 });
 
-app.post('/admin/products', requireAdmin, upload.single('image'), async (req, res, next) => {
+async function createMarketplaceProduct(req, res, next) {
     try {
         const title = String(req.body.title || '').trim();
         const description = String(req.body.description || '').trim();
@@ -666,10 +672,10 @@ app.post('/admin/products', requireAdmin, upload.single('image'), async (req, re
         const quantity = Number.parseInt(req.body.quantity, 10);
         const image = req.file ? req.file.filename : null;
 
-        if (!title || !category || !Number.isFinite(price) || price <= 0 || !Number.isInteger(quantity) || quantity < 1) {
+        if (!title || !category || !Number.isFinite(price) || price <= 0 || !Number.isInteger(quantity) || quantity < 0) {
             return res.status(400).render('error', {
                 title: 'Invalid product',
-                message: 'Enter a product name, category, price above $0 and quantity of at least 1.'
+                message: 'Enter a product name, category, price above $0 and a quantity of 0 or more.'
             });
         }
 
@@ -678,9 +684,197 @@ app.post('/admin/products', requireAdmin, upload.single('image'), async (req, re
              VALUES (?,?,?,?,?,?,?,?,?)`,
             [title, quantity, price, image, req.session.user.id, description || null, category, platform || null, 'active']
         );
-        res.redirect('/admin');
-    } catch (e) { next(e); }
+
+        req.session.marketplaceMessage = `${title} was created successfully.`;
+        res.redirect('/marketplace');
+    } catch (error) {
+        next(error);
+    }
+}
+
+// Admins manage listings directly from the Marketplace page.
+app.post('/marketplace/products', requireAdmin, upload.single('image'), createMarketplaceProduct);
+
+// Kept as a backwards-compatible alias for older forms/bookmarks.
+app.post('/admin/products', requireAdmin, upload.single('image'), createMarketplaceProduct);
+
+app.post('/marketplace/products/:id/edit', requireAdmin, upload.single('image'), async (req, res, next) => {
+    try {
+        const productId = Number(req.params.id);
+        const title = String(req.body.title || '').trim();
+        const description = String(req.body.description || '').trim();
+        const category = String(req.body.category || '').trim();
+        const platform = String(req.body.platform || '').trim();
+        const price = Number(req.body.price);
+        const quantity = Number.parseInt(req.body.quantity, 10);
+        const status = ['active', 'sold', 'removed'].includes(req.body.status)
+            ? req.body.status
+            : 'active';
+
+        if (!Number.isInteger(productId) || productId < 1) {
+            return res.status(400).render('error', {
+                title: 'Invalid product',
+                message: 'The selected product ID is invalid.'
+            });
+        }
+
+        if (!title || !category || !Number.isFinite(price) || price <= 0 || !Number.isInteger(quantity) || quantity < 0) {
+            return res.status(400).render('error', {
+                title: 'Invalid product',
+                message: 'Enter a product name, category, price above $0 and a quantity of 0 or more.'
+            });
+        }
+
+        const [existingRows] = await pool.execute(
+            `SELECT \`${productSchema.image}\` AS image_url
+             FROM products
+             WHERE \`${productSchema.id}\` = ?
+             LIMIT 1`,
+            [productId]
+        );
+
+        if (!existingRows.length) {
+            return res.status(404).render('error', {
+                title: 'Product not found',
+                message: 'That marketplace listing no longer exists.'
+            });
+        }
+
+        const image = req.file
+            ? req.file.filename
+            : existingRows[0].image_url;
+
+        await pool.execute(
+            `UPDATE products
+             SET \`${productSchema.name}\` = ?,
+                 description = ?,
+                 category = ?,
+                 platform = ?,
+                 price = ?,
+                 quantity = ?,
+                 \`${productSchema.image}\` = ?,
+                 status = ?
+             WHERE \`${productSchema.id}\` = ?`,
+            [title, description || null, category, platform || null, price, quantity, image || null, status, productId]
+        );
+
+        req.session.marketplaceMessage = `${title} was updated successfully.`;
+        res.redirect('/marketplace');
+    } catch (error) {
+        next(error);
+    }
 });
+
+async function permanentlyDeleteMarketplaceProduct(req, res, next) {
+    try {
+        const productId = Number(req.params.id);
+
+        if (!Number.isInteger(productId) || productId < 1) {
+            return res.status(400).render('error', {
+                title: 'Invalid product',
+                message: 'The selected product ID is invalid.'
+            });
+        }
+
+        const [rows] = await pool.execute(
+            `SELECT \`${productSchema.image}\` AS image_url
+             FROM products
+             WHERE \`${productSchema.id}\` = ?
+             LIMIT 1`,
+            [productId]
+        );
+
+        if (!rows.length) {
+            return res.status(404).render('error', {
+                title: 'Product not found',
+                message: 'That marketplace listing no longer exists.'
+            });
+        }
+
+        const imageFileName = rows[0].image_url;
+
+        const [result] = await pool.execute(
+            `DELETE FROM products
+             WHERE \`${productSchema.id}\` = ?`,
+            [productId]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).render('error', {
+                title: 'Product not found',
+                message: 'That marketplace listing no longer exists.'
+            });
+        }
+
+        // Remove the listing from this browser session's cart as well.
+        if (req.session.cart) {
+            delete req.session.cart[productId];
+            delete req.session.cart[String(productId)];
+        }
+
+        // Delete an uploaded image only when no other product references it.
+        if (imageFileName) {
+            const [imageReferences] = await pool.execute(
+                `SELECT COUNT(*) AS total
+                 FROM products
+                 WHERE \`${productSchema.image}\` = ?`,
+                [imageFileName]
+            );
+
+            const protectedImages = new Set([
+                'placeholder.png',
+                'default_product.png'
+            ]);
+
+            if (
+                Number(imageReferences[0].total) === 0 &&
+                !protectedImages.has(imageFileName)
+            ) {
+                const imagePath = path.join(
+                    imageDirectory,
+                    path.basename(imageFileName)
+                );
+
+                try {
+                    await fs.promises.unlink(imagePath);
+                } catch (fileError) {
+                    if (fileError.code !== 'ENOENT') {
+                        console.warn(
+                            `Product ${productId} was deleted, but its image could not be removed:`,
+                            fileError.message
+                        );
+                    }
+                }
+            }
+        }
+
+        req.session.marketplaceMessage =
+            'The marketplace listing was permanently deleted.';
+
+        return res.redirect('/marketplace');
+    } catch (error) {
+        if (
+            error.code === 'ER_ROW_IS_REFERENCED_2' ||
+            error.code === 'ER_ROW_IS_REFERENCED'
+        ) {
+            return res.status(409).render('error', {
+                title: 'Listing cannot be deleted',
+                message:
+                    'This listing is connected to an existing order. ' +
+                    'Edit it and set its status to Removed instead so ' +
+                    'the purchase history remains intact.'
+            });
+        }
+
+        return next(error);
+    }
+}
+
+app.post(
+    '/marketplace/products/:id/delete',
+    requireAdmin,
+    permanentlyDeleteMarketplaceProduct
+);
 
 app.post('/cart/add/:id', requireRegularUser, async (req, res, next) => {
     try {
@@ -1029,7 +1223,12 @@ app.get('/admin', requireAdmin, async (req, res, next) => {
     }
 });
 
-app.post('/admin/products/:id/delete', requireAdmin, async (req, res, next) => { try { await pool.execute(`UPDATE products SET status='removed' WHERE \`${productSchema.id}\`=?`, [Number(req.params.id)]); res.redirect('/admin'); } catch (e) { next(e); } });
+// Backwards-compatible alias for the old Admin Panel delete form.
+app.post(
+    '/admin/products/:id/delete',
+    requireAdmin,
+    permanentlyDeleteMarketplaceProduct
+);
 
 app.post('/admin/posts/:id/delete', requireAdmin, async (req, res, next) => { try { await pool.execute("UPDATE forum_posts SET status='removed' WHERE id=?", [Number(req.params.id)]); res.redirect('/admin'); } catch (e) { next(e); } });
 
