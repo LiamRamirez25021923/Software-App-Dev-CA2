@@ -99,3 +99,17 @@
   .newshub-source-picker > summary { align-items: flex-start; flex-wrap: wrap; }
   .newshub-source-picker > summary small { width: 100%; margin-left: 0; }
 }
+
+.profile-layout { display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.profile-card { overflow: hidden; padding: 0; }
+.profile-banner { height: 150px; background: linear-gradient(90deg, var(--cyan), var(--pink)); overflow: hidden; }
+.profile-banner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.profile-summary { display: flex; align-items: center; gap: 1rem; padding: 1.4rem; }
+.profile-avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--cyan); background: #101229; flex-shrink: 0; }
+.profile-form input[type="url"], .profile-form input[type="email"], .profile-form input:not([type]), .profile-form textarea { width: 100%; padding: .8rem 1rem; border: 2px solid rgba(92, 225, 230, .35); background: rgba(16, 18, 41, .55); color: var(--cream); }
+.profile-form label { display: grid; gap: .45rem; font-weight: 700; }
+.profile-form textarea { min-height: 120px; resize: vertical; }
+
+@media (max-width: 900px) {
+  .profile-layout { grid-template-columns: 1fr; }
+}
