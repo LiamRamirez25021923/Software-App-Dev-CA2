@@ -2,18 +2,33 @@
 <%- include('partials/nav') %>
 <main class="content-section page-top">
     <p class="eyebrow">PLAYER PROFILE</p>
-    <h1><%= profile.display_name %></h1>
+    <h1><%= profile.username %></h1>
     <section class="profile-layout">
         <div class="profile-card pixel-panel">
-            <div class="avatar">SP</div>
-            <h2><%= profile.username %></h2>
-            <p class="role-badge"><%= profile.role %></p>
-            <p>Joined <%= new Date(profile.created_at).toLocaleDateString() %></p>
+            <div class="profile-banner">
+                <img src="<%= profile.banner_image || '/icons/icon-512.png' %>" alt="Profile banner">
+            </div>
+            <div class="profile-summary">
+                <img class="profile-avatar" src="<%= profile.profile_image || '/icons/icon-192.png' %>" alt="Profile picture">
+                <div>
+                    <h2><%= profile.username %></h2>
+                    <p class="role-badge"><%= profile.role %></p>
+                    <p>Joined <%= new Date(profile.created_at).toLocaleDateString() %></p>
+                </div>
+            </div>
         </div>
         <form action="/profile" method="POST" class="stack-form pixel-panel profile-form">
             <label>
-                Display name
-                <input name="displayName" value="<%= profile.display_name||'' %>" required>
+                Username
+                <input name="username" value="<%= profile.username||'' %>" required>
+            </label>
+            <label>
+                Profile picture URL
+                <input type="url" name="profileImage" value="<%= profile.profile_image||'' %>" placeholder="https://example.com/avatar.png">
+            </label>
+            <label>
+                Profile banner URL
+                <input type="url" name="bannerImage" value="<%= profile.banner_image||'' %>" placeholder="https://example.com/banner.jpg">
             </label>
             <label>
                 Email

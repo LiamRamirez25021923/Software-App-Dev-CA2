@@ -40,3 +40,18 @@ NEWSHUB_SOURCE_TIMEOUT_MS=8000
 ## Personalised NewsHub sources
 
 The NewsHub includes a collapsible source checklist. Selections are saved in the browser with localStorage and are sent to the backend so Game News, Daily Report, and Monthly Report all use the same enabled-source list.
+
+
+## Integrated e-commerce feature
+
+This build combines the current SavePoint main branch with Ryan's e-commerce branch.
+
+Included:
+- Searchable retro marketplace
+- Admin product creation with image upload
+- Session-based shopping cart
+- Checkout transaction and order confirmation
+- Product stock updates
+- NewsHub, profile, admin controls and SavePoint app icon preserved
+
+Run `npm install` after extracting so the Multer dependency is installed.

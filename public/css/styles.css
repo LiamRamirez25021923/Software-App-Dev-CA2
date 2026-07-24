@@ -99,3 +99,261 @@
   .newshub-source-picker > summary { align-items: flex-start; flex-wrap: wrap; }
   .newshub-source-picker > summary small { width: 100%; margin-left: 0; }
 }
+
+.profile-layout { display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.profile-card { overflow: hidden; padding: 0; }
+.profile-banner { height: 150px; background: linear-gradient(90deg, var(--cyan), var(--pink)); overflow: hidden; }
+.profile-banner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.profile-summary { display: flex; align-items: center; gap: 1rem; padding: 1.4rem; }
+.profile-avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--cyan); background: #101229; flex-shrink: 0; }
+.profile-form input[type="url"], .profile-form input[type="email"], .profile-form input:not([type]), .profile-form textarea { width: 100%; padding: .8rem 1rem; border: 2px solid rgba(92, 225, 230, .35); background: rgba(16, 18, 41, .55); color: var(--cream); }
+.profile-form label { display: grid; gap: .45rem; font-weight: 700; }
+.profile-form textarea { min-height: 120px; resize: vertical; }
+
+@media (max-width: 900px) {
+  .profile-layout { grid-template-columns: 1fr; }
+}
+
+
+/* E-commerce feature styles merged from Ryan's branch */
+.market-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem
+}
+
+.notice {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    color: var(--ink);
+    background: var(--yellow);
+    border: 3px solid var(--pink);
+    font-weight: 900
+}
+
+.search-bar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    margin: 2rem 0
+}
+
+.search-bar input {
+    flex: 1;
+    padding: .85rem;
+    border: 3px solid var(--ink)
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image {
+    width: 100%;
+    height: 310px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    text-align: center;
+    color: #79f2a5;
+    background: #ffffff;
+    font-family: Consolas, monospace;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+.product-copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.5rem
+}
+
+.product-copy p {
+    color: #d2d4e9;
+    line-height: 1.5
+}
+
+.product-meta {
+    font-size: .9rem
+}
+
+.price {
+    display: block;
+    margin: .6rem 0 1rem;
+    color: var(--yellow);
+    font-size: 1.8rem
+}
+
+.add-cart-form {
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+    margin-top: auto
+}
+
+.add-cart-form label {
+    display: grid;
+    gap: .35rem
+}
+
+.add-cart-form input {
+    width: 90px;
+    padding: .7rem;
+    border: 3px solid var(--ink)
+}
+
+.admin-note,
+.security-note {
+    font-size: .88rem;
+    color: #bbc0dc
+}
+
+.empty-state {
+    padding: 3rem;
+    text-align: center
+}
+
+.cart-layout,
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 2rem
+}
+
+.cart-list {
+    display: grid;
+    gap: 1rem
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.3rem
+}
+
+.cart-thumb {
+    height: 90px;
+    display: grid;
+    place-items: center;
+    background: #07130e;
+    font-size: 2rem
+}
+
+.cart-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.cart-actions {
+    display: grid;
+    justify-items: end;
+    gap: .7rem
+}
+
+.cart-summary {
+    height: max-content;
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
+    position: sticky;
+    top: 110px
+}
+
+.checkout-form {
+    padding: 2rem
+}
+
+.confirmation-wrap {
+    display: grid;
+    place-items: center
+}
+
+.confirmation-card {
+    width: min(850px, 100%);
+    padding: 3rem
+}
+
+.confirmation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
+
+.confirmation-row {
+    display: flex;
+    justify-content: space-between;
+    padding: .8rem 0;
+    border-bottom: 1px solid #ffffff33
+}
+
+.confirmation-total {
+    text-align: right;
+    margin: 1.5rem 0;
+    color: var(--yellow);
+    font-size: 1.6rem;
+    font-weight: 900
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
+
+.admin-product-form {
+    max-width: 850px
+}
+
+@media(max-width:900px) {
+
+    .product-grid,
+    .cart-layout,
+    .checkout-layout,
+    .confirmation-grid,
+    .form-grid {
+        grid-template-columns: 1fr
+    }
+
+    .market-heading {
+        align-items: flex-start;
+        flex-direction: column
+    }
+
+    .cart-item {
+        grid-template-columns: 1fr
+    }
+
+    .cart-actions {
+        justify-items: start
+    }
+
+    .cart-summary {
+        position: static
+    }
+
+    .search-bar {
+        align-items: stretch;
+        flex-direction: column
+    }
+}
