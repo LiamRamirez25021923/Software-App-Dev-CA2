@@ -6,6 +6,33 @@ const path = require('path');
 const pool = require('./config/db');
 const newsHub = require('./src/services/newshub.service');
 const app = express();
+/*
+const connection = mysql.createConnection({
+ host: 'c237-leonard-mysql.mysql.database.azure.com',
+ user: 'c237_007',
+ password: 'c237017@2026',
+ database: 'c237_017_team5_savepoint'
+});
+connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err);
+        return;
+    }
+    console.log('Connected to MySQL database');
+*/
+const connection = mysql.createConnection({
+ host: 'localhost',
+ user: 'root',
+ password: '',
+ database: 'c237_017_team5_savepoint'
+});
+connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err);
+        return;
+    }
+    console.log('Connected to MySQL database');
+});
 const PORT = Number(process.env.PORT) || 3001;
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
