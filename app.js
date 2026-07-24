@@ -6,34 +6,13 @@ const path = require('path');
 const pool = require('./config/db');
 const newsHub = require('./src/services/newshub.service');
 const app = express();
-/*
-const connection = mysql.createConnection({
- host: 'c237-leonard-mysql.mysql.database.azure.com',
- user: 'c237_007',
- password: 'c237017@2026',
- database: 'c237_017_team5_savepoint'
-});
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to MySQL:', err);
-        return;
-    }
-    console.log('Connected to MySQL database');
-*/
-const connection = mysql.createConnection({
- host: 'localhost',
- user: 'root',
- password: '',
- database: 'c237_017_team5_savepoint'
-});
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to MySQL:', err);
-        return;
-    }
-    console.log('Connected to MySQL database');
-});
 const PORT = Number(process.env.PORT) || 3001;
+const PROFILE_OPTIONS = Object.freeze({
+  consoleCompanies: ['Nintendo', 'PlayStation', 'Xbox', 'Sega', 'Atari', 'NEC', 'SNK', 'Computer'],
+  gameCompanies: ['Nintendo', 'Capcom', 'Square Enix', 'Sega', 'Konami', 'Namco', 'Atari', 'id Software'],
+  gameGenres: ['Action', 'Adventure', 'Fighter', 'Platformer', 'Puzzle', 'Racing', 'RPG', 'Shooter', 'Simulation', 'Sports', 'Strategy'],
+  gameConsoles: ['Atari 2600', 'NES', 'SNES', 'Nintendo 64', 'Game Boy', 'Game Boy Color', 'Game Boy Advance', 'Nintendo DS', 'Sega Genesis', 'Sega Saturn', 'Dreamcast', 'PlayStation', 'PlayStation 2', 'PSP', 'Xbox', 'MS-DOS PC']
+});
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 app.use(express.urlencoded({extended:true}));
@@ -46,6 +25,7 @@ function requireAdmin(req,res,next){if(!req.session.user)return res.redirect('/l
 async function seedAccount({username,password,displayName,email,role}){const [rows]=await pool.execute('SELECT id FROM users WHERE username=? LIMIT 1',[username]);if(rows.length)return;const hash=await bcrypt.hash(password,12);await pool.execute('INSERT INTO users (username,password_hash,display_name,email,role) VALUES (?,?,?,?,?)',[username,hash,displayName,email,role]);}
 async function initialiseDatabase(){
  await pool.query(`CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY,username VARCHAR(50) NOT NULL UNIQUE,password_hash VARCHAR(255) NOT NULL,display_name VARCHAR(100) NOT NULL,email VARCHAR(150),bio TEXT,favourite_console VARCHAR(100),role ENUM('user','admin') NOT NULL DEFAULT 'user',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
+ await ensureUserProfileColumns();
  await pool.query(`CREATE TABLE IF NOT EXISTS products (id INT AUTO_INCREMENT PRIMARY KEY,seller_user_id INT NULL,title VARCHAR(150) NOT NULL,description TEXT,category VARCHAR(80) NOT NULL,platform VARCHAR(80),price DECIMAL(10,2) NOT NULL DEFAULT 0,quantity INT NOT NULL DEFAULT 1,image_url VARCHAR(255),status ENUM('active','sold','removed') NOT NULL DEFAULT 'active',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,CONSTRAINT fk_products_seller FOREIGN KEY (seller_user_id) REFERENCES users(id) ON DELETE SET NULL)`);
  await pool.query(`CREATE TABLE IF NOT EXISTS forum_posts (id INT AUTO_INCREMENT PRIMARY KEY,author_user_id INT NULL,title VARCHAR(180) NOT NULL,body TEXT NOT NULL,status ENUM('visible','removed') NOT NULL DEFAULT 'visible',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,CONSTRAINT fk_forum_author FOREIGN KEY (author_user_id) REFERENCES users(id) ON DELETE SET NULL)`);
  await pool.query(`CREATE TABLE IF NOT EXISTS news_items (id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(200) NOT NULL,summary TEXT,source_name VARCHAR(120),source_url VARCHAR(500),published_at DATETIME,status ENUM('visible','hidden') NOT NULL DEFAULT 'visible',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
@@ -62,15 +42,129 @@ function parseSelectedNewsSources(value) {
   return String(value).split(',').map((item) => item.trim()).filter(Boolean);
 }
 
+function normaliseMultiSelect(value, allowedValues) {
+  const selected = Array.isArray(value) ? value : value ? [value] : [];
+  return [...new Set(selected.map((item) => String(item).trim()).filter((item) => allowedValues.includes(item)))];
+}
+
+function parseStoredArray(value) {
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function profileViewModel(user) {
+  return {
+    ...user,
+    consoles_owned: parseStoredArray(user.consoles_owned),
+    consoles_wanted: parseStoredArray(user.consoles_wanted)
+  };
+}
+
+async function ensureUserProfileColumns() {
+  const columns = [
+    ['favorite_console_company', 'VARCHAR(100) NULL'],
+    ['favorite_game_company', 'VARCHAR(100) NULL'],
+    ['favorite_game_genre', 'VARCHAR(100) NULL'],
+    ['favorite_game', 'VARCHAR(150) NULL'],
+    ['consoles_owned', 'TEXT NULL'],
+    ['consoles_wanted', 'TEXT NULL'],
+    ['profile_completed', 'TINYINT(1) NOT NULL DEFAULT 0']
+  ];
+
+  const [existingColumns] = await pool.query('SHOW COLUMNS FROM users');
+  const existingNames = new Set(existingColumns.map((column) => column.Field));
+
+  for (const [name, definition] of columns) {
+    if (!existingNames.has(name)) {
+      await pool.query(`ALTER TABLE users ADD COLUMN ${name} ${definition}`);
+    }
+  }
+}
+
 app.get('/',(req,res)=>res.redirect(req.session.user?'/dashboard':'/login'));
 app.get('/login',(req,res)=>{if(req.session.user)return res.redirect('/dashboard');res.render('auth',{title:'Log in',mode:'login',error:null,values:{}});});
 app.get('/signup',(req,res)=>{if(req.session.user)return res.redirect('/dashboard');res.render('auth',{title:'Create account',mode:'signup',error:null,values:{}});});
-app.post('/signup',async(req,res,next)=>{try{const username=String(req.body.username||'').trim(),displayName=String(req.body.displayName||'').trim(),email=String(req.body.email||'').trim(),password=String(req.body.password||'');if(!username||!displayName||!password)return res.status(400).render('auth',{title:'Create account',mode:'signup',error:'Username, display name and password are required.',values:{username,displayName,email}});if(username.length<3||password.length<6)return res.status(400).render('auth',{title:'Create account',mode:'signup',error:'Username must be at least 3 characters and password at least 6 characters.',values:{username,displayName,email}});const [e]=await pool.execute('SELECT id FROM users WHERE LOWER(username)=LOWER(?) LIMIT 1',[username]);if(e.length)return res.status(409).render('auth',{title:'Create account',mode:'signup',error:'That username is already taken.',values:{username,displayName,email}});const hash=await bcrypt.hash(password,12);const [r]=await pool.execute("INSERT INTO users (username,password_hash,display_name,email,role) VALUES (?,?,?,?,'user')",[username,hash,displayName,email||null]);req.session.user={id:r.insertId,username,displayName,email:email||null,role:'user'};res.redirect('/dashboard');}catch(e){next(e);}});
+app.post('/signup',async(req,res,next)=>{try{const username=String(req.body.username||'').trim(),displayName=String(req.body.displayName||'').trim(),email=String(req.body.email||'').trim(),password=String(req.body.password||'');if(!username||!displayName||!password)return res.status(400).render('auth',{title:'Create account',mode:'signup',error:'Username, display name and password are required.',values:{username,displayName,email}});if(username.length<3||password.length<6)return res.status(400).render('auth',{title:'Create account',mode:'signup',error:'Username must be at least 3 characters and password at least 6 characters.',values:{username,displayName,email}});const [e]=await pool.execute('SELECT id FROM users WHERE LOWER(username)=LOWER(?) LIMIT 1',[username]);if(e.length)return res.status(409).render('auth',{title:'Create account',mode:'signup',error:'That username is already taken.',values:{username,displayName,email}});const hash=await bcrypt.hash(password,12);const [r]=await pool.execute("INSERT INTO users (username,password_hash,display_name,email,role) VALUES (?,?,?,?,'user')",[username,hash,displayName,email||null]);req.session.user={id:r.insertId,username,displayName,email:email||null,role:'user'};res.redirect('/profile/setup');}catch(e){next(e);}});
 app.post('/login',async(req,res,next)=>{try{const username=String(req.body.username||'').trim(),password=String(req.body.password||'');const [rows]=await pool.execute('SELECT id,username,password_hash,display_name,email,role FROM users WHERE LOWER(username)=LOWER(?) LIMIT 1',[username]);if(!rows.length||!(await bcrypt.compare(password,rows[0].password_hash)))return res.status(401).render('auth',{title:'Log in',mode:'login',error:'Invalid username or password.',values:{username}});req.session.user=sessionUser(rows[0]);res.redirect('/dashboard');}catch(e){next(e);}});
 app.post('/logout',(req,res)=>req.session.destroy(()=>res.redirect('/login')));
 app.get('/dashboard',requireLogin,async(req,res,next)=>{try{const [[a]]=await pool.query("SELECT COUNT(*) total FROM products WHERE status='active'"),[[b]]=await pool.query("SELECT COUNT(*) total FROM forum_posts WHERE status='visible'"),[[c]]=await pool.query("SELECT COUNT(*) total FROM news_items WHERE status='visible'");res.render('dashboard',{title:'Dashboard',stats:{products:Number(a.total),posts:Number(b.total),news:Number(c.total)}});}catch(e){next(e);}});
-app.get('/profile',requireLogin,async(req,res,next)=>{try{const [rows]=await pool.execute('SELECT id,username,display_name,email,bio,favourite_console,role,created_at FROM users WHERE id=? LIMIT 1',[req.session.user.id]);if(!rows.length)return res.redirect('/logout');res.render('profile',{title:'Profile',profile:rows[0]});}catch(e){next(e);}});
-app.post('/profile',requireLogin,async(req,res,next)=>{try{const displayName=String(req.body.displayName||'').trim(),email=String(req.body.email||'').trim(),bio=String(req.body.bio||'').trim(),fc=String(req.body.favouriteConsole||'').trim();if(!displayName)return res.status(400).render('error',{title:'Profile error',message:'Display name cannot be empty.'});await pool.execute('UPDATE users SET display_name=?,email=?,bio=?,favourite_console=? WHERE id=?',[displayName,email||null,bio||null,fc||null,req.session.user.id]);req.session.user.displayName=displayName;res.redirect('/profile');}catch(e){next(e);}});
+app.get('/profile/setup',requireLogin,async(req,res,next)=>{try{
+ const [rows]=await pool.execute(`SELECT id,username,display_name,email,bio,favourite_console,role,created_at,
+ favorite_console_company,favorite_game_company,favorite_game_genre,favorite_game,
+ consoles_owned,consoles_wanted,profile_completed FROM users WHERE id=? LIMIT 1`,[req.session.user.id]);
+ if(!rows.length)return res.redirect('/logout');
+ res.render('profile-survey',{title:'Build User Profile',profile:profileViewModel(rows[0]),options:PROFILE_OPTIONS,error:null});
+}catch(e){next(e);}});
+
+app.post('/profile/setup',requireLogin,async(req,res,next)=>{try{
+ const favoriteConsoleCompany=String(req.body.favoriteConsoleCompany||'').trim();
+ const favoriteGameCompany=String(req.body.favoriteGameCompany||'').trim();
+ const favoriteGameGenre=String(req.body.favoriteGameGenre||'').trim();
+ const favoriteGame=String(req.body.favoriteGame||'').trim();
+ const consolesOwned=normaliseMultiSelect(req.body.consolesOwned,PROFILE_OPTIONS.gameConsoles);
+ const consolesWanted=normaliseMultiSelect(req.body.consolesWanted,PROFILE_OPTIONS.gameConsoles);
+ if(!PROFILE_OPTIONS.consoleCompanies.includes(favoriteConsoleCompany)||!PROFILE_OPTIONS.gameCompanies.includes(favoriteGameCompany)||!PROFILE_OPTIONS.gameGenres.includes(favoriteGameGenre)||!favoriteGame){
+   const [rows]=await pool.execute(`SELECT id,username,display_name,email,bio,favourite_console,role,created_at,
+   favorite_console_company,favorite_game_company,favorite_game_genre,favorite_game,
+   consoles_owned,consoles_wanted,profile_completed FROM users WHERE id=? LIMIT 1`,[req.session.user.id]);
+   return res.status(400).render('profile-survey',{title:'Build User Profile',profile:profileViewModel({...rows[0],favorite_console_company:favoriteConsoleCompany,favorite_game_company:favoriteGameCompany,favorite_game_genre:favoriteGameGenre,favorite_game:favoriteGame,consoles_owned:JSON.stringify(consolesOwned),consoles_wanted:JSON.stringify(consolesWanted)}),options:PROFILE_OPTIONS,error:'Complete all required profile questions.'});
+ }
+ await pool.execute(`UPDATE users SET favorite_console_company=?,favorite_game_company=?,favorite_game_genre=?,
+ favorite_game=?,consoles_owned=?,consoles_wanted=?,profile_completed=1 WHERE id=?`,[
+   favoriteConsoleCompany,favoriteGameCompany,favoriteGameGenre,favoriteGame,
+   JSON.stringify(consolesOwned),JSON.stringify(consolesWanted),req.session.user.id
+ ]);
+ res.redirect('/profile');
+}catch(e){next(e);}});
+
+app.get('/profile',requireLogin,async(req,res,next)=>{try{
+ const [rows]=await pool.execute(`SELECT id,username,display_name,email,bio,favourite_console,role,created_at,
+ favorite_console_company,favorite_game_company,favorite_game_genre,favorite_game,
+ consoles_owned,consoles_wanted,profile_completed FROM users WHERE id=? LIMIT 1`,[req.session.user.id]);
+ if(!rows.length)return res.redirect('/logout');
+ res.render('profile',{title:'Profile',profile:profileViewModel(rows[0]),options:PROFILE_OPTIONS});
+}catch(e){next(e);}});
+
+app.post('/profile',requireLogin,async(req,res,next)=>{try{
+ const displayName=String(req.body.displayName||'').trim();
+ const email=String(req.body.email||'').trim();
+ const bio=String(req.body.bio||'').trim();
+ const favoriteConsoleCompany=String(req.body.favoriteConsoleCompany||'').trim();
+ const favoriteGameCompany=String(req.body.favoriteGameCompany||'').trim();
+ const favoriteGameGenre=String(req.body.favoriteGameGenre||'').trim();
+ const favoriteGame=String(req.body.favoriteGame||'').trim();
+ const consolesOwned=normaliseMultiSelect(req.body.consolesOwned,PROFILE_OPTIONS.gameConsoles);
+ const consolesWanted=normaliseMultiSelect(req.body.consolesWanted,PROFILE_OPTIONS.gameConsoles);
+ if(!displayName)return res.status(400).render('error',{title:'Profile error',message:'Display name cannot be empty.'});
+ if(favoriteConsoleCompany&&!PROFILE_OPTIONS.consoleCompanies.includes(favoriteConsoleCompany))return res.status(400).render('error',{title:'Profile error',message:'Choose a valid console company.'});
+ if(favoriteGameCompany&&!PROFILE_OPTIONS.gameCompanies.includes(favoriteGameCompany))return res.status(400).render('error',{title:'Profile error',message:'Choose a valid game company.'});
+ if(favoriteGameGenre&&!PROFILE_OPTIONS.gameGenres.includes(favoriteGameGenre))return res.status(400).render('error',{title:'Profile error',message:'Choose a valid game genre.'});
+ await pool.execute(`UPDATE users SET display_name=?,email=?,bio=?,favourite_console=?,favorite_console_company=?,
+ favorite_game_company=?,favorite_game_genre=?,favorite_game=?,consoles_owned=?,consoles_wanted=?,profile_completed=1 WHERE id=?`,[
+   displayName,email||null,bio||null,consolesOwned[0]||null,favoriteConsoleCompany||null,
+   favoriteGameCompany||null,favoriteGameGenre||null,favoriteGame||null,
+   JSON.stringify(consolesOwned),JSON.stringify(consolesWanted),req.session.user.id
+ ]);
+ req.session.user.displayName=displayName;
+ res.redirect('/profile');
+}catch(e){next(e);}});
+
+app.post('/profile/password',requireLogin,async(req,res,next)=>{try{
+ const currentPassword=String(req.body.currentPassword||''),newPassword=String(req.body.newPassword||''),confirmPassword=String(req.body.confirmPassword||'');
+ if(newPassword.length<8)return res.status(400).render('error',{title:'Password error',message:'New password must contain at least 8 characters.'});
+ if(newPassword!==confirmPassword)return res.status(400).render('error',{title:'Password error',message:'New password and confirmation do not match.'});
+ const [rows]=await pool.execute('SELECT password_hash FROM users WHERE id=? LIMIT 1',[req.session.user.id]);
+ if(!rows.length||!(await bcrypt.compare(currentPassword,rows[0].password_hash)))return res.status(401).render('error',{title:'Password error',message:'Current password is incorrect.'});
+ const passwordHash=await bcrypt.hash(newPassword,12);
+ await pool.execute('UPDATE users SET password_hash=? WHERE id=?',[passwordHash,req.session.user.id]);
+ res.redirect('/profile');
+}catch(e){next(e);}});
+
 app.get('/marketplace',requireLogin,async(req,res,next)=>{try{const [rows]=await pool.query("SELECT p.*,u.username seller_username FROM products p LEFT JOIN users u ON u.id=p.seller_user_id WHERE p.status='active' ORDER BY p.created_at DESC");res.render('placeholder',{title:'Retro Marketplace',heading:'Buy and sell retro gaming gear',description:'The marketplace table and starter listing are ready.',items:rows.map(x=>({title:x.title,detail:`${x.category}${x.platform?' · '+x.platform:''} · $${Number(x.price).toFixed(2)}`}))});}catch(e){next(e);}});
 app.get('/forum',requireLogin,async(req,res,next)=>{try{const [rows]=await pool.query("SELECT f.*,u.username author_username FROM forum_posts f LEFT JOIN users u ON u.id=f.author_user_id WHERE f.status='visible' ORDER BY f.created_at DESC");res.render('placeholder',{title:'Community Forum',heading:'Discuss retro games with the community',description:'The forum table is ready for posts, comments and voting.',items:rows.map(x=>({title:x.title,detail:`Posted by ${x.author_username||'Deleted user'}`}))});}catch(e){next(e);}});
 app.get('/news',(req,res)=>res.redirect('/newshub'));
@@ -95,6 +189,16 @@ app.get('/api/newshub/monthly-report',requireLogin,async(req,res,next)=>{try{
   res.json({report:newsHub.buildMonthlyReport(parseSelectedNewsSources(req.query.sources))});
 }catch(e){next(e);}});
 app.get('/admin',requireAdmin,async(req,res,next)=>{try{const [users]=await pool.query('SELECT id,username,display_name,role,created_at FROM users ORDER BY created_at DESC'),[products]=await pool.query('SELECT id,title,status,created_at FROM products ORDER BY created_at DESC'),[posts]=await pool.query('SELECT id,title,status,created_at FROM forum_posts ORDER BY created_at DESC');res.render('admin',{title:'Admin Panel',users,products,posts});}catch(e){next(e);}});
+app.post('/admin/users/:id/role',requireAdmin,async(req,res,next)=>{try{
+ const userId=Number(req.params.id),role=String(req.body.role||'');
+ if(!Number.isInteger(userId)||userId<1)return res.status(400).render('error',{title:'Invalid user',message:'The selected user is invalid.'});
+ if(!['user','admin'].includes(role))return res.status(400).render('error',{title:'Invalid role',message:'Role must be user or admin.'});
+ if(userId===req.session.user.id)return res.status(400).render('error',{title:'Role change blocked',message:'You cannot change your own administrator role.'});
+ const [result]=await pool.execute('UPDATE users SET role=? WHERE id=?',[role,userId]);
+ if(!result.affectedRows)return res.status(404).render('error',{title:'User not found',message:'The selected user does not exist.'});
+ res.redirect('/admin');
+}catch(e){next(e);}});
+
 app.post('/admin/products/:id/delete',requireAdmin,async(req,res,next)=>{try{await pool.execute("UPDATE products SET status='removed' WHERE id=?",[Number(req.params.id)]);res.redirect('/admin');}catch(e){next(e);}});
 app.post('/admin/posts/:id/delete',requireAdmin,async(req,res,next)=>{try{await pool.execute("UPDATE forum_posts SET status='removed' WHERE id=?",[Number(req.params.id)]);res.redirect('/admin');}catch(e){next(e);}});
 app.get('/health',async(req,res)=>{try{await pool.query('SELECT 1');res.json({ok:true,database:'connected'});}catch(e){res.status(500).json({ok:false,database:'disconnected'});}});

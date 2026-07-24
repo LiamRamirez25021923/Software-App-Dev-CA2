@@ -1,0 +1,77 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<main class="content-section page-top">
+  <section class="survey-intro">
+    <p class="eyebrow">NEW PLAYER SETUP</p>
+    <h1>Build User Profile</h1>
+    <p class="lead">Tell the SavePoint community what kind of retro games and hardware you enjoy.</p>
+  </section>
+
+  <% if (error) { %>
+    <div class="alert"><%= error %></div>
+  <% } %>
+
+  <form action="/profile/setup" method="POST" class="stack-form pixel-panel survey-form">
+    <label>
+      Favorite console company?
+      <select name="favoriteConsoleCompany" required>
+        <option value="">Choose one</option>
+        <% options.consoleCompanies.forEach((company) => { %>
+          <option value="<%= company %>" <%= profile.favorite_console_company === company ? 'selected' : '' %>><%= company %></option>
+        <% }) %>
+      </select>
+    </label>
+
+    <label>
+      Favorite game company?
+      <select name="favoriteGameCompany" required>
+        <option value="">Choose one</option>
+        <% options.gameCompanies.forEach((company) => { %>
+          <option value="<%= company %>" <%= profile.favorite_game_company === company ? 'selected' : '' %>><%= company %></option>
+        <% }) %>
+      </select>
+    </label>
+
+    <label>
+      Favorite game genre?
+      <select name="favoriteGameGenre" required>
+        <option value="">Choose one</option>
+        <% options.gameGenres.forEach((genre) => { %>
+          <option value="<%= genre %>" <%= profile.favorite_game_genre === genre ? 'selected' : '' %>><%= genre %></option>
+        <% }) %>
+      </select>
+    </label>
+
+    <label>
+      Favorite game?
+      <input name="favoriteGame" maxlength="150" value="<%= profile.favorite_game || '' %>" placeholder="e.g. Chrono Trigger" required>
+    </label>
+
+    <fieldset class="choice-group">
+      <legend>What consoles do you own?</legend>
+      <div class="choice-grid">
+        <% options.gameConsoles.forEach((consoleName) => { %>
+          <label class="choice-card">
+            <input type="checkbox" name="consolesOwned" value="<%= consoleName %>" <%= profile.consoles_owned.includes(consoleName) ? 'checked' : '' %>>
+            <span><%= consoleName %></span>
+          </label>
+        <% }) %>
+      </div>
+    </fieldset>
+
+    <fieldset class="choice-group">
+      <legend>Eyeing any consoles?</legend>
+      <div class="choice-grid">
+        <% options.gameConsoles.forEach((consoleName) => { %>
+          <label class="choice-card">
+            <input type="checkbox" name="consolesWanted" value="<%= consoleName %>" <%= profile.consoles_wanted.includes(consoleName) ? 'checked' : '' %>>
+            <span><%= consoleName %></span>
+          </label>
+        <% }) %>
+      </div>
+    </fieldset>
+
+    <button class="primary-button" type="submit">Save Player Profile</button>
+  </form>
+</main>
+<%- include('partials/footer') %>
