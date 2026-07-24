@@ -103,11 +103,13 @@ app.get('/api/newshub/daily-report',requireLogin,async(req,res,next)=>{try{
   else await newsHub.refreshArticles();
   res.json({report:newsHub.buildDailyReport(parseSelectedNewsSources(req.query.sources))});
 }catch(e){next(e);}});
+
 app.get('/api/newshub/monthly-report',requireLogin,async(req,res,next)=>{try{
   if(req.query.force==='1') await newsHub.refreshArticles({force:true});
   else await newsHub.refreshArticles();
   res.json({report:newsHub.buildMonthlyReport(parseSelectedNewsSources(req.query.sources))});
 }catch(e){next(e);}});
+
 app.get('/admin',requireAdmin,async(req,res,next)=>{try{const [users]=await pool.query('SELECT id,username,display_name,role,created_at FROM users ORDER BY created_at DESC'),[products]=await pool.query('SELECT id,title,status,created_at FROM products ORDER BY created_at DESC'),[posts]=await pool.query('SELECT id,title,status,created_at FROM forum_posts ORDER BY created_at DESC'),[contactMessages]=await pool.query('SELECT id,sender_name,sender_email,subject,message,status,created_at FROM contact_messages ORDER BY created_at DESC');res.render('admin',{title:'Admin Panel',users,products,posts,contactMessages});}catch(e){next(e);}});
 app.post('/admin/products/:id/delete',requireAdmin,async(req,res,next)=>{try{await pool.execute("UPDATE products SET status='removed' WHERE id=?",[Number(req.params.id)]);res.redirect('/admin');}catch(e){next(e);}});
 app.post('/admin/posts/:id/delete',requireAdmin,async(req,res,next)=>{try{await pool.execute("UPDATE forum_posts SET status='removed' WHERE id=?",[Number(req.params.id)]);res.redirect('/admin');}catch(e){next(e);}});
