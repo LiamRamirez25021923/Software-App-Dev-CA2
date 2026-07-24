@@ -1,6 +1,31 @@
 create database if not exists c237_017_team5_savepoint;
 use c237_017_team5_savepoint;
 
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  display_name VARCHAR(100),
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  profile_image TEXT DEFAULT 'default_profile.png',
+  banner_image TEXT DEFAULT 'default_banner.png',
+  role ENUM('admin','user') NOT NULL DEFAULT 'user',
+  bio TEXT,
+  favourite_console VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  sender_name VARCHAR(100) NOT NULL,
+  sender_email VARCHAR(150) NOT NULL,
+  subject VARCHAR(180) DEFAULT 'General enquiry',
+  message TEXT NOT NULL,
+  recipient_email VARCHAR(150) DEFAULT 'support@savepoint.com',
+  status ENUM('new','read','resolved') NOT NULL DEFAULT 'new',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS products (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,

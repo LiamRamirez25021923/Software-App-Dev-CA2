@@ -1,162 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact SavePoint</title>
-    <style>
-      :root {
-        --primary: #1f4d3d;
-        --accent: #2f8f6b;
-        --bg: #f5f9f7;
-        --text: #233127;
-      }
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<main class="content-section page-top">
+  <p class="eyebrow">CONTACT US</p>
+  <h1>Contact SavePoint</h1>
+  <p class="page-intro">Need help, want to share feedback, or have a question about SavePoint? Send a message to our support inbox and we will review it directly.</p>
 
-      * {
-        box-sizing: border-box;
-      }
+  <% if (success) { %>
+    <div class="alert success"><%= success %></div>
+  <% } %>
+  <% if (error) { %>
+    <div class="alert"><%= error %></div>
+  <% } %>
 
-      body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 40px 20px;
-      }
-
-      .hero {
-        text-align: center;
-        padding: 40px 0 20px;
-      }
-
-      .hero h1 {
-        margin: 0 0 10px;
-        color: var(--primary);
-        font-size: 2.2rem;
-      }
-
-      .hero p {
-        margin: 0 auto;
-        max-width: 700px;
-        font-size: 1rem;
-      }
-
-      .content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin-top: 30px;
-      }
-
-      .card {
-        background: #fff;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 8px 24px rgba(31, 77, 61, 0.08);
-      }
-
-      .card h2 {
-        margin-top: 0;
-        color: var(--primary);
-      }
-
-      .info-list {
-        list-style: none;
-        padding: 0;
-        margin: 16px 0 0;
-      }
-
-      .info-list li {
-        margin-bottom: 10px;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      label {
-        font-weight: bold;
-      }
-
-      input,
-      textarea,
-      button {
-        width: 100%;
-        padding: 12px 14px;
-        border: 1px solid #d9e3de;
-        border-radius: 8px;
-        font-size: 1rem;
-      }
-
-      textarea {
-        min-height: 120px;
-        resize: vertical;
-      }
-
-      button {
-        background: var(--accent);
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-      }
-
-      button:hover {
-        background: var(--primary);
-      }
-
-      @media (max-width: 768px) {
-        .content {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <section class="hero">
-        <h1>Contact SavePoint</h1>
-        <p>
-          Need help, want to share feedback, or have a question about SavePoint?
-          Reach out to us and we'll be happy to assist.
-        </p>
-      </section>
-
-      <section class="content">
-        <div class="card">
-          <h2>Get in touch</h2>
-          <ul class="info-list">
-            <li><strong>Email:</strong> support@savepoint.com</li>
-            <li><strong>Phone:</strong> +60 12 345 6789</li>
-            <li><strong>Address:</strong> 88 Jalan Merdeka, Kuala Lumpur</li>
-            <li><strong>Hours:</strong> Monday to Friday, 9:00 AM – 6:00 PM</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Send us a message</h2>
-          <form>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required />
-
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Your email" required />
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
-
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </section>
+  <section class="content-grid two-up">
+    <div class="pixel-panel card-panel">
+      <h2>Get in touch</h2>
+      <ul class="info-list">
+        <li><strong>Email:</strong> support@savepoint.com</li>
+        <li><strong>Inbox:</strong> SavePoint support mailbox</li>
+        <li><strong>Hours:</strong> Monday to Friday, 9:00 AM – 6:00 PM</li>
+      </ul>
     </div>
-  </body>
-</html>
+
+    <div class="pixel-panel card-panel">
+      <h2>Send us a message</h2>
+      <form action="/contact" method="POST" class="stack-form">
+        <label>Name<input name="name" type="text" placeholder="Your name" required></label>
+        <label>Email<input name="email" type="email" placeholder="Your email" required></label>
+        <label>Subject<input name="subject" type="text" placeholder="What is this about?"></label>
+        <label>Message<textarea name="message" rows="6" placeholder="How can we help?" required></textarea></label>
+        <button class="primary-button" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+</main>
+<%- include('partials/footer') %>

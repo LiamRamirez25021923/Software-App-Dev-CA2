@@ -17,22 +17,38 @@
                 </div>
             </div>
         </div>
-        <form action="/profile" method="POST" class="stack-form pixel-panel profile-form">
+        <form action="/profile" method="POST" enctype="multipart/form-data" class="stack-form pixel-panel profile-form">
             <label>
                 Username
                 <input name="username" value="<%= profile.username||'' %>" required>
             </label>
             <label>
-                Profile picture URL
-                <input type="url" name="profileImage" value="<%= profile.profile_image||'' %>" placeholder="https://example.com/avatar.png">
+                Display name
+                <input name="displayName" value="<%= profile.display_name||profile.username||'' %>">
             </label>
             <label>
-                Profile banner URL
-                <input type="url" name="bannerImage" value="<%= profile.banner_image||'' %>" placeholder="https://example.com/banner.jpg">
+                Profile picture
+                <input type="file" name="profileImage" accept="image/*">
+            </label>
+            <label>
+                Profile banner
+                <input type="file" name="bannerImage" accept="image/*">
+            </label>
+            <label>
+                Current profile picture URL
+                <input type="url" name="profileImageUrl" value="<%= profile.profile_image||'' %>" placeholder="https://example.com/avatar.png">
+            </label>
+            <label>
+                Current banner URL
+                <input type="url" name="bannerImageUrl" value="<%= profile.banner_image||'' %>" placeholder="https://example.com/banner.jpg">
             </label>
             <label>
                 Email
                 <input type="email" name="email" value="<%= profile.email||'' %>">
+            </label>
+            <label>
+                New password
+                <input type="password" name="password" placeholder="Leave blank to keep current password">
             </label>
             <label>
                 Favourite console

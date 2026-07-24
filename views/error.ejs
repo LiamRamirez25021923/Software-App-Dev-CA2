@@ -1,1 +1,11 @@
-<%- include('partials/header') %><%- include('partials/nav') %><main class="error-page"><section class="pixel-panel error-card"><p class="eyebrow">GAME OVER?</p><h1><%= title %></h1><p><%= message %></p><a class="primary-button" href="<%= currentUser?'/dashboard':'/login' %>">Return to SavePoint</a></section></main><%- include('partials/footer') %>
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<main class="error-page">
+    <section class="pixel-panel error-card">
+        <p class="eyebrow">GAME OVER?</p><h1>
+            <%= title %></h1><p><%= message %>
+            </p>
+            <a class="primary-button" href="<%= currentUser?'/dashboard':'/login' %>">Return to SavePoint</a>
+        </section>
+    </main>
+    <%- include('partials/footer') %>
