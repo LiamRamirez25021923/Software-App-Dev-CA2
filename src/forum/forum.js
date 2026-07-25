@@ -35,7 +35,7 @@ function getYouTubeEmbedUrl(value) {
     return null;
 }
 
-function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
+function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot, saveMediaAsset }) {
     const router = express.Router();
 
     // Make the safe YouTube URL parser available to every forum EJS template.
@@ -43,22 +43,12 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
         res.locals.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         next();
     });
-    const uploadDirectory = path.join(projectRoot, 'public', 'images', 'forum');
-    fs.mkdirSync(uploadDirectory, { recursive: true });
-
     const upload = multer({
-        storage: multer.diskStorage({
-            destination: (req, file, cb) => cb(null, uploadDirectory),
-            filename: (req, file, cb) => {
-                const safeName = path.basename(file.originalname)
-                    .replace(/[^a-zA-Z0-9._-]/g, '_');
-                cb(null, `${Date.now()}-${safeName}`);
-            }
-        }),
-        limits: { fileSize: 5 * 1024 * 1024 },
+        storage: multer.memoryStorage(),
+        limits: { fileSize: 8 * 1024 * 1024 },
         fileFilter: (req, file, cb) => {
-            if (!file.mimetype.startsWith('image/')) {
-                return cb(new Error('Forum uploads must be image files.'));
+            if (!file.mimetype.startsWith('image/') && !file.mimetype.startsWith('video/')) {
+                return cb(new Error('Forum uploads must be image or video files.'));
             }
             cb(null, true);
         }
@@ -114,6 +104,7 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
         const additions = [
             ['community_id', 'INT NULL'],
             ['image_url', 'VARCHAR(255) NULL'],
+            ['video_url', 'VARCHAR(255) NULL'],
             ['updated_at', 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']
         ];
         for (const [column, definition] of additions) {
@@ -141,6 +132,17 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 PRIMARY KEY (post_id, user_id)
+            )
+        `);
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS forum_comment_votes (
+                comment_id INT NOT NULL,
+                user_id INT NOT NULL,
+                vote_value TINYINT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                PRIMARY KEY (comment_id, user_id)
             )
         `);
 
@@ -341,16 +343,22 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
             const [recentPosts] = await pool.execute(
                 `SELECT fp.id, fp.title, fp.body, fp.created_at,
                         c.name AS community_name, c.slug AS community_slug,
-                        u.username AS author_username,
-                        COALESCE(SUM(fv.vote_value),0) AS score,
-                        COUNT(DISTINCT fc.id) AS comment_count
+                        u.username AS author_username, u.id AS author_user_id,
+                        u.profile_image AS author_profile_image,
+                        COALESCE((
+                            SELECT SUM(fv.vote_value)
+                            FROM forum_votes fv
+                            WHERE fv.post_id=fp.id
+                        ), 0) AS score,
+                        (
+                            SELECT COUNT(*)
+                            FROM forum_comments fc
+                            WHERE fc.post_id=fp.id AND fc.status='visible'
+                        ) AS comment_count
                  FROM forum_posts fp
                  JOIN communities c ON c.id=fp.community_id
                  JOIN users u ON u.id=fp.author_user_id
-                 LEFT JOIN forum_votes fv ON fv.post_id=fp.id
-                 LEFT JOIN forum_comments fc ON fc.post_id=fp.id AND fc.status='visible'
                  WHERE fp.status='visible' AND c.status!='removed'
-                 GROUP BY fp.id
                  ORDER BY fp.created_at DESC
                  LIMIT 10`
             );
@@ -420,16 +428,27 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
             }
             const access = await getAccess(req.session.user, community.id);
             const [posts] = await pool.execute(
-                `SELECT fp.*, u.username AS author_username,
-                        COALESCE(SUM(fv.vote_value),0) AS score,
-                        COUNT(DISTINCT fc.id) AS comment_count,
-                        MAX(CASE WHEN fv.user_id=? THEN fv.vote_value ELSE 0 END) AS current_vote
+                `SELECT fp.*, u.username AS author_username, u.id AS author_user_id,
+                        u.profile_image AS author_profile_image,
+                        COALESCE((
+                            SELECT SUM(fv.vote_value)
+                            FROM forum_votes fv
+                            WHERE fv.post_id=fp.id
+                        ), 0) AS score,
+                        (
+                            SELECT COUNT(*)
+                            FROM forum_comments fc
+                            WHERE fc.post_id=fp.id AND fc.status='visible'
+                        ) AS comment_count,
+                        COALESCE((
+                            SELECT fv.vote_value
+                            FROM forum_votes fv
+                            WHERE fv.post_id=fp.id AND fv.user_id=?
+                            LIMIT 1
+                        ), 0) AS current_vote
                  FROM forum_posts fp
                  JOIN users u ON u.id=fp.author_user_id
-                 LEFT JOIN forum_votes fv ON fv.post_id=fp.id
-                 LEFT JOIN forum_comments fc ON fc.post_id=fp.id AND fc.status='visible'
                  WHERE fp.community_id=? AND fp.status='visible'
-                 GROUP BY fp.id
                  ORDER BY fp.created_at DESC`,
                 [req.session.user.id, community.id]
             );
@@ -509,7 +528,7 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
     router.post(
         '/forum/communities/:slug/posts',
         requireLogin,
-        upload.single('image'),
+        upload.fields([{ name: 'image', maxCount: 1 }, { name: 'video', maxCount: 1 }]),
         async (req, res, next) => {
             try {
                 const community = await getCommunityBySlug(req.params.slug);
@@ -529,11 +548,20 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
                         message: 'Posts need a title and body.'
                     });
                 }
+                const imageFile = req.files?.image?.[0] || null;
+                const videoFile = req.files?.video?.[0] || null;
+                const imageUrl = imageFile
+                    ? await saveMediaAsset(imageFile, req.session.user.id, 'image')
+                    : null;
+                const videoUrl = videoFile
+                    ? await saveMediaAsset(videoFile, req.session.user.id, 'video')
+                    : null;
+
                 const [result] = await pool.execute(
                     `INSERT INTO forum_posts
-                     (community_id, author_user_id, title, body, image_url, status)
-                     VALUES (?, ?, ?, ?, ?, 'visible')`,
-                    [community.id, req.session.user.id, title, body, req.file?.filename || null]
+                     (community_id, author_user_id, title, body, image_url, video_url, status)
+                     VALUES (?, ?, ?, ?, ?, ?, 'visible')`,
+                    [community.id, req.session.user.id, title, body, imageUrl, videoUrl]
                 );
                 await notifyCommunityMembers(
                     community.id,
@@ -554,6 +582,7 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
             const [posts] = await pool.execute(
                 `SELECT fp.*, c.name AS community_name, c.slug AS community_slug,
                         c.owner_user_id, u.username AS author_username,
+                        u.id AS author_user_id, u.profile_image AS author_profile_image,
                         COALESCE(SUM(fv.vote_value),0) AS score,
                         MAX(CASE WHEN fv.user_id=? THEN fv.vote_value ELSE 0 END) AS current_vote
                  FROM forum_posts fp
@@ -573,12 +602,17 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
             const post = posts[0];
             const access = await getAccess(req.session.user, post.community_id);
             const [comments] = await pool.execute(
-                `SELECT fc.*, u.username AS author_username
+                `SELECT fc.*, u.username AS author_username,
+                        u.id AS author_user_id, u.profile_image AS author_profile_image,
+                        COALESCE(SUM(cv.vote_value), 0) AS score,
+                        MAX(CASE WHEN cv.user_id=? THEN cv.vote_value ELSE 0 END) AS current_vote
                  FROM forum_comments fc
                  JOIN users u ON u.id=fc.author_user_id
+                 LEFT JOIN forum_comment_votes cv ON cv.comment_id=fc.id
                  WHERE fc.post_id=? AND fc.status='visible'
+                 GROUP BY fc.id
                  ORDER BY fc.created_at ASC`,
-                [postId]
+                [req.session.user.id, postId]
             );
             res.render('forum/post', { title: post.title, post, comments, access });
         } catch (error) {
@@ -611,10 +645,11 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
                 ? Number(existingVotes[0].vote_value)
                 : 0;
 
-            // Clicking the currently selected arrow again removes the vote.
-            const shouldRemoveVote = vote === 0 || previousVote === vote;
-
-            if (shouldRemoveVote) {
+            // Each button press changes the displayed score by exactly one.
+            // When changing direction, the first press clears the opposite vote;
+            // a second press applies the new vote. This prevents -1 -> +1 from
+            // jumping the score by two points in a single click.
+            if (vote === 0 || previousVote === vote || previousVote === -vote) {
                 await pool.execute(
                     'DELETE FROM forum_votes WHERE post_id=? AND user_id=?',
                     [postId, req.session.user.id]
@@ -629,7 +664,6 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
                     [postId, req.session.user.id, vote, vote]
                 );
 
-                // Notify only when a new/different vote is applied.
                 if (Number(posts[0].author_user_id) !== Number(req.session.user.id)) {
                     await notifyUser(
                         posts[0].author_user_id,
@@ -679,6 +713,56 @@ function createForumFeature({ pool, requireLogin, requireAdmin, projectRoot }) {
             res.redirect(`/forum/posts/${postId}`);
         } catch (error) {
             next(error);
+        }
+    });
+
+    router.post('/forum/comments/:id/vote', requireLogin, async (req, res, next) => {
+        try {
+            const commentId = Number(req.params.id);
+            const vote = Number(req.body.vote);
+            if (!Number.isInteger(commentId) || ![1, -1].includes(vote)) {
+                return res.status(400).send('Invalid comment vote');
+            }
+
+            const [comments] = await pool.execute(
+                `SELECT fc.id, fc.author_user_id, fp.id AS post_id, fp.community_id
+                 FROM forum_comments fc
+                 JOIN forum_posts fp ON fp.id=fc.post_id
+                 WHERE fc.id=? AND fc.status='visible' AND fp.status='visible'
+                 LIMIT 1`,
+                [commentId]
+            );
+            if (!comments.length) return res.status(404).send('Comment not found');
+
+            const access = await getAccess(req.session.user, comments[0].community_id);
+            if (!access.isMember || !access.can_vote) return res.status(403).send('Voting denied');
+
+            const [existing] = await pool.execute(
+                `SELECT vote_value FROM forum_comment_votes
+                 WHERE comment_id=? AND user_id=? LIMIT 1`,
+                [commentId, req.session.user.id]
+            );
+            const previous = existing.length ? Number(existing[0].vote_value) : 0;
+
+            // Keep comment voting consistent with post voting: one click
+            // changes the score by one. An opposite vote is cleared first.
+            if (previous === vote || previous === -vote) {
+                await pool.execute(
+                    'DELETE FROM forum_comment_votes WHERE comment_id=? AND user_id=?',
+                    [commentId, req.session.user.id]
+                );
+            } else {
+                await pool.execute(
+                    `INSERT INTO forum_comment_votes (comment_id, user_id, vote_value)
+                     VALUES (?, ?, ?)
+                     ON DUPLICATE KEY UPDATE vote_value=?, updated_at=CURRENT_TIMESTAMP`,
+                    [commentId, req.session.user.id, vote, vote]
+                );
+            }
+
+            return res.redirect(req.get('referer') || `/forum/posts/${comments[0].post_id}`);
+        } catch (error) {
+            return next(error);
         }
     });
 

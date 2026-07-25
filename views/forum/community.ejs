@@ -30,6 +30,7 @@
         <label>Post title<input name="title" maxlength="180" required></label>
         <label>Body<textarea name="body" rows="6" required></textarea></label>
         <label>Optional image<input type="file" name="image" accept="image/*"></label>
+        <label>Optional video<input type="file" name="video" accept="video/*"><small>MP4, WebM, or another browser-supported format; maximum 8 MB.</small></label>
         <button class="primary-button" type="submit">Upload Post</button>
       </form>
     </details>
@@ -47,7 +48,11 @@
           <form method="POST" action="/forum/posts/<%= post.id %>/vote"><input type="hidden" name="vote" value="-1"><button class="vote-button <%= Number(post.current_vote) === -1 ? 'selected' : '' %>">▼</button></form>
         </div>
         <div class="forum-post-content">
-          <small>Posted by <%= post.author_username %> · <%= new Date(post.created_at).toLocaleString() %></small>
+          <div class="forum-author-line">
+            <% const postAvatar = post.author_profile_image ? (post.author_profile_image.startsWith('/') ? post.author_profile_image : `/images/${post.author_profile_image}`) : '/icons/icon-192.png'; %>
+            <a href="/users/<%= post.author_user_id %>" class="forum-avatar-link"><img class="forum-avatar" src="<%= postAvatar %>" alt="<%= post.author_username %>'s profile picture"></a>
+            <small>Posted by <a href="/users/<%= post.author_user_id %>"><%= post.author_username %></a> · <%= new Date(post.created_at).toLocaleString() %></small>
+          </div>
           <h2><a href="/forum/posts/<%= post.id %>"><%= post.title %></a></h2>
           <% if (post.body.length > 320) { %>
             <details class="forum-post-expander">
@@ -61,7 +66,8 @@
           <% } else { %>
             <p><%= post.body %></p>
           <% } %>
-          <% if (post.image_url) { %><img class="forum-post-image" src="/images/forum/<%= post.image_url %>" alt="Image attached to <%= post.title %>"><% } %>
+          <% if (post.image_url) { %><img class="forum-post-image" src="<%= post.image_url.startsWith('/') ? post.image_url : '/images/forum/' + post.image_url %>" alt="Image attached to <%= post.title %>"><% } %>
+          <% if (post.video_url) { %><video class="forum-uploaded-video" controls preload="metadata"><source src="<%= post.video_url %>">Your browser does not support this uploaded video.</video><% } %>
           <% const youtubeEmbedUrl = getYouTubeEmbedUrl(post.body); %>
           <% if (youtubeEmbedUrl) { %>
             <div class="forum-video-embed">

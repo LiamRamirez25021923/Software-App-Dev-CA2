@@ -14,27 +14,14 @@ const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 const fs = require('fs');
 
-// Lesson 18-style product image uploads.
-const imageDirectory = path.join(__dirname, 'public', 'images');
-if (!fs.existsSync(imageDirectory)) {
-    fs.mkdirSync(imageDirectory, {
-        recursive: true
-    });
-}
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, imageDirectory),
-    filename: (req, file, cb) => {
-        const safeOriginalName = path.basename(file.originalname).replace(/[^a-zA-Z0-9._-]/g, '_');
-        cb(null, `${Date.now()}-${safeOriginalName}`);
-    }
-});
+// User-uploaded media is held in memory briefly, then saved inside MySQL.
+// This makes uploads survive Render restarts and redeployments.
 const upload = multer({
-    storage,
-    limits: { fileSize: 5 * 1024 * 1024 },
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 8 * 1024 * 1024 },
     fileFilter: (req, file, cb) => {
         if (!file.mimetype.startsWith('image/')) {
-            return cb(new Error('Only image files can be uploaded.'));
+            return cb(new Error('Only image files can be uploaded here.'));
         }
         cb(null, true);
     }
@@ -44,6 +31,111 @@ const profileUpload = upload.fields([
     { name: 'profileImage', maxCount: 1 },
     { name: 'bannerImage', maxCount: 1 }
 ]);
+
+async function ensureMediaStorage() {
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS media_assets (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            owner_user_id INT NULL,
+            media_kind ENUM('image','video') NOT NULL,
+            mime_type VARCHAR(120) NOT NULL,
+            original_name VARCHAR(255) NULL,
+            byte_size INT NOT NULL,
+            media_data LONGBLOB NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_media_owner (owner_user_id),
+            INDEX idx_media_kind (media_kind)
+        )
+    `);
+}
+
+
+async function ensureCartStorage() {
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS user_cart_items (
+            user_id INT NOT NULL,
+            product_id INT NOT NULL,
+            quantity INT NOT NULL DEFAULT 1,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (user_id, product_id),
+            INDEX idx_cart_user (user_id),
+            INDEX idx_cart_product (product_id)
+        )
+    `);
+}
+
+async function loadPersistentCart(userId) {
+    const [rows] = await pool.execute(
+        `SELECT product_id, quantity
+         FROM user_cart_items
+         WHERE user_id=?`,
+        [userId]
+    );
+
+    const cart = {};
+    for (const row of rows) {
+        const productId = Number(row.product_id);
+        const quantity = Number(row.quantity);
+        if (
+            Number.isInteger(productId) &&
+            productId > 0 &&
+            Number.isInteger(quantity) &&
+            quantity > 0
+        ) {
+            cart[productId] = quantity;
+        }
+    }
+
+    return cart;
+}
+
+async function savePersistentCartItem(userId, productId, quantity) {
+    if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(productId))) {
+        throw new Error('A valid user and product are required to save a cart item.');
+    }
+
+    const safeQuantity = Number(quantity);
+
+    if (!Number.isInteger(safeQuantity) || safeQuantity <= 0) {
+        await pool.execute(
+            `DELETE FROM user_cart_items
+             WHERE user_id=? AND product_id=?`,
+            [userId, productId]
+        );
+        return;
+    }
+
+    await pool.execute(
+        `INSERT INTO user_cart_items (user_id, product_id, quantity)
+         VALUES (?, ?, ?)
+         ON DUPLICATE KEY UPDATE
+            quantity=VALUES(quantity),
+            updated_at=CURRENT_TIMESTAMP`,
+        [userId, productId, safeQuantity]
+    );
+}
+
+async function clearPersistentCart(userId, connection = pool) {
+    await connection.execute(
+        'DELETE FROM user_cart_items WHERE user_id=?',
+        [userId]
+    );
+}
+
+async function saveMediaAsset(file, ownerUserId, mediaKind = null) {
+    if (!file?.buffer) return null;
+
+    const kind = mediaKind || (file.mimetype.startsWith('video/') ? 'video' : 'image');
+    const [result] = await pool.execute(
+        `INSERT INTO media_assets
+         (owner_user_id, media_kind, mime_type, original_name, byte_size, media_data)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+        [ownerUserId || null, kind, file.mimetype, file.originalname || null, file.size, file.buffer]
+    );
+
+    return `/media/${result.insertId}`;
+}
 
 // Detect the existing products-table column names.
 // This project's database uses id, name and image.
@@ -164,6 +256,29 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
+app.get('/media/:id', async (req, res, next) => {
+    try {
+        const mediaId = Number(req.params.id);
+        if (!Number.isInteger(mediaId) || mediaId < 1) return res.sendStatus(404);
+
+        const [rows] = await pool.execute(
+            `SELECT mime_type, byte_size, media_data
+             FROM media_assets
+             WHERE id=? LIMIT 1`,
+            [mediaId]
+        );
+        if (!rows.length) return res.sendStatus(404);
+
+        const media = rows[0];
+        res.setHeader('Content-Type', media.mime_type);
+        res.setHeader('Content-Length', String(media.byte_size));
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        return res.end(media.media_data);
+    } catch (error) {
+        return next(error);
+    }
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ secret: process.env.SESSION_SECRET || 'development-only-change-me', resave: false, saveUninitialized: false, cookie: { httpOnly: true, secure: false, sameSite: 'lax', maxAge: 86400000 } }));
@@ -198,7 +313,8 @@ const forumFeature = createForumFeature({
     pool,
     requireLogin,
     requireAdmin,
-    projectRoot: __dirname
+    projectRoot: __dirname,
+    saveMediaAsset
 });
 
 function requireRegularUser(req, res, next) {
@@ -367,6 +483,8 @@ async function seedAccount({ username, password, email, role }) {
 
 async function initialiseDatabase() {
     await ensureUsersTableSchema();
+    await ensureMediaStorage();
+    await ensureCartStorage();
 
     await pool.query(`
         CREATE TABLE IF NOT EXISTS products (
@@ -555,6 +673,7 @@ app.post('/signup', async (req, res, next) => {
             email: normalizedEmail,
             role: 'user'
         };
+        req.session.cart = await loadPersistentCart(result.insertId);
         res.redirect('/profile?welcome=1');
     } catch (error) {
         next(error);
@@ -599,6 +718,7 @@ app.post('/login', async (req, res, next) => {
         }
 
         req.session.user = sessionUser(rows[0]);
+        req.session.cart = await loadPersistentCart(rows[0].id);
         return res.redirect('/dashboard');
     } catch (error) {
         return next(error);
@@ -624,6 +744,29 @@ app.get('/dashboard', requireLogin, async (req, res, next) => {
         });
     } catch (error) {
         next(error);
+    }
+});
+
+app.get('/users/:id', requireLogin, async (req, res, next) => {
+    try {
+        const userId = Number(req.params.id);
+        if (!Number.isInteger(userId) || userId < 1) {
+            return res.status(404).render('error', { title: 'Player not found', message: 'That SavePoint player does not exist.' });
+        }
+        const [rows] = await pool.execute(
+            `SELECT id, username, bio, favourite_console,
+                    favorite_game_company, favorite_game_genre, favorite_game,
+                    consoles_owned, consoles_wanted, profile_image, banner_image,
+                    role, created_at
+             FROM users WHERE id=? LIMIT 1`,
+            [userId]
+        );
+        if (!rows.length) {
+            return res.status(404).render('error', { title: 'Player not found', message: 'That SavePoint player does not exist.' });
+        }
+        return res.render('userProfile', { title: rows[0].username, profile: rows[0] });
+    } catch (error) {
+        return next(error);
     }
 });
 
@@ -662,10 +805,10 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
         const uploadedProfileImage = req.files?.profileImage?.[0];
         const uploadedBannerImage = req.files?.bannerImage?.[0];
         const profileImage = uploadedProfileImage
-            ? `/images/${uploadedProfileImage.filename}`
+            ? await saveMediaAsset(uploadedProfileImage, req.session.user.id, 'image')
             : String(req.body.profileImageUrl || req.body.profileImage || '').trim();
         const bannerImage = uploadedBannerImage
-            ? `/images/${uploadedBannerImage.filename}`
+            ? await saveMediaAsset(uploadedBannerImage, req.session.user.id, 'image')
             : String(req.body.bannerImageUrl || req.body.bannerImage || '').trim();
 
         if (!username) {
@@ -795,7 +938,9 @@ async function createMarketplaceProduct(req, res, next) {
         const platform = String(req.body.platform || '').trim();
         const price = Number(req.body.price);
         const quantity = Number.parseInt(req.body.quantity, 10);
-        const image = req.file ? req.file.filename : null;
+        const image = req.file
+            ? await saveMediaAsset(req.file, req.session.user.id, 'image')
+            : null;
 
         if (!title || !category || !Number.isFinite(price) || price <= 0 || !Number.isInteger(quantity) || quantity < 0) {
             return res.status(400).render('error', {
@@ -866,7 +1011,7 @@ app.post('/marketplace/products/:id/edit', requireAdmin, upload.single('image'),
         }
 
         const image = req.file
-            ? req.file.filename
+            ? await saveMediaAsset(req.file, req.session.user.id, 'image')
             : existingRows[0].image_url;
 
         await pool.execute(
@@ -938,7 +1083,7 @@ async function permanentlyDeleteMarketplaceProduct(req, res, next) {
         }
 
         // Delete an uploaded image only when no other product references it.
-        if (imageFileName) {
+        if (imageFileName && !String(imageFileName).startsWith('/media/')) {
             const [imageReferences] = await pool.execute(
                 `SELECT COUNT(*) AS total
                  FROM products
@@ -1037,6 +1182,11 @@ app.post('/cart/add/:id', requireRegularUser, async (req, res, next) => {
         }
 
         req.session.cart[productId] = existing + quantity;
+        await savePersistentCartItem(
+            req.session.user.id,
+            productId,
+            req.session.cart[productId]
+        );
         req.session.marketplaceMessage = `${product.title} was added to your cart.`;
         res.redirect('/marketplace');
     } catch (e) { next(e); }
@@ -1079,20 +1229,42 @@ app.get('/cart', requireRegularUser, async (req, res, next) => {
     } catch (e) { next(e); }
 });
 
-app.post('/cart/:id/decrease', requireRegularUser, (req, res) => {
-    const id = Number(req.params.id);
-    req.session.cart = req.session.cart || {};
-    if (req.session.cart[id]) {
-        req.session.cart[id] -= 1;
-        if (req.session.cart[id] <= 0) delete req.session.cart[id];
+app.post('/cart/:id/decrease', requireRegularUser, async (req, res, next) => {
+    try {
+        const id = Number(req.params.id);
+        req.session.cart = req.session.cart || {};
+
+        if (req.session.cart[id]) {
+            req.session.cart[id] -= 1;
+
+            if (req.session.cart[id] <= 0) {
+                delete req.session.cart[id];
+                await savePersistentCartItem(req.session.user.id, id, 0);
+            } else {
+                await savePersistentCartItem(
+                    req.session.user.id,
+                    id,
+                    req.session.cart[id]
+                );
+            }
+        }
+
+        return res.redirect('/cart');
+    } catch (error) {
+        return next(error);
     }
-    res.redirect('/cart');
 });
 
-app.post('/cart/:id/remove', requireRegularUser, (req, res) => {
-    req.session.cart = req.session.cart || {};
-    delete req.session.cart[Number(req.params.id)];
-    res.redirect('/cart');
+app.post('/cart/:id/remove', requireRegularUser, async (req, res, next) => {
+    try {
+        const productId = Number(req.params.id);
+        req.session.cart = req.session.cart || {};
+        delete req.session.cart[productId];
+        await savePersistentCartItem(req.session.user.id, productId, 0);
+        return res.redirect('/cart');
+    } catch (error) {
+        return next(error);
+    }
 });
 
 app.get('/purchase', requireRegularUser, async (req, res, next) => {
@@ -1212,6 +1384,8 @@ app.post('/purchase', requireRegularUser, async (req, res, next) => {
                 ]
             );
         }
+
+        await clearPersistentCart(req.session.user.id, connection);
 
         await connection.commit();
         transactionStarted = false;
