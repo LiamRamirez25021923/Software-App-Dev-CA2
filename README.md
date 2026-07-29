@@ -55,3 +55,44 @@ Included:
 - NewsHub, profile, admin controls and SavePoint app icon preserved
 
 Run `npm install` after extracting so the Multer dependency is installed.
+
+## Community Forum implementation
+
+The Forum now supports communities, searching, joining/leaving, image posts, comments, upvotes/downvotes, notifications and community-specific RBAC.
+
+Community owners receive permanent Owner authority and cannot be kicked, banned or assigned another role. Owners can create roles with toggleable permissions, assign roles, appoint Co-Owners, moderate posts and members, and transfer ownership. SavePoint administrators can enter community management, delete communities and transfer ownership.
+
+Forum tables are created automatically when `node app.js` starts. The related routes and schema logic live in `src/forum/forum.js`, and the EJS pages are under `views/forum/`.
+
+- Long community posts can now be expanded with **See full post** and collapsed with **Show less**.
+
+- Forum posts automatically embed the first supported YouTube link as a responsive miniplayer.
+
+## Build User Profile survey
+
+New accounts can optionally complete a SavePoint Profile during sign-up. The five nullable fields are:
+
+- Favorite game company
+- Favorite game genre
+- Favorite game
+- Consoles owned
+- Consoles wanted / being considered
+
+The profile can be changed later from **Profile** in the navbar. Suggestion arrays are maintained in `src/data/profileOptions.js`; inputs remain open-ended. Existing databases are upgraded automatically when `node app.js` starts.
+
+
+## Legacy database collation repair
+
+If MySQL reports `Illegal mix of collations`, run:
+
+```sql
+SOURCE database/repair_collations.sql;
+```
+
+or open `database/repair_collations.sql` in MySQL Workbench and execute it.
+The application profile update no longer uses cross-collation `COALESCE`,
+and forum voting now toggles like Reddit.
+
+
+## Persistent media and Forum update
+Run `database/implement_persistent_media_and_forum_updates.sql` once against the deployment database. New marketplace images, profile pictures, banners, forum images, and uploaded forum videos are stored in MySQL `media_assets` as binary data and served through `/media/:id`, so they survive Render restarts. Forum posts/comments now show clickable author profile pictures, and comments support toggleable upvotes/downvotes.

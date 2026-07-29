@@ -1,0 +1,90 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<main class="content-section page-top forum-shell">
+  <a class="forum-back" href="/forum">← All communities</a>
+  <section class="community-header pixel-panel">
+    <div>
+      <p class="eyebrow">COMMUNITY</p>
+      <h1><%= community.name %></h1>
+      <p class="lead"><%= community.description || 'A SavePoint community.' %></p>
+      <div class="community-meta"><span><%= community.member_count %> members</span><span><%= community.post_count %> posts</span><span>Owner: <%= community.owner_username %></span></div>
+    </div>
+    <div class="community-header-actions">
+      <% if (!access.isMember) { %>
+        <form method="POST" action="/forum/communities/<%= community.slug %>/join"><button class="primary-button">Join Community</button></form>
+      <% } else if (!access.isOwner) { %>
+        <form method="POST" action="/forum/communities/<%= community.slug %>/leave"><button class="secondary-button">Leave</button></form>
+      <% } %>
+      <% if (access.isOwner || access.isAdmin || access.can_manage_members || access.can_manage_roles) { %>
+        <a class="secondary-button" href="/forum/communities/<%= community.slug %>/manage">Manage</a>
+      <% } %>
+    </div>
+  </section>
+
+  <% if (message) { %><div class="forum-flash"><%= message %></div><% } %>
+
+  <% if (access.isMember && access.can_create_posts) { %>
+    <details class="forum-compose pixel-panel">
+      <summary>Create a post</summary>
+      <form method="POST" action="/forum/communities/<%= community.slug %>/posts" enctype="multipart/form-data" class="stack-form">
+        <label>Post title<input name="title" maxlength="180" required></label>
+        <label>Body<textarea name="body" rows="6" required></textarea></label>
+        <label>Optional image<input type="file" name="image" accept="image/*"></label>
+        <label>Optional video<input type="file" name="video" accept="video/*"><small>MP4, WebM, or another browser-supported format; maximum 8 MB.</small></label>
+        <button class="primary-button" type="submit">Upload Post</button>
+      </form>
+    </details>
+  <% } else if (!access.isMember) { %>
+    <div class="forum-callout">Join this community to create posts, comment and vote.</div>
+  <% } %>
+
+  <section class="forum-post-list">
+    <% if (!posts.length) { %><div class="pixel-panel empty-state">No posts yet. The cartridge slot is waiting.</div><% } %>
+    <% posts.forEach((post) => { %>
+      <article class="forum-post-card pixel-panel">
+        <div class="vote-stack">
+          <form method="POST" action="/forum/posts/<%= post.id %>/vote"><input type="hidden" name="vote" value="1"><button class="vote-button <%= Number(post.current_vote) === 1 ? 'selected' : '' %>">▲</button></form>
+          <strong><%= post.score %></strong>
+          <form method="POST" action="/forum/posts/<%= post.id %>/vote"><input type="hidden" name="vote" value="-1"><button class="vote-button <%= Number(post.current_vote) === -1 ? 'selected' : '' %>">▼</button></form>
+        </div>
+        <div class="forum-post-content">
+          <div class="forum-author-line">
+            <% const postAvatar = post.author_profile_image ? (post.author_profile_image.startsWith('/') ? post.author_profile_image : `/images/${post.author_profile_image}`) : '/icons/icon-192.png'; %>
+            <a href="/users/<%= post.author_user_id %>" class="forum-avatar-link"><img class="forum-avatar" src="<%= postAvatar %>" alt="<%= post.author_username %>'s profile picture"></a>
+            <small>Posted by <a href="/users/<%= post.author_user_id %>"><%= post.author_username %></a> · <%= new Date(post.created_at).toLocaleString() %></small>
+          </div>
+          <h2><a href="/forum/posts/<%= post.id %>"><%= post.title %></a></h2>
+          <% if (post.body.length > 320) { %>
+            <details class="forum-post-expander">
+              <summary>
+                <span class="forum-post-preview"><%= post.body.slice(0, 320) %>…</span>
+                <span class="forum-expand-label forum-expand-open">See full post</span>
+                <span class="forum-expand-label forum-expand-close">Show less</span>
+              </summary>
+              <p class="forum-post-full-text"><%= post.body %></p>
+            </details>
+          <% } else { %>
+            <p><%= post.body %></p>
+          <% } %>
+          <% if (post.image_url) { %><img class="forum-post-image" src="<%= post.image_url.startsWith('/') ? post.image_url : '/images/forum/' + post.image_url %>" alt="Image attached to <%= post.title %>"><% } %>
+          <% if (post.video_url) { %><video class="forum-uploaded-video" controls preload="metadata"><source src="<%= post.video_url %>">Your browser does not support this uploaded video.</video><% } %>
+          <% const youtubeEmbedUrl = getYouTubeEmbedUrl(post.body); %>
+          <% if (youtubeEmbedUrl) { %>
+            <div class="forum-video-embed">
+              <iframe
+                src="<%= youtubeEmbedUrl %>"
+                title="YouTube video attached to <%= post.title %>"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+          <% } %>
+          <div class="forum-post-footer"><a href="/forum/posts/<%= post.id %>">💬 <%= post.comment_count %> comments</a></div>
+        </div>
+      </article>
+    <% }) %>
+  </section>
+</main>
+<%- include('../partials/footer') %>

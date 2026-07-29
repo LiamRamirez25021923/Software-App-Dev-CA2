@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<main class="content-section page-top">
+  <p class="eyebrow">PLAYER PROFILE</p>
+  <h1><%= profile.username %></h1>
+  <section class="profile-layout public-profile-layout">
+    <div class="profile-card pixel-panel">
+      <% const bannerSrc = profile.banner_image ? (profile.banner_image.startsWith('/') ? profile.banner_image : `/images/${profile.banner_image}`) : '/icons/icon-512.png'; %>
+      <% const avatarSrc = profile.profile_image ? (profile.profile_image.startsWith('/') ? profile.profile_image : `/images/${profile.profile_image}`) : '/icons/icon-192.png'; %>
+      <div class="profile-banner"><img src="<%= bannerSrc %>" alt="<%= profile.username %>'s profile banner"></div>
+      <div class="profile-summary">
+        <img class="profile-avatar" src="<%= avatarSrc %>" alt="<%= profile.username %>'s profile picture">
+        <div><h2><%= profile.username %></h2><p class="role-badge"><%= profile.role %></p><p>Joined <%= new Date(profile.created_at).toLocaleDateString() %></p></div>
+      </div>
+      <section class="savepoint-profile-summary">
+        <p class="eyebrow">SAVEPOINT PROFILE</p>
+        <% if (profile.bio) { %><p class="public-profile-bio"><%= profile.bio %></p><% } %>
+        <dl>
+          <div><dt>Favourite console</dt><dd><%= profile.favourite_console || 'Not set' %></dd></div>
+          <div><dt>Favorite company</dt><dd><%= profile.favorite_game_company || 'Not set' %></dd></div>
+          <div><dt>Favorite genre</dt><dd><%= profile.favorite_game_genre || 'Not set' %></dd></div>
+          <div><dt>Favorite game</dt><dd><%= profile.favorite_game || 'Not set' %></dd></div>
+          <div><dt>Consoles owned</dt><dd><%= profile.consoles_owned || 'Not set' %></dd></div>
+          <div><dt>Consoles wanted</dt><dd><%= profile.consoles_wanted || 'Not set' %></dd></div>
+        </dl>
+      </section>
+    </div>
+  </section>
+</main>
+<%- include('partials/footer') %>

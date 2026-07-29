@@ -1,0 +1,71 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<main class="content-section page-top forum-shell">
+  <a class="forum-back" href="/forum/communities/<%= post.community_slug %>">← <%= post.community_name %></a>
+  <article class="forum-post-card forum-post-full pixel-panel">
+    <div class="vote-stack">
+      <form method="POST" action="/forum/posts/<%= post.id %>/vote"><input type="hidden" name="vote" value="1"><button class="vote-button <%= Number(post.current_vote) === 1 ? 'selected' : '' %>">▲</button></form>
+      <strong><%= post.score %></strong>
+      <form method="POST" action="/forum/posts/<%= post.id %>/vote"><input type="hidden" name="vote" value="-1"><button class="vote-button <%= Number(post.current_vote) === -1 ? 'selected' : '' %>">▼</button></form>
+    </div>
+    <div class="forum-post-content">
+      <div class="forum-author-line">
+        <% const postAvatar = post.author_profile_image ? (post.author_profile_image.startsWith('/') ? post.author_profile_image : `/images/${post.author_profile_image}`) : '/icons/icon-192.png'; %>
+        <a href="/users/<%= post.author_user_id %>" class="forum-avatar-link"><img class="forum-avatar" src="<%= postAvatar %>" alt="<%= post.author_username %>'s profile picture"></a>
+        <small><a href="/forum/communities/<%= post.community_slug %>"><%= post.community_name %></a> · posted by <a href="/users/<%= post.author_user_id %>"><%= post.author_username %></a> · <%= new Date(post.created_at).toLocaleString() %></small>
+      </div>
+      <h1><%= post.title %></h1>
+      <p class="forum-post-body"><%= post.body %></p>
+      <% if (post.image_url) { %><img class="forum-post-image forum-post-image-full" src="<%= post.image_url.startsWith('/') ? post.image_url : '/images/forum/' + post.image_url %>" alt="Image attached to <%= post.title %>"><% } %>
+      <% if (post.video_url) { %><video class="forum-uploaded-video forum-uploaded-video-full" controls preload="metadata"><source src="<%= post.video_url %>">Your browser does not support this uploaded video.</video><% } %>
+      <% const youtubeEmbedUrl = getYouTubeEmbedUrl(post.body); %>
+      <% if (youtubeEmbedUrl) { %>
+        <div class="forum-video-embed forum-video-embed-full">
+          <iframe
+            src="<%= youtubeEmbedUrl %>"
+            title="YouTube video attached to <%= post.title %>"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      <% } %>
+      <% if (Number(post.author_user_id) === Number(currentUser.id) || access.can_manage_posts) { %>
+        <form method="POST" action="/forum/posts/<%= post.id %>/delete" onsubmit="return confirm('Remove this post?')"><button class="danger-button">Delete Post</button></form>
+      <% } %>
+    </div>
+  </article>
+
+  <section class="comment-section">
+    <h2>Comments</h2>
+    <% if (access.isMember && access.can_comment) { %>
+      <form method="POST" action="/forum/posts/<%= post.id %>/comments" class="comment-form pixel-panel">
+        <label for="comment-body">Add a comment</label>
+        <textarea id="comment-body" name="body" rows="4" required></textarea>
+        <button class="primary-button">Comment</button>
+      </form>
+    <% } %>
+    <div class="comment-list">
+      <% if (!comments.length) { %><div class="pixel-panel empty-state">No comments yet.</div><% } %>
+      <% comments.forEach((comment) => { %>
+        <article class="comment-card pixel-panel comment-with-votes">
+          <div class="comment-vote-stack">
+            <form method="POST" action="/forum/comments/<%= comment.id %>/vote"><input type="hidden" name="vote" value="1"><button class="vote-button compact <%= Number(comment.current_vote) === 1 ? 'selected' : '' %>">▲</button></form>
+            <strong><%= comment.score %></strong>
+            <form method="POST" action="/forum/comments/<%= comment.id %>/vote"><input type="hidden" name="vote" value="-1"><button class="vote-button compact <%= Number(comment.current_vote) === -1 ? 'selected' : '' %>">▼</button></form>
+          </div>
+          <div class="comment-content">
+            <div class="forum-author-line">
+              <% const commentAvatar = comment.author_profile_image ? (comment.author_profile_image.startsWith('/') ? comment.author_profile_image : `/images/${comment.author_profile_image}`) : '/icons/icon-192.png'; %>
+              <a href="/users/<%= comment.author_user_id %>" class="forum-avatar-link"><img class="forum-avatar forum-avatar-small" src="<%= commentAvatar %>" alt="<%= comment.author_username %>'s profile picture"></a>
+              <div><strong><a href="/users/<%= comment.author_user_id %>"><%= comment.author_username %></a></strong><small><%= new Date(comment.created_at).toLocaleString() %></small></div>
+            </div>
+            <p><%= comment.body %></p>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </section>
+</main>
+<%- include('../partials/footer') %>

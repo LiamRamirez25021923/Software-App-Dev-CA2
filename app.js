@@ -11,31 +11,20 @@ const nodemailer = require('nodemailer');
 const mysql = require('mysql2/promise');
 const pool = require('./config/db');
 const newsHub = require('./src/services/newshub.service');
+const createForumFeature = require('./src/forum/forum');
+const profileOptions = require('./src/data/profileOptions');
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 const fs = require('fs');
 
-// Lesson 18-style product image uploads.
-const imageDirectory = path.join(__dirname, 'public', 'images');
-if (!fs.existsSync(imageDirectory)) {
-    fs.mkdirSync(imageDirectory, {
-        recursive: true
-    });
-}
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, imageDirectory),
-    filename: (req, file, cb) => {
-        const safeOriginalName = path.basename(file.originalname).replace(/[^a-zA-Z0-9._-]/g, '_');
-        cb(null, `${Date.now()}-${safeOriginalName}`);
-    }
-});
+// User-uploaded media is held in memory briefly, then saved inside MySQL.
+// This makes uploads survive Render restarts and redeployments.
 const upload = multer({
-    storage,
-    limits: { fileSize: 5 * 1024 * 1024 },
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 8 * 1024 * 1024 },
     fileFilter: (req, file, cb) => {
         if (!file.mimetype.startsWith('image/')) {
-            return cb(new Error('Only image files can be uploaded.'));
+            return cb(new Error('Only image files can be uploaded here.'));
         }
         cb(null, true);
     }
@@ -55,6 +44,111 @@ const profileUpload = upload.fields([
     { name: 'profileImage', maxCount: 1 },
     { name: 'bannerImage', maxCount: 1 }
 ]);
+
+async function ensureMediaStorage() {
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS media_assets (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            owner_user_id INT NULL,
+            media_kind ENUM('image','video') NOT NULL,
+            mime_type VARCHAR(120) NOT NULL,
+            original_name VARCHAR(255) NULL,
+            byte_size INT NOT NULL,
+            media_data LONGBLOB NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_media_owner (owner_user_id),
+            INDEX idx_media_kind (media_kind)
+        )
+    `);
+}
+
+
+async function ensureCartStorage() {
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS user_cart_items (
+            user_id INT NOT NULL,
+            product_id INT NOT NULL,
+            quantity INT NOT NULL DEFAULT 1,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (user_id, product_id),
+            INDEX idx_cart_user (user_id),
+            INDEX idx_cart_product (product_id)
+        )
+    `);
+}
+
+async function loadPersistentCart(userId) {
+    const [rows] = await pool.execute(
+        `SELECT product_id, quantity
+         FROM user_cart_items
+         WHERE user_id=?`,
+        [userId]
+    );
+
+    const cart = {};
+    for (const row of rows) {
+        const productId = Number(row.product_id);
+        const quantity = Number(row.quantity);
+        if (
+            Number.isInteger(productId) &&
+            productId > 0 &&
+            Number.isInteger(quantity) &&
+            quantity > 0
+        ) {
+            cart[productId] = quantity;
+        }
+    }
+
+    return cart;
+}
+
+async function savePersistentCartItem(userId, productId, quantity) {
+    if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(productId))) {
+        throw new Error('A valid user and product are required to save a cart item.');
+    }
+
+    const safeQuantity = Number(quantity);
+
+    if (!Number.isInteger(safeQuantity) || safeQuantity <= 0) {
+        await pool.execute(
+            `DELETE FROM user_cart_items
+             WHERE user_id=? AND product_id=?`,
+            [userId, productId]
+        );
+        return;
+    }
+
+    await pool.execute(
+        `INSERT INTO user_cart_items (user_id, product_id, quantity)
+         VALUES (?, ?, ?)
+         ON DUPLICATE KEY UPDATE
+            quantity=VALUES(quantity),
+            updated_at=CURRENT_TIMESTAMP`,
+        [userId, productId, safeQuantity]
+    );
+}
+
+async function clearPersistentCart(userId, connection = pool) {
+    await connection.execute(
+        'DELETE FROM user_cart_items WHERE user_id=?',
+        [userId]
+    );
+}
+
+async function saveMediaAsset(file, ownerUserId, mediaKind = null) {
+    if (!file?.buffer) return null;
+
+    const kind = mediaKind || (file.mimetype.startsWith('video/') ? 'video' : 'image');
+    const [result] = await pool.execute(
+        `INSERT INTO media_assets
+         (owner_user_id, media_kind, mime_type, original_name, byte_size, media_data)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+        [ownerUserId || null, kind, file.mimetype, file.originalname || null, file.size, file.buffer]
+    );
+
+    return `/media/${result.insertId}`;
+}
 
 // Detect the existing products-table column names.
 // This project's database uses id, name and image.
@@ -175,6 +269,29 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
+app.get('/media/:id', async (req, res, next) => {
+    try {
+        const mediaId = Number(req.params.id);
+        if (!Number.isInteger(mediaId) || mediaId < 1) return res.sendStatus(404);
+
+        const [rows] = await pool.execute(
+            `SELECT mime_type, byte_size, media_data
+             FROM media_assets
+             WHERE id=? LIMIT 1`,
+            [mediaId]
+        );
+        if (!rows.length) return res.sendStatus(404);
+
+        const media = rows[0];
+        res.setHeader('Content-Type', media.mime_type);
+        res.setHeader('Content-Length', String(media.byte_size));
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        return res.end(media.media_data);
+    } catch (error) {
+        return next(error);
+    }
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ secret: process.env.SESSION_SECRET || 'development-only-change-me', resave: false, saveUninitialized: false, cookie: { httpOnly: true, secure: false, sameSite: 'lax', maxAge: 86400000 } }));
@@ -187,6 +304,8 @@ app.use((req, res, next) => {
         req.session.user?.role === 'admin';
 
     res.locals.currentPath = req.path;
+
+    res.locals.profileOptions = profileOptions;
 
     res.locals.cartCount = Object.values(
         req.session.cart || {}
@@ -202,6 +321,14 @@ app.use((req, res, next) => {
 function requireLogin(req, res, next) { if (!req.session.user) return res.redirect('/login'); next(); }
 
 function requireAdmin(req, res, next) { if (!req.session.user) return res.redirect('/login'); if (req.session.user.role !== 'admin') return res.status(403).render('error', { title: 'Access denied', message: 'This page is available only to SavePoint administrators.' }); next(); }
+
+const forumFeature = createForumFeature({
+    pool,
+    requireLogin,
+    requireAdmin,
+    projectRoot: __dirname,
+    saveMediaAsset
+});
 
 function requireRegularUser(req, res, next) {
     if (!req.session.user) {
@@ -230,6 +357,11 @@ async function ensureUsersTableSchema() {
             role ENUM('admin','user') NOT NULL DEFAULT 'user',
             bio TEXT,
             favourite_console VARCHAR(100),
+            favorite_game_company VARCHAR(120) NULL,
+            favorite_game_genre VARCHAR(120) NULL,
+            favorite_game VARCHAR(180) NULL,
+            consoles_owned TEXT NULL,
+            consoles_wanted TEXT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     `);
@@ -258,6 +390,21 @@ async function ensureUsersTableSchema() {
     }
     if (!existing.has('favourite_console')) {
         migrations.push('ALTER TABLE users ADD COLUMN favourite_console VARCHAR(100) NULL');
+    }
+    if (!existing.has('favorite_game_company')) {
+        migrations.push('ALTER TABLE users ADD COLUMN favorite_game_company VARCHAR(120) NULL');
+    }
+    if (!existing.has('favorite_game_genre')) {
+        migrations.push('ALTER TABLE users ADD COLUMN favorite_game_genre VARCHAR(120) NULL');
+    }
+    if (!existing.has('favorite_game')) {
+        migrations.push('ALTER TABLE users ADD COLUMN favorite_game VARCHAR(180) NULL');
+    }
+    if (!existing.has('consoles_owned')) {
+        migrations.push('ALTER TABLE users ADD COLUMN consoles_owned TEXT NULL');
+    }
+    if (!existing.has('consoles_wanted')) {
+        migrations.push('ALTER TABLE users ADD COLUMN consoles_wanted TEXT NULL');
     }
     if (!existing.has('created_at')) {
         migrations.push('ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
@@ -288,11 +435,24 @@ async function ensureUsersTableSchema() {
     }
 
     // Repair values left null by older versions of the project.
+    // Separate updates avoid COALESCE comparing columns that may have
+    // inherited different collations from older team schemas.
     await pool.query(`
         UPDATE users
-        SET profile_image = COALESCE(NULLIF(profile_image, ''), 'default_profile.png'),
-            banner_image = COALESCE(NULLIF(banner_image, ''), 'default_banner.png'),
-            role = COALESCE(role, 'user')
+        SET profile_image = '/icons/icon-192.png'
+        WHERE profile_image IS NULL OR CHAR_LENGTH(profile_image) = 0
+    `);
+
+    await pool.query(`
+        UPDATE users
+        SET banner_image = '/icons/icon-512.png'
+        WHERE banner_image IS NULL OR CHAR_LENGTH(banner_image) = 0
+    `);
+
+    await pool.query(`
+        UPDATE users
+        SET role = 'user'
+        WHERE role IS NULL
     `);
 }
 
@@ -336,6 +496,8 @@ async function seedAccount({ username, password, email, role }) {
 
 async function initialiseDatabase() {
     await ensureUsersTableSchema();
+    await ensureMediaStorage();
+    await ensureCartStorage();
 
     await pool.query(`
         CREATE TABLE IF NOT EXISTS products (
@@ -463,12 +625,17 @@ app.post('/signup', async (req, res, next) => {
         const displayName = String(req.body.displayName || '').trim();
         const email = String(req.body.email || '').trim();
         const password = String(req.body.password || '');
+        const favoriteGameCompany = String(req.body.favoriteGameCompany || '').trim();
+        const favoriteGameGenre = String(req.body.favoriteGameGenre || '').trim();
+        const favoriteGame = String(req.body.favoriteGame || '').trim();
+        const consolesOwned = String(req.body.consolesOwned || '').trim();
+        const consolesWanted = String(req.body.consolesWanted || '').trim();
 
         if (!username || !displayName || !password) {
             return res.status(400).render('auth', {
                 title: 'Create account', mode: 'signup',
                 error: 'Username, display name and password are required.',
-                values: { username, displayName, email }
+                values: { username, displayName, email, favoriteGameCompany, favoriteGameGenre, favoriteGame, consolesOwned, consolesWanted }
             });
         }
 
@@ -476,7 +643,7 @@ app.post('/signup', async (req, res, next) => {
             return res.status(400).render('auth', {
                 title: 'Create account', mode: 'signup',
                 error: 'Username must be at least 3 characters and password at least 6 characters.',
-                values: { username, displayName, email }
+                values: { username, displayName, email, favoriteGameCompany, favoriteGameGenre, favoriteGame, consolesOwned, consolesWanted }
             });
         }
 
@@ -488,15 +655,28 @@ app.post('/signup', async (req, res, next) => {
             return res.status(409).render('auth', {
                 title: 'Create account', mode: 'signup',
                 error: 'That username is already taken.',
-                values: { username, displayName, email }
+                values: { username, displayName, email, favoriteGameCompany, favoriteGameGenre, favoriteGame, consolesOwned, consolesWanted }
             });
         }
 
         const hash = await bcrypt.hash(password, 12);
         const normalizedEmail = email || `${username}@savepoint.local`;
         const [result] = await pool.execute(
-            "INSERT INTO users (username,email,password,role) VALUES (?,?,?,'user')",
-            [username, normalizedEmail, hash]
+            `INSERT INTO users (
+                username, email, password, role,
+                favorite_game_company, favorite_game_genre, favorite_game,
+                consoles_owned, consoles_wanted
+             ) VALUES (?, ?, ?, 'user', ?, ?, ?, ?, ?)`,
+            [
+                username,
+                normalizedEmail,
+                hash,
+                favoriteGameCompany || null,
+                favoriteGameGenre || null,
+                favoriteGame || null,
+                consolesOwned || null,
+                consolesWanted || null
+            ]
         );
 
         req.session.user = {
@@ -506,7 +686,8 @@ app.post('/signup', async (req, res, next) => {
             email: normalizedEmail,
             role: 'user'
         };
-        res.redirect('/dashboard');
+        req.session.cart = await loadPersistentCart(result.insertId);
+        res.redirect('/profile?welcome=1');
     } catch (error) {
         next(error);
     }
@@ -550,6 +731,7 @@ app.post('/login', async (req, res, next) => {
         }
 
         req.session.user = sessionUser(rows[0]);
+        req.session.cart = await loadPersistentCart(rows[0].id);
         return res.redirect('/dashboard');
     } catch (error) {
         return next(error);
@@ -578,14 +760,45 @@ app.get('/dashboard', requireLogin, async (req, res, next) => {
     }
 });
 
+app.get('/users/:id', requireLogin, async (req, res, next) => {
+    try {
+        const userId = Number(req.params.id);
+        if (!Number.isInteger(userId) || userId < 1) {
+            return res.status(404).render('error', { title: 'Player not found', message: 'That SavePoint player does not exist.' });
+        }
+        const [rows] = await pool.execute(
+            `SELECT id, username, bio, favourite_console,
+                    favorite_game_company, favorite_game_genre, favorite_game,
+                    consoles_owned, consoles_wanted, profile_image, banner_image,
+                    role, created_at
+             FROM users WHERE id=? LIMIT 1`,
+            [userId]
+        );
+        if (!rows.length) {
+            return res.status(404).render('error', { title: 'Player not found', message: 'That SavePoint player does not exist.' });
+        }
+        return res.render('userProfile', { title: rows[0].username, profile: rows[0] });
+    } catch (error) {
+        return next(error);
+    }
+});
+
 app.get('/profile', requireLogin, async (req, res, next) => {
     try {
         const [rows] = await pool.execute(
-            'SELECT id,username,email,bio,favourite_console,profile_image,banner_image,role,created_at FROM users WHERE id=? LIMIT 1',
+            `SELECT id, username, email, bio, favourite_console,
+                    favorite_game_company, favorite_game_genre, favorite_game,
+                    consoles_owned, consoles_wanted, profile_image, banner_image,
+                    role, created_at
+             FROM users WHERE id=? LIMIT 1`,
             [req.session.user.id]
         );
         if (!rows.length) return res.redirect('/logout');
-        res.render('profile', { title: 'Profile', profile: rows[0] });
+        res.render('profile', {
+            title: 'Profile',
+            profile: rows[0],
+            welcome: req.query.welcome === '1'
+        });
     } catch (error) {
         next(error);
     }
@@ -597,13 +810,18 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
         const email = String(req.body.email || '').trim();
         const bio = String(req.body.bio || '').trim();
         const favouriteConsole = String(req.body.favouriteConsole || '').trim();
+        const favoriteGameCompany = String(req.body.favoriteGameCompany || '').trim();
+        const favoriteGameGenre = String(req.body.favoriteGameGenre || '').trim();
+        const favoriteGame = String(req.body.favoriteGame || '').trim();
+        const consolesOwned = String(req.body.consolesOwned || '').trim();
+        const consolesWanted = String(req.body.consolesWanted || '').trim();
         const uploadedProfileImage = req.files?.profileImage?.[0];
         const uploadedBannerImage = req.files?.bannerImage?.[0];
         const profileImage = uploadedProfileImage
-            ? `/images/${uploadedProfileImage.filename}`
+            ? await saveMediaAsset(uploadedProfileImage, req.session.user.id, 'image')
             : String(req.body.profileImageUrl || req.body.profileImage || '').trim();
         const bannerImage = uploadedBannerImage
-            ? `/images/${uploadedBannerImage.filename}`
+            ? await saveMediaAsset(uploadedBannerImage, req.session.user.id, 'image')
             : String(req.body.bannerImageUrl || req.body.bannerImage || '').trim();
 
         if (!username) {
@@ -625,22 +843,60 @@ app.post('/profile', requireLogin, profileUpload, async (req, res, next) => {
             });
         }
 
+        // Read the current image values first, then send concrete strings in
+        // the UPDATE. This avoids MySQL trying to COALESCE values that came
+        // from legacy columns with different collations.
+        const [currentProfileRows] = await pool.execute(
+            `SELECT profile_image, banner_image
+             FROM users
+             WHERE id=?
+             LIMIT 1`,
+            [req.session.user.id]
+        );
+
+        if (!currentProfileRows.length) {
+            return res.status(404).render('error', {
+                title: 'Profile not found',
+                message: 'Your account could not be found.'
+            });
+        }
+
+        const finalProfileImage =
+            profileImage ||
+            currentProfileRows[0].profile_image ||
+            '/icons/icon-192.png';
+
+        const finalBannerImage =
+            bannerImage ||
+            currentProfileRows[0].banner_image ||
+            '/icons/icon-512.png';
+
         await pool.execute(
             `UPDATE users
              SET username=?,
                  email=?,
                  bio=?,
                  favourite_console=?,
-                 profile_image=COALESCE(NULLIF(?, ''), profile_image, 'default_profile.png'),
-                 banner_image=COALESCE(NULLIF(?, ''), banner_image, 'default_banner.png')
+                 favorite_game_company=?,
+                 favorite_game_genre=?,
+                 favorite_game=?,
+                 consoles_owned=?,
+                 consoles_wanted=?,
+                 profile_image=?,
+                 banner_image=?
              WHERE id=?`,
             [
                 username,
                 normalizedEmail,
                 bio || null,
                 favouriteConsole || null,
-                profileImage,
-                bannerImage,
+                favoriteGameCompany || null,
+                favoriteGameGenre || null,
+                favoriteGame || null,
+                consolesOwned || null,
+                consolesWanted || null,
+                finalProfileImage,
+                finalBannerImage,
                 req.session.user.id
             ]
         );
@@ -695,7 +951,9 @@ async function createMarketplaceProduct(req, res, next) {
         const platform = String(req.body.platform || '').trim();
         const price = Number(req.body.price);
         const quantity = Number.parseInt(req.body.quantity, 10);
-        const image = req.file ? req.file.filename : null;
+        const image = req.file
+            ? await saveMediaAsset(req.file, req.session.user.id, 'image')
+            : null;
 
         if (!title || !category || !Number.isFinite(price) || price <= 0 || !Number.isInteger(quantity) || quantity < 0) {
             return res.status(400).render('error', {
@@ -766,7 +1024,7 @@ app.post('/marketplace/products/:id/edit', requireAdmin, upload.single('image'),
         }
 
         const image = req.file
-            ? req.file.filename
+            ? await saveMediaAsset(req.file, req.session.user.id, 'image')
             : existingRows[0].image_url;
 
         await pool.execute(
@@ -838,7 +1096,7 @@ async function permanentlyDeleteMarketplaceProduct(req, res, next) {
         }
 
         // Delete an uploaded image only when no other product references it.
-        if (imageFileName) {
+        if (imageFileName && !String(imageFileName).startsWith('/media/')) {
             const [imageReferences] = await pool.execute(
                 `SELECT COUNT(*) AS total
                  FROM products
@@ -937,6 +1195,11 @@ app.post('/cart/add/:id', requireRegularUser, async (req, res, next) => {
         }
 
         req.session.cart[productId] = existing + quantity;
+        await savePersistentCartItem(
+            req.session.user.id,
+            productId,
+            req.session.cart[productId]
+        );
         req.session.marketplaceMessage = `${product.title} was added to your cart.`;
         res.redirect('/marketplace');
     } catch (e) { next(e); }
@@ -979,20 +1242,42 @@ app.get('/cart', requireRegularUser, async (req, res, next) => {
     } catch (e) { next(e); }
 });
 
-app.post('/cart/:id/decrease', requireRegularUser, (req, res) => {
-    const id = Number(req.params.id);
-    req.session.cart = req.session.cart || {};
-    if (req.session.cart[id]) {
-        req.session.cart[id] -= 1;
-        if (req.session.cart[id] <= 0) delete req.session.cart[id];
+app.post('/cart/:id/decrease', requireRegularUser, async (req, res, next) => {
+    try {
+        const id = Number(req.params.id);
+        req.session.cart = req.session.cart || {};
+
+        if (req.session.cart[id]) {
+            req.session.cart[id] -= 1;
+
+            if (req.session.cart[id] <= 0) {
+                delete req.session.cart[id];
+                await savePersistentCartItem(req.session.user.id, id, 0);
+            } else {
+                await savePersistentCartItem(
+                    req.session.user.id,
+                    id,
+                    req.session.cart[id]
+                );
+            }
+        }
+
+        return res.redirect('/cart');
+    } catch (error) {
+        return next(error);
     }
-    res.redirect('/cart');
 });
 
-app.post('/cart/:id/remove', requireRegularUser, (req, res) => {
-    req.session.cart = req.session.cart || {};
-    delete req.session.cart[Number(req.params.id)];
-    res.redirect('/cart');
+app.post('/cart/:id/remove', requireRegularUser, async (req, res, next) => {
+    try {
+        const productId = Number(req.params.id);
+        req.session.cart = req.session.cart || {};
+        delete req.session.cart[productId];
+        await savePersistentCartItem(req.session.user.id, productId, 0);
+        return res.redirect('/cart');
+    } catch (error) {
+        return next(error);
+    }
 });
 
 app.get('/purchase', requireRegularUser, async (req, res, next) => {
@@ -1113,6 +1398,8 @@ app.post('/purchase', requireRegularUser, async (req, res, next) => {
             );
         }
 
+        await clearPersistentCart(req.session.user.id, connection);
+
         await connection.commit();
         transactionStarted = false;
 
@@ -1140,7 +1427,9 @@ app.get('/confirmation/:id', requireRegularUser, async (req, res, next) => {
     } catch (e) { next(e); }
 });
 
-app.get('/forum', requireLogin, async (req, res, next) => { try { const [rows] = await pool.query("SELECT f.*,u.username author_username FROM forum_posts f LEFT JOIN users u ON u.id=f.author_user_id WHERE f.status='visible' ORDER BY f.created_at DESC"); res.render('placeholder', { title: 'Community Forum', heading: 'Discuss retro games with the community', description: 'The forum table is ready for posts, comments and voting.', items: rows.map(x => ({ title: x.title, detail: `Posted by ${x.author_username || 'Deleted user'}` })) }); } catch (e) { next(e); } });
+
+
+app.use(forumFeature.router);
 
 function parseSelectedNewsSources(value) {
     if (value === undefined || value === null || value === '') return null;
@@ -1337,6 +1626,7 @@ async function startServer() {
         await pool.query('SELECT 1');
         console.log('Connected to MySQL database');
         await initialiseDatabase();
+        await forumFeature.ensureForumStorage();
         await newsHub.ensureNewsHubStorage();
         await newsHub.hydrateCacheFromDatabase();
         newsHub.startBackgroundRefresh();

@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<main class="content-section page-top forum-shell">
+  <div class="forum-hero"><div><p class="eyebrow">INBOX</p><h1>Forum Notifications</h1></div><form method="POST" action="/forum/notifications/read-all"><button class="secondary-button">Mark all read</button></form></div>
+  <div class="notification-list">
+    <% if (!notifications.length) { %><div class="pixel-panel empty-state">No notifications yet.</div><% } %>
+    <% notifications.forEach((notification) => { %>
+      <a class="notification-card pixel-panel <%= notification.is_read ? '' : 'unread' %>" href="<%= notification.link %>">
+        <div><strong><%= notification.message %></strong><small><%= new Date(notification.created_at).toLocaleString() %></small></div>
+        <% if (!notification.is_read) { %><span class="viz-dot">NEW</span><% } %>
+      </a>
+    <% }) %>
+  </div>
+</main>
+<%- include('../partials/footer') %>

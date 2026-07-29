@@ -19,6 +19,11 @@ CREATE TABLE IF NOT EXISTS users (
   role ENUM('admin','user') NOT NULL DEFAULT 'user',
   bio TEXT,
   favourite_console VARCHAR(100),
+  favorite_game_company VARCHAR(120) NULL,
+  favorite_game_genre VARCHAR(120) NULL,
+  favorite_game VARCHAR(180) NULL,
+  consoles_owned TEXT NULL,
+  consoles_wanted TEXT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 <<<<<<< HEAD
 );
@@ -125,3 +130,121 @@ CREATE TABLE IF NOT EXISTS order_items (
   FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
   FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
 );
+
+-- Community Forum / Reddit-style communities and RBAC
+CREATE TABLE IF NOT EXISTS communities (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  slug VARCHAR(120) NOT NULL UNIQUE,
+  description TEXT,
+  owner_user_id INT NOT NULL,
+  status ENUM('active','restricted','removed') NOT NULL DEFAULT 'active',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE RESTRICT
+);
+
+CREATE TABLE IF NOT EXISTS community_roles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  community_id INT NOT NULL,
+  name VARCHAR(80) NOT NULL,
+  role_color VARCHAR(20) NOT NULL DEFAULT '#5ce1e6',
+  position INT NOT NULL DEFAULT 0,
+  is_co_owner BOOLEAN NOT NULL DEFAULT FALSE,
+  can_manage_posts BOOLEAN NOT NULL DEFAULT FALSE,
+  can_manage_members BOOLEAN NOT NULL DEFAULT FALSE,
+  can_manage_roles BOOLEAN NOT NULL DEFAULT FALSE,
+  can_create_posts BOOLEAN NOT NULL DEFAULT TRUE,
+  can_comment BOOLEAN NOT NULL DEFAULT TRUE,
+  can_vote BOOLEAN NOT NULL DEFAULT TRUE,
+  created_by_user_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY unique_role_name (community_id, name),
+  FOREIGN KEY (community_id) REFERENCES communities(id) ON DELETE CASCADE,
+  FOREIGN KEY (created_by_user_id) REFERENCES users(id) ON DELETE RESTRICT
+);
+
+CREATE TABLE IF NOT EXISTS community_members (
+  community_id INT NOT NULL,
+  user_id INT NOT NULL,
+  role_id INT NULL,
+  membership_status ENUM('active','kicked','banned') NOT NULL DEFAULT 'active',
+  notifications_enabled BOOLEAN NOT NULL DEFAULT TRUE,
+  joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (community_id, user_id),
+  FOREIGN KEY (community_id) REFERENCES communities(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (role_id) REFERENCES community_roles(id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS forum_comments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  post_id INT NOT NULL,
+  author_user_id INT NOT NULL,
+  body TEXT NOT NULL,
+  status ENUM('visible','removed') NOT NULL DEFAULT 'visible',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (post_id) REFERENCES forum_posts(id) ON DELETE CASCADE,
+  FOREIGN KEY (author_user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS forum_votes (
+  post_id INT NOT NULL,
+  user_id INT NOT NULL,
+  vote_value TINYINT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (post_id, user_id),
+  FOREIGN KEY (post_id) REFERENCES forum_posts(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS forum_notifications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  notification_type VARCHAR(50) NOT NULL,
+  message VARCHAR(255) NOT NULL,
+  link VARCHAR(255) NOT NULL,
+  is_read BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS media_assets (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  owner_user_id INT NULL,
+  media_kind ENUM('image','video') NOT NULL,
+  mime_type VARCHAR(120) NOT NULL,
+  original_name VARCHAR(255) NULL,
+  byte_size INT NOT NULL,
+  media_data LONGBLOB NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_media_owner (owner_user_id),
+  INDEX idx_media_kind (media_kind)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+SET @has_video_url = (
+  SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
+  WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='forum_posts' AND COLUMN_NAME='video_url'
+);
+SET @video_sql = IF(@has_video_url=0,
+  'ALTER TABLE forum_posts ADD COLUMN video_url VARCHAR(255) NULL AFTER image_url',
+  'SELECT 1');
+PREPARE video_stmt FROM @video_sql;
+EXECUTE video_stmt;
+DEALLOCATE PREPARE video_stmt;
+
+CREATE TABLE IF NOT EXISTS forum_comment_votes (
+  comment_id INT NOT NULL,
+  user_id INT NOT NULL,
+  vote_value TINYINT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (comment_id, user_id),
+  INDEX idx_comment_vote_user (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Optional integrity constraints. They are omitted deliberately to remain
+-- compatible with legacy SavePoint schemas that use different user/post IDs.

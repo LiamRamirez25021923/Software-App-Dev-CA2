@@ -1,0 +1,71 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<main class="forum-shell content-section page-top">
+  <section class="forum-hero">
+    <div>
+      <p class="eyebrow">COMMUNITY NETWORK</p>
+      <h1>SavePoint Forum</h1>
+      <p class="lead">Find retro-gaming communities, join discussions and build your own corner of SavePoint.</p>
+    </div>
+    <a class="secondary-button" href="/forum/notifications">Notifications (<%= unreadNotifications %>)</a>
+  </section>
+
+  <% if (message) { %><div class="forum-flash"><%= message %></div><% } %>
+
+  <section class="forum-toolbar pixel-panel">
+    <form method="GET" action="/forum" class="forum-search-form">
+      <label for="community-search">Search communities</label>
+      <div class="forum-search-row">
+        <input id="community-search" name="search" value="<%= search %>" placeholder="Nintendo, Dreamcast, speedrunning...">
+        <button class="primary-button" type="submit">Search</button>
+      </div>
+    </form>
+
+    <details class="forum-create-community">
+      <summary>Create a community</summary>
+      <form method="POST" action="/forum/communities" class="stack-form">
+        <label>Community name<input name="name" maxlength="100" required></label>
+        <label>Description<textarea name="description" rows="4" maxlength="1000"></textarea></label>
+        <button class="primary-button" type="submit">Create Community</button>
+      </form>
+    </details>
+  </section>
+
+  <section class="forum-layout">
+    <div>
+      <div class="section-heading forum-left-heading"><p class="eyebrow">COMMUNITIES</p><h2>Choose your checkpoint</h2></div>
+      <div class="community-grid">
+        <% if (!communities.length) { %><div class="pixel-panel empty-state">No communities matched your search.</div><% } %>
+        <% communities.forEach((community) => { %>
+          <article class="community-card pixel-panel">
+            <div class="community-card-top">
+              <div>
+                <p class="eyebrow"><%= community.is_joined ? 'JOINED' : 'DISCOVER' %></p>
+                <h3><a href="/forum/communities/<%= community.slug %>"><%= community.name %></a></h3>
+              </div>
+              <% if (community.status === 'restricted') { %><span class="status-badge status-sold">Restricted</span><% } %>
+            </div>
+            <p><%= community.description || 'A SavePoint retro-gaming community.' %></p>
+            <div class="community-meta"><span><%= community.member_count %> members</span><span><%= community.post_count %> posts</span></div>
+            <small>Owned by <%= community.owner_username %></small>
+            <a class="secondary-button" href="/forum/communities/<%= community.slug %>">Open Community</a>
+          </article>
+        <% }) %>
+      </div>
+    </div>
+
+    <aside class="forum-feed pixel-panel">
+      <p class="eyebrow">RECENT POSTS</p>
+      <h2>Latest activity</h2>
+      <% if (!recentPosts.length) { %><p>No posts yet.</p><% } %>
+      <% recentPosts.forEach((post) => { %>
+        <a class="forum-feed-item" href="/forum/posts/<%= post.id %>">
+          <strong><%= post.title %></strong>
+          <span><%= post.community_name %> · <%= post.author_username %></span>
+          <small>▲ <%= post.score %> · 💬 <%= post.comment_count %></small>
+        </a>
+      <% }) %>
+    </aside>
+  </section>
+</main>
+<%- include('../partials/footer') %>

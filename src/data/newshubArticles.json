@@ -1,9 +1,1904 @@
 {
   "articles": [
     {
+<<<<<<< HEAD
       "id": "bb2b44612d091faadde1f84a5c0c413650cb8050",
       "title": "Kingdom Come Salvation may be the next Medieval RPG from Warhorse, and it could have some sort of multi-player functionality, too",
       "summary": "It looks like we've had our first hint as to what we can expec next from the Kingdom Come stuido, Warhorse. We only heard back in May this year that a third Kingdom Come RPG may be released sooner we expected , and it seems like the barely-announced title already has a name. Read more",
+=======
+      "id": "7a8060a93512463a447259a9369716899bea8b8c",
+      "title": "New God of War game starring Kratos announced at Comic-Con",
+      "summary": "God of War director Cory Barlog announced a new GOW starring original protagonist Kratos, it will tie directly into Laufey's story.",
+      "link": "https://www.polygon.com/new-god-of-war-game-announced-kratos-laufey-release-date/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-25T01:58:01.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports"
+      ]
+    },
+    {
+      "id": "187021a2b3d1cebba53d697b44cdef1afc5a2ab7",
+      "title": "God of War Laufey launches February 16, 2027",
+      "summary": "God of War Laufey will launch for PlayStation 5 on February 16, 2027, publisher Sony &hellip;",
+      "link": "https://www.gematsu.com/2026/07/god-of-war-laufey-launches-february-16-2027",
+      "sourceName": "Gematsu",
+      "sourceUrl": "https://www.gematsu.com/",
+      "language": "English",
+      "platform": "Japanese / Console",
+      "official": false,
+      "publishedAt": "2026-07-25T01:50:59.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "3bf36ee17712e79a82ba12b7a878a3661f141e93",
+      "title": "Amazon pushes back Tomb Raider: Catalyst's release day to 2028",
+      "summary": "Amazon's head of gaming announces the delay of the highly anticipated Tomb Raider: Catalyst, Lara Croft's next original adventure.",
+      "link": "https://www.polygon.com/tomb-raider-catalyst-delayed-to-2028/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-25T01:14:27.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "9792538e52c2014808d818acd05f9d7338f9411b",
+      "title": "Find out How an Adorable Duck Drove us to Get Creative with Dodo Duckie",
+      "summary": "The post Find out How an Adorable Duck Drove us to Get Creative with Dodo Duckie appeared first on XBOX Wire .",
+      "link": "https://news.xbox.com/en-us/2026/07/24/find-out-how-an-adorable-duck-drove-us-to-get-creative/",
+      "sourceName": "Xbox Wire",
+      "sourceUrl": "https://news.xbox.com/en-us/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": true,
+      "publishedAt": "2026-07-25T00:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.257Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "feaf35f300f7dbfdeab6c43968ef142f03e0a740",
+      "title": "Keanu Reeves' 4-part fantasy series is a perfect HBO Max binge hiding in plain sight",
+      "summary": "You might not realize it, but this action-packed thrillride was actually a fantasy tale all along.",
+      "link": "https://www.polygon.com/john-wick-is-secretly-one-of-the-best-fantasy-franchises-of-the-last-decade/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T23:00:12.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "2a5a9922d1429dd52010d5ec7bc8bc00903a4d58",
+      "title": "PSN Was Down for 6+ Hours, But All Services Now Up and Running",
+      "summary": "\"Thank you for your patience\". PSN appears to be struggling globally, with Sony’s official status page saying “all services are up and running”. Down Detector shows a huge spike in reports over the past few hours in the US, which is gradually easing. In the UK, more reports are coming in as time passes. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/psn-was-down-for-6plus-hours-but-all-services-now-up-and-running",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T22:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "9ba8d665020ae519352783ed1c745bfd514c9ed2",
+      "title": "Hell Let Loose: Vietnam is open to all this weekend for a free playtest",
+      "summary": "The 50v50 military shooter is gearing up for its full release in August.",
+      "link": "https://www.pcgamer.com/games/fps/hell-let-loose-vietnam-is-open-to-all-this-weekend-for-a-free-playtest/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T22:01:09.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.071Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "e62a38e0f7ee9a62d7aba2dbb8e51469c615b633",
+      "title": "Dungeons & Dragons and World of Warcraft crossover leaks ahead of Gen Con",
+      "summary": "A now-deleted blog post from Roll20 has seemingly leaked an impending announcement for a major D&D crossover.",
+      "link": "https://www.polygon.com/dnd-wow-world-of-warcraft-dungeons-dragons-crossover-leak/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T21:59:45.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "764b222e2683699d3972d9bbfa8c7b2e54c74cb2",
+      "title": "Nintendo officially gives a huge Switch 2 makeover to its most underrated RPG",
+      "summary": "Xenoblade Chronicles 2 is getting its Nintendo Switch 2 version and with it, Pyra and Mythra eceive new outfits",
+      "link": "https://www.polygon.com/xenoblade-chronicles-2-xc2-nw2-upgrade-pyra-mythra-outfits/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T21:30:11.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Patches & Updates"
+      ]
+    },
+    {
+      "id": "93b4b63793e3f835043e0bcdaed72e8e873d8b2f",
+      "title": "HBO's Lanterns gets huge new trailer at San Diego Comic-Con",
+      "summary": "Lanterns, the Green Lantern detective show on HBO, introduces Manhunters and Sinestro to the DCU in a huge new trailer.",
+      "link": "https://www.polygon.com/lanterns-hbo-sinestro-manhunters-comic-con-2026-trailer/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T21:29:32.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "aea8abb5ada7e0c863476057829097153de8fa83",
+      "title": "MMO life sim Seed's AI-powered avatars prove once again that nothing shatters immersion quicker than crappy chatbot dialogue",
+      "summary": "It's such a vibe!",
+      "link": "https://www.pcgamer.com/games/sim/mmo-life-sim-seeds-ai-powered-avatars-prove-once-again-that-nothing-shatters-immersion-quicker-than-crappy-chatbot-dialogue/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T21:14:39.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "a74e62c1c2749f3d7fe52e51e171aa689346c53f",
+      "title": "Splatoon Raiders teaches you how to play Nintendo's shooter game series better than Splatoon 3",
+      "summary": "If you're tired of getting wiped out before you have a chance to learn Splatoon, the spin-off Splatoon Raiders might be for you",
+      "link": "https://www.polygon.com/splatoon-raiders-best-splatoon-game-single-player/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T21:00:12.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "7b76a365b0837df0e050aa8032f521560a5c3587",
+      "title": "10 new movies to watch this weekend on Prime Video, HBO Max and Hulu (July 24-26)",
+      "summary": "If you've already seen The Odyssey, check out some of the summer's other biggest blockbusters at home",
+      "link": "https://www.polygon.com/new-movies-to-watch-this-weekend-streaming-prime-video-hbo-max-july-24-26/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T21:00:12.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "d47fdcb6869401c458ee3f01abebf673a737e84b",
+      "title": "Hello Kitty Party Land Trailer Shows Some of Sanrio’s 145 Featured Characters",
+      "summary": "The new Hello Kitty Party Land pre-order trailer confirms 145 Sanrio characters will be present and shows off a lot of them.",
+      "link": "https://www.siliconera.com/hello-kitty-party-land-trailer-shows-some-of-sanrios-145-featured-characters/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T21:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.225Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "da0e7aff0c99c0f18457588046adbcabe350ec0f",
+      "title": "Rick and Morty spinoff President Curtis renewed for season 2 before premiere",
+      "summary": "Adult Swim showed its confidence in the series starring Keith David defending the United States from aliens and supernatural threats",
+      "link": "https://www.polygon.com/president-curtis-season-2-rick-and-morty/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T20:45:11.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.993Z",
+      "newsTypes": [
+        "Patches & Updates",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "ba6a5187d2b7aed72b8abe3ef3a004f7f2f24af5",
+      "title": "Even Japan's patent officials seem exhausted with Nintendo's antics as they refuse its 'absurd' defense of a rejected Pokémon patent",
+      "summary": "Not a good sign when official patent office communications hit you with a snarky clapback.",
+      "link": "https://www.pcgamer.com/gaming-industry/even-japans-patent-officials-seem-exhausted-with-nintendos-antics-as-they-refuse-its-absurd-defense-of-a-rejected-pokemon-patent/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T20:30:17.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "6356a1154d809ee4b3d53a15465769f8c966f4a4",
+      "title": "Halo: Campaign Evolved won't let you boundary break, annoyed fans say",
+      "summary": "Halo: Combat Evolved let you use tricks to escape levels, but players of the Halo: Campaign Evolved remake are mad that it removed that perk.",
+      "link": "https://www.polygon.com/halo-campaign-evolved-level-boundaries/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T20:00:12.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.994Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "2008d3a8de4518e19e6376a8a449710824fe4d81",
+      "title": "Dissidia Duellum Final Fantasy Gets Celes From FFVI",
+      "summary": "Celes Chere from FFVI and swimsuit costumes are heading to Dissidia Duellum Final Fantasy over the next few weeks.",
+      "link": "https://www.siliconera.com/dissidia-duellum-final-fantasy-gets-celes-from-ffvi/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T20:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.225Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "06681c6c9b55269fdd4bbba77b0df178f1de613a",
+      "title": "Warhorse trademarks 'Kingdom Come Salvation' as fans pray in unison for another open-world RPG",
+      "summary": "The next \"Kingdom Come adventure\" has a name, but what sort of game will it be?",
+      "link": "https://www.pcgamer.com/games/rpg/warhorse-trademarks-kingdom-come-salvation-as-fans-pray-in-unison-for-another-open-world-rpg/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T19:52:51.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "034b1b2934da281a1254d400bafe3e6a4706c29d",
+      "title": "Marvel Tokon – Blade vs Green Goblin High Level CPU Gameplay",
+      "summary": "We got our first full gameplay look at Blade and Green Goblin in the latest Marvel Tokon: Fighting Souls Open Beta that's running from July 24th to July 27th. Check out some high level gameplay of both characters here running on PC with max settings.",
+      "link": "https://www.gamespot.com/videos/marvel-tokon-blade-vs-green-goblin-high-level-cpu-gameplay/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T19:22:42.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.214Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "6d6b29274fcea2196211b79eb47e6660dfa81a92",
+      "title": "Jimothy, The Viral Raccoon, Is Becoming An Earnable WoW Pet",
+      "summary": "Jimothy, the short-spined raccoon who has captured the hearts of the internet, is coming to World of Warcraft . Over the past few weeks, Jimothy the raccoon has gone absolutely viral, as Seattle locals share images and videos of the animal celebrity going about his daily life. He's hard to miss, as his unique spinal condition gives him a noticeably shortened torso and neck that makes him look like a goblin in raccoon form. Naturally, as Jimothy's popularity skyrocketed, so too did the brands begin to take notice, World of Warcraft included. Blizzard was quick to post a mock-up showing what Jimothy might look like in WoW, and the response was \"overwhelming,\" according to Blizzard. Players desperately wanted Jimothy to be a real in-game companion. Now, that's becoming a reality. https://twitter.com/Warcraft/status/2078495010475966556?s=20 Blizzard has now announced it managed to \"squeeze i",
+      "link": "https://www.gamespot.com/articles/jimothy-the-viral-raccoon-is-becoming-an-earnable-wow-pet/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T19:08:57.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.215Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "d905361035cb7925dc23776827c5d5fbb96e94dc",
+      "title": "Tomb Raider: Catalyst delayed to 2028",
+      "summary": "Legend of Atlantis is still on track for February 2027.",
+      "link": "https://www.pcgamer.com/games/action/tomb-raider-catalyst-delayed-to-2028/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T19:08:42.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "44f331ebcee8cf8db91e90eb2e596dd7a3f1b498",
+      "title": "Resident Evil Movie Trailer On PlayStation’s YouTube Page Is Full Of People Asking Sony To Change Course On Discs",
+      "summary": "The newest trailer for the upcoming Resident Evil movie from Weapons director Zach Cregger has arrived , and the version of the trailer posted on the PlayStation YouTube page is full of jokes and references to Sony's controversial decision to end support for physical game discs in 2028. The movie, which hails from Sony Pictures, doesn't have a heck of a lot to do with the PlayStation brand outside of the Sony connection, but since it was posted on PlayStation's YouTube page, people took the opportunity, and creatively, to boot, to voice their displeasure about the discs situation. https://www.youtube.com/watch?v=B7SwoJsSb7w&rco=1 The video has nearly 2,000 comments at press time. Some of the top-ranked comments read, \"He's transporting the last physical game copy in existence\" and \"I cannot wait to get the physical version of this.\" Other top comments say, \"Luckily, there was an old type",
+      "link": "https://www.gamespot.com/articles/resident-evil-movie-trailer-on-playstations-youtube-page-is-full-of-people-asking-sony-to-change-course-on-discs/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T19:07:10.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.215Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "b01e0eafa7a33f74eefa0e4174faf484eb205b86",
+      "title": "Tales of 30th Anniversary Cafe Will Sell Merchandise, Mapo Curry",
+      "summary": "The ufotable Cafe will hold a Tales of event based on four games that features themed food and merchandise.",
+      "link": "https://www.siliconera.com/tales-of-30th-anniversary-cafe-will-sell-merchandise-mapo-curry/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T19:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.225Z",
+      "newsTypes": [
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "6544b5253b4845a3f11d2f7dd42915418d2d987d",
+      "title": "Saudi Arabia's takeover of EA gets approval from European Commission",
+      "summary": "The commission has ruled that the buyout will not cause \"competition concerns.\"",
+      "link": "https://www.pcgamer.com/gaming-industry/saudi-arabias-takeover-of-ea-gets-approval-from-european-commission/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T18:56:42.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Events & Esports"
+      ]
+    },
+    {
+      "id": "ab7252756147ceed096f81262cf8343918964550",
+      "title": "Amazon Gaming boss says high hardware prices could be good news for its Luna cloud gaming program",
+      "summary": "In a world of $1,000 Steam Machines, a hardware-free gaming option might have wider appeal.",
+      "link": "https://www.pcgamer.com/gaming-industry/amazon-gaming-boss-says-high-hardware-prices-could-be-good-news-for-its-luna-cloud-gaming-program/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T18:48:01.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "0134bcf58cce20289d0f9eb8de3321ba458a1767",
+      "title": "Tomb Raider: Catalyst – Amazon Games boss suggests 2028 delay, but publisher says ‘no updates’",
+      "summary": "Amazon Games has pushed back on comments made by division leader Jeffrey Gattis—who suggested Tomb &hellip;",
+      "link": "https://www.gematsu.com/2026/07/tomb-raider-catalyst-amazon-games-boss-suggests-2028-delay-but-publisher-says-no-updates",
+      "sourceName": "Gematsu",
+      "sourceUrl": "https://www.gematsu.com/",
+      "language": "English",
+      "platform": "Japanese / Console",
+      "official": false,
+      "publishedAt": "2026-07-24T18:37:46.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "cf327dfa3ab47321b09c49cfaa002b930f0318a1",
+      "title": "'See You in the Sequel': Halo 2 Remake All But Confirmed",
+      "summary": "Bonus cutscene in Legendary ending. Halo Studios has basically confirmed it's working on a remake of Halo 2 , likely on the same scale as Halo: Campaign Evolved , via a new cutscene. If you beat the Halo 1 remake on Legendary difficulty, you will be treated to an additional cinematic, which I've embedded above. In the cutscene, Sgt. Johnson is seen relaxing on the same beach you land on in The Silent Cartographer , with a cigar in hand and a sandwich beside him. An explosion is seen off in the distance at another point on the Halo ring, and then a Pelican picks Johnson up. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/see-you-in-the-sequel-halo-2-remake-all-but-confirmed",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T18:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "2d555718848f9d2d5e51f9c9c3bc50b9cc25b732",
+      "title": "SEGA & Ubisoft Leaders Share Their Thoughts On The Future Of Physical Games",
+      "summary": "\"We are currently considering the important elements of digital media...\". We're still waiting to hear from Xbox on what their plans are for supporting physical games in the future, as we already know that PlayStation will be ditching them (at least in disc form) from January 2028. Interestingly, both the SEGA President and Ubisoft CEO were asked about the physical games situation in separate interviews this week, and they each highlighted how digital releases have become more prominent and are a big focus. Read the full article on purexbox.com",
+      "link": "https://www.purexbox.com/news/2026/07/sega-and-ubisoft-leaders-share-their-thoughts-on-the-future-of-physical-games",
+      "sourceName": "Pure Xbox",
+      "sourceUrl": "https://www.purexbox.com/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": false,
+      "publishedAt": "2026-07-24T18:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "1a3b8567dedf80c3a4ddc6139589c900d868b2a1",
+      "title": "Blizzard Employee Out Of A Job After Allegedly Helping Friends Cheat In WoW",
+      "summary": "A Blizzard employee who used developer tools to allegedly help a group of friends complete a challenging Mythic+ dungeon in World of Warcraft is no longer with the company, Blizzard has confirmed. Earlier this week, a thread on Reddit called attention to a suspicious Mythic+ 23 dungeon run. A simple look at the key in question on Warcraftlogs , a site players use to track dungeon and raid performance, showed the dungeon shouldn't have been completed in time, as after the final boss the group still needed to kill more enemies from earlier in the dungeon. However, by some miracle, the key was cleared in its final moments with a spell titled \"Area Death (TEST)\" that instantly killed all the remaining enemies. https://www.reddit.com/r/wow/comments/1v2xfpr/blizzard_gm_death_touching_mobs_in_m23_for_their/ As you can probably assume, that's not a spell players have access to. It immediately be",
+      "link": "https://www.gamespot.com/articles/blizzard-employee-out-of-a-job-after-allegedly-helping-friends-cheat-in-wow/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T18:27:31.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.215Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "c73da3262b0be8fbedbc6b00a921a3e942c21b8a",
+      "title": "Halo: Campaign Evolved Secret Ending Seems To Tease A Halo 2 Remake",
+      "summary": "The original Halo might not be the only entry in the series to get a full redo, with the secret ending of Halo: Campaign Evolved giving a wink and a nod to fans by hinting at a Halo 2 remake. Spoilers for Halo: Campaign Evolved (and the 2001 original) follow. Completing the campaign on Legendary difficulty adds a light-hearted sequence featuring Sergeant Johnson, who is relaxing on a makeshift beach chair on the shore while somehow viewing the original Legendary joke ending from Halo: Combat Evolved. After realizing that the eponymous Halo is exploding (spoilers for the 2001 original, I guess), Johnson gets picked up by a Pelican, but not before turning to the camera, breaking the fourth wall, and declaring: \"See you in the sequel.\" I don't know exactly why, but that final shot made it seem like \"Don't You (Forget About Me)\" was about to blare in the background to cap off the scene. http",
+      "link": "https://www.gamespot.com/articles/halo-campaign-evolved-secret-ending-seems-to-tease-a-halo-2-remake/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T18:24:59.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.216Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "8330a95efed71fbb9900a81b304661cac2d20f1a",
+      "title": "Animal Crossing Dodo Airlines Items Appear in Hokkaido",
+      "summary": "Merchandise based on the airliner in the game series will be available for a limited time at New Chitose Airport.",
+      "link": "https://www.siliconera.com/animal-crossing-dodo-airlines-items-appear-in-hokkaido/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T18:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "ee91f97c7e749cc822d0bb29209d094f3ea3093c",
+      "title": "GTA 6 Is The First Game I’ve Seen With A Best-Before Date",
+      "summary": "We're about four months from the launch of the biggest game of the year: Grand Theft Auto 6 . The hype is no doubt through the roof, but if you're in Japan, you'll need to turn that excitement into immediate action because you'll have a limited amount of time to redeem the code that comes in the game box. As outlined in a June 24 FAQ on Rockstar Games' support page , Japanese gamers will have 170 days to use the code, or it'll expire. The official wording is as follows: Product codes in Japan will expire 170 days after the issuance date, which is the launch date (November 19, 2026), due to regional regulations. This means that, from the time you buy the game, you'll have just shy of six months to redeem the code if you live in Japan. Otherwise, like opened condiments and pantry-stored brown rice, your code will go bad and straight-up expire. It's not necessarily shocking, since most digi",
+      "link": "https://www.gamespot.com/articles/gta-6-is-the-first-game-ive-seen-with-a-best-before-date/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T17:34:40.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.216Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "c0ab70821dcd9d157b30b3b28e940b04c8bd1ee5",
+      "title": "Sponge Break launches July 30",
+      "summary": "One-to-four-player cooperative rafting adventure game Sponge Break will launch for PC via Steam on July &hellip;",
+      "link": "https://www.gematsu.com/2026/07/sponge-break-launches-july-30",
+      "sourceName": "Gematsu",
+      "sourceUrl": "https://www.gematsu.com/",
+      "language": "English",
+      "platform": "Japanese / Console",
+      "official": false,
+      "publishedAt": "2026-07-24T17:34:03.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "32069ff3f4fd09282db5d1da535db8038d096c3c",
+      "title": "Lara Croft can't catch a break: after delaying one Tomb Raider game, Amazon is delaying another and this one won't show up until 2028",
+      "summary": "Lara Croft's big comeback at the hands of Amazon has hit yet another hitch. After TV show setbacks and a delay for Tomb Raider 1 \"reimagining\" Legacy of Atlantis, Amazon's gaming boss has confirmed yet another delay: Lara's other adventure, Tomb Raider: Catalyst, now won't arrive until some time in 2028. Read more",
+      "link": "https://www.eurogamer.net/tomb-raider-catalyst-delay-2028",
+      "sourceName": "Eurogamer",
+      "sourceUrl": "https://www.eurogamer.net/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T17:06:13.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "198c913c316f0e510cf90e91de37d0f16431741d",
+      "title": "How About Celebrating Terminator 2's 35th With This VHS Cassette That Holds Switch Games?",
+      "summary": "\"You forgot to say please\". I'm old enough to recall when VHS tapes were the main means of getting my big-screen entertainment at home – long before DVDs, Blu-Rays and digital streaming came along. Therefore, it's pretty easy to see why Retro Fighters' Terminator 2 Mini VHS case connects with me on multiple levels; firstly, I adore James Cameron's film, and feel it represents one of the purest action flicks ever produced by Hollywood (I'm certain many other people in their mid-40s feel the same way). Read the full article on nintendolife.com",
+      "link": "https://www.nintendolife.com/news/2026/07/how-about-celebrating-terminator-2s-35th-with-this-vhs-cassette-that-holds-switch-games",
+      "sourceName": "Nintendo Life",
+      "sourceUrl": "https://www.nintendolife.com/",
+      "language": "English",
+      "platform": "Nintendo",
+      "official": false,
+      "publishedAt": "2026-07-24T17:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+      "newsTypes": [
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "8ce86b415b49792f6d198900fef51b09a8226345",
+      "title": "GTA 6's Physical PS5 Download Codes Expire After Just 170 Days in Japan",
+      "summary": "Due to \"regional regulations\". Those planning to buy GTA 6’s physical edition in Japan – which consists of a code in the box if you recall – will have just 170 days to redeem their voucher, otherwise it’ll expire. What’s particularly remarkable here is that the text on Rockstar’s website appears to imply the countdown begins with the title’s 19th November, 2026 release date – not the point of sale. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/gta-6s-physical-ps5-download-codes-expire-after-just-170-days-in-japan",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T17:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "2313dea87bebda23b8c279faa96b45b20942af05",
+      "title": "Two Massive Sports Games Have Joined Xbox's Stacked Lineup For September",
+      "summary": "As if it wasn't busy enough. We've already seen so many games announced for September over the past few months as publishers desperately attempt to avoid GTA 6 in November, and we're continuing to get more announcements by the week. Two massive sports games, for example, have just slotted into that window. NBA 2K27 is coming to Xbox Series X and Xbox Series S on September 4th , while EA Sports FC 27 is coming to Xbox Series X, Xbox Series S and Xbox One on September 25th (both of them also have early access dates for buying the more expensive versions). Read the full article on purexbox.com",
+      "link": "https://www.purexbox.com/news/2026/07/two-massive-sports-games-have-joined-xboxs-stacked-lineup-for-september",
+      "sourceName": "Pure Xbox",
+      "sourceUrl": "https://www.purexbox.com/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": false,
+      "publishedAt": "2026-07-24T17:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "ba1ec432b1dc6939442d8333eaf3a4830f18cb4f",
+      "title": "You can trade in your enemy's teeth to \"bend\" time in vampire RPG The Blood of Dawnwalker, care of some really horrible Tooth Fairies",
+      "summary": "I've been vaguely looking forward to grotty dark fantasy RPG The Blood Of Dawnwalker, despite its genAI flirtations . To recap, it casts you as a medieval vampire fledgling whose family has been abducted by another, boss vampire. You've got 30 days and nights to save your loved ones while deciding just how much you're going to succumb to the gore-guzzling curse. Read more",
+      "link": "https://www.rockpapershotgun.com/you-can-trade-in-your-enemys-teeth-to-bend-time-in-vampire-rpg-the-blood-of-dawnwalker-care-of-some-really-horrible-tooth-fairies",
+      "sourceName": "Rock Paper Shotgun",
+      "sourceUrl": "https://www.rockpapershotgun.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T17:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "77d9964a2fe179a7afa99492da4fdaae71d08234",
+      "title": "Junji Ito Gyaru Tomie Hello Kitty Figure Costs $150",
+      "summary": "The Junji Ito Gyaru Tomie Hello Kitty figure will show up worldwide next year and will end up costing about $150.",
+      "link": "https://www.siliconera.com/junji-ito-gyaru-tomie-hello-kitty-figure-costs-150/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T17:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "1986f9fd9428b93bfd2bd4629eb0531076ed8a53",
+      "title": "A New Way To Play Sega Rally Arcade On The PC, Xbox Series X, & Xbox 360 Has Been Released",
+      "summary": "With System Link & online play, wheel support, widescreen, and more. Fans of Sega racing games, take note: a brand-new way to experience the legendary developer's 1995 arcade classic, Sega Rally Championship , has just arrived. If you're a regular reader, you may remember last week we covered the release of developer Wanszai's PC, Xbox 360, and Xbox One emulation frameworks for Virtua Racing , going over some of the enhancements that had been introduced to the iconic racer, such as online play, widescreen support, and smoother frame rates. Read the full article on timeextension.com",
+      "link": "https://www.timeextension.com/news/2026/07/a-new-way-to-play-sega-rally-arcade-on-the-pc-xbox-series-x-and-xbox-360-has-been-released",
+      "sourceName": "Time Extension",
+      "sourceUrl": "https://www.timeextension.com/",
+      "language": "English",
+      "platform": "Retro",
+      "official": false,
+      "publishedAt": "2026-07-24T16:45:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "89666583e25659e06af152849875987527f89417",
+      "title": "Sega Won’t Ditch Physical Media, But Says Digital Expansion Is Vital",
+      "summary": "No one really loves Sony's decision to kill physical PlayStation discs in January 2028 , but there is data that backs up the company's plan . Sega's president understands the choice and the numbers, but he says the company remains committed to producing physical media despite the push to an all-digital future. In a recent interview with Famitsu (that was translated by Eurogamer ), Sega president Shuji Utsumi spoke about how the company needs to be \"more digitally conscious and become more global.\" For Sega, \"digitalization\" is an important part of the company's business going forward. \"When it comes to titles we call 'full games' for consoles and PCs, we believe that a digital shift is crucial,\" Utsumi told Famitsu. \"Of course, consoles are important, but the proportion of people who play on PCs is steadily increasing. Even in areas where consoles are not widely available, there are many",
+      "link": "https://www.gamespot.com/articles/sega-wont-ditch-physical-media-but-says-digital-expansion-is-vital/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T16:40:42.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.216Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "db11b19cd12b364a9e9589fe881aa7d311de73b9",
+      "title": "Asus ROG Azoth Extreme Edition 20 review",
+      "summary": "The type of keyboard you buy because you can, and boy does it shine.",
+      "link": "https://www.pcgamer.com/hardware/gaming-keyboards/asus-rog-azoth-extreme-edition-20-review/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T16:30:50.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "e5ee99fde0011ec2bc281366fcb33d39e002d12c",
+      "title": "Street Fighter 6 Releases New Character Guide Video For Yasmine",
+      "summary": "Get the lowdown. A new character guide for Street Fighter 6 has been released, giving players a proper look at the upcoming DLC fighter, Yasmine. Available from 3rd August as the first character in the Year 4 roadmap, Yasmine utilises a karambit to get \"up close and personal\" to the opponents with some agile combos and devastating air attacks. Read the full article on nintendolife.com",
+      "link": "https://www.nintendolife.com/news/2026/07/street-fighter-6-releases-new-character-guide-video-for-yasmine",
+      "sourceName": "Nintendo Life",
+      "sourceUrl": "https://www.nintendolife.com/",
+      "language": "English",
+      "platform": "Nintendo",
+      "official": false,
+      "publishedAt": "2026-07-24T16:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates"
+      ]
+    },
+    {
+      "id": "be8dcc842fdb8bbf33970ff0b5158fa1e771441d",
+      "title": "From Xbox to PS5: Halo's Incredible 25-Year Transformation Plotted in Graphics Comparison",
+      "summary": "Check out Master Chief's makeover. Few franchises are as iconic as Xbox’s Halo . Master Chief has defined Microsoft’s green machine since Combat Evolved launched alongside the Redmond firm’s first-ever console. Now, we get to take control of the legendary Space Marine on Sony’s system. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/from-xbox-to-ps5-halos-incredible-25-year-transformation-plotted-in-graphics-comparison",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T16:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "f059e64c9bbf2ccf152af8412330f2cdc089821b",
+      "title": "I suck at fighting games, but Marvel Tōkon has the sauce",
+      "summary": "It could be the game that makes me a fan of the genre.",
+      "link": "https://www.pcgamer.com/games/fighting/i-suck-at-fighting-games-but-marvel-tokon-has-the-sauce/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T16:28:43.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "08fefa55e47cf6f9ed7e1356e8ef28fcefb6c87c",
+      "title": "Minecraft Java Edition system requirements want 8/16 GB RAM for the first time, but it isn't more demanding now, Microsoft just hadn't updated the specs in a while",
+      "summary": "The requirements are still light, but I remember what I was rockin' at launch.",
+      "link": "https://www.pcgamer.com/hardware/minecraft-java-edition-system-requirements-want-8-16-gb-ram-for-the-first-time-but-it-isnt-more-demanding-now-microsoft-just-hadnt-updated-the-specs-in-a-while/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T16:25:08.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates"
+      ]
+    },
+    {
+      "id": "6adee024029f033c23b12f3443e55220ff9c4592",
+      "title": "Lara Croft's Newest PS5 Game Tomb Raider Catalyst Delayed to 2028",
+      "summary": "Made to wait for Croft's next adventure. Tomb Raider: Legacy of Atlantis will let you relive the original Lara Croft adventure early next year, but if you're after the brand new instalment, Tomb Raider Catalyst , you've now got to wait until 2028. The two titles were announced at the same time, originally slated for 2026 and 2027. Now, both games will release one year after the intended dates. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/lara-crofts-newest-ps5-game-tomb-raider-catalyst-delayed-to-2028",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T16:15:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "4a5bb969a7e6cbd723f6c9324faf418f63fc6bb7",
+      "title": "Blizzard fire World Of Warcraft developer over use of forbidden magicks to insta-kill bosses for regular players during dungeon run",
+      "summary": "World of Warcraft studio Blizzard have announced that they've fired a developer after development-only spells were used to insta-kill some Mythic+ dungeon bosses for a party of non-dev adventurers. The studio will also be \"taking action against the player accounts that were complicit in this violation\", which was unearthed by some combat log sleuths. Read more",
+      "link": "https://www.rockpapershotgun.com/blizzard-fire-world-of-warcraft-developer-over-use-of-forbidden-magicks-to-insta-kill-bosses-for-regular-players-during-dungeon-run",
+      "sourceName": "Rock Paper Shotgun",
+      "sourceUrl": "https://www.rockpapershotgun.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T16:08:17.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "3c2d1dc61c89b56659cf3e05c39d23a57367f397",
+      "title": "PlayStation Network outage leaves players dreading all-digital future",
+      "summary": "The PlayStation Network was down this morning, and players were unable to access their PlayStation games, stoking fears about an all-digital future.",
+      "link": "https://www.polygon.com/playstation-network-down-psn-outage-digital-games-backlash/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T16:06:54.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.508Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "fd243b78cfa02ca97e122a7bee9db14b159a0ef8",
+      "title": "'Truth and Reconciliation' skulls and terminal locations in Halo Campaign Evolved",
+      "summary": "A guide on where to find all four collectibles in the \"Truth and Reconciliation\" mission in Halo: Campaign Evolved.",
+      "link": "https://www.polygon.com/halo-campaign-evolved-truth-and-reconciliation-skulls-terminal-locations-where-to-find/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T16:03:54.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.508Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "d394ba4409bc06f6335d166c49f2ccb955606571",
+      "title": "Tomb Raider Catalyst Quietly Gets Delayed To 2028",
+      "summary": "Out of nowhere, the second major Tomb Raider game, Catalyst from developer Crystal Dynamics, has been stealthily delayed by Amazon Game Studios. In a lengthy interview with The Game Business on July 23 , Amazon Games' boss Jeff Gattis sneakily mentioned that Tomb Raider Catalyst would duck its 2027 release window, instead releasing in 2028. \"We have announced the two Tomb Raider titles,\" Gattis said. \"[Legacy of] Atlantis comes February 12 next year, and then we'll follow on in 2028 with the next one. We’re excited about those. There are some other AAA things that are in various stages of discussion right now.\" It appears that the reason for this delay, at least according to Gattis, is to allow Amazon Games Studios to focus on bolstering its streaming service, Luna . That way, when Catalyst does come out, people will associate Luna with Tomb Raider. \"Ultimately, we want to build an ident",
+      "link": "https://www.gamespot.com/articles/tomb-raider-catalyst-quietly-gets-delayed-to-2028/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T16:02:46.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.216Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "0af35c924e53120b32bc5b4be07be1b612466740",
+      "title": "Steam makes Metal Gear Solid 1 free for limited time",
+      "summary": "In anticipation of Metal Gear Solid Master Collection Volume 2, fans can play the first game that brought the espionage series to 3D",
+      "link": "https://www.polygon.com/free-steam-pc-games-july-24-metal-gear-solid/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T16:01:24.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "e5db959126f60e1b8b41d4c349150e6c7d29e80a",
+      "title": "Share of the Week: Assassin’s Creed Black Flag Resynced",
+      "summary": "Last week, we asked you to share swashbuckling moments from Assassin’s Creed Black Flag Resynced #PSshare #PSBlog. Here are this week’s highlights: kerplaaaah shares Edward swinging off the Jackdaw by rope artenpixels_ shares the Jackdaw getting drawn into a waterspout tornado _GenieCrazy_ shares Edward overlooking some ships with his cutlass drawn gh_holy_mash Edward steering the […]",
+      "link": "https://blog.playstation.com/2026/07/24/share-of-the-week-assassins-creed-black-flag-resynced/",
+      "sourceName": "PlayStation Blog",
+      "sourceUrl": "https://blog.playstation.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": true,
+      "publishedAt": "2026-07-24T16:00:03.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.365Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "5c8e7e8ee9ebfaeb9a92a3f0c928d535ea484c39",
+      "title": "Onimusha: Way Of The Sword Producer Explains The 20-Year Wait For A New Game",
+      "summary": "\"it was very difficult to get a team together\". Onimusha fans have been waiting a long time for Way of the Sword – over 20 years, in fact, since the release of Onimusha: Dawn of Dreams in 2006. Now, in a new interview with Game Informer , producer Akihito Kadowaki has explained why fans have had to wait so long for a revival. In short, it wasn't for lack of trying, with Kadowaki stating that internal teams had wanted to make a new entry for a while. However, the combination of work on other key franchises and the expanded resources and time required meant that nothing could be green-lit until recently. Read the full article on nintendolife.com",
+      "link": "https://www.nintendolife.com/news/2026/07/onimusha-way-of-the-sword-producer-explains-the-20-year-wait-for-a-new-game",
+      "sourceName": "Nintendo Life",
+      "sourceUrl": "https://www.nintendolife.com/",
+      "language": "English",
+      "platform": "Nintendo",
+      "official": false,
+      "publishedAt": "2026-07-24T16:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "0d9c8c7b0df3f3950f4f6d7b087bbb507dfda2ef",
+      "title": "Black Flag Resynced Tops The Xbox Charts As Ubisoft Says It's Massively Exceeded Expectations",
+      "summary": "3.5 million copies sold to date. It feels like it's been a rough period for Ubisoft over the past few years, but the company will be extremely happy with the results of Assassin's Creed Black Flag Resynced , which has already exceeded sales expectations for all of 2026! The game has sold 3.5 million copies across all platforms since it launched in early July, which is actually better than what Ubisoft had planned for the entire year. A press release today referred to it as a \"strong\" launch: Read the full article on purexbox.com",
+      "link": "https://www.purexbox.com/news/2026/07/black-flag-resynced-tops-the-xbox-charts-as-ubisoft-says-its-massively-exceeded-expectations",
+      "sourceName": "Pure Xbox",
+      "sourceUrl": "https://www.purexbox.com/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": false,
+      "publishedAt": "2026-07-24T16:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "e380d436569bf91f6a07f4f2e25d4a411fdd83ba",
+      "title": "Atelier Karia Character and Costumes Survey Appears Ahead of the Game",
+      "summary": "Gust wants to get feedback on Atelier Karia character, costumes, and features designs in a new official survey about the game.",
+      "link": "https://www.siliconera.com/atelier-karia-character-and-costumes-survey-appears-ahead-of-the-game/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T16:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "3e69770930b8396d7e026fffc96b4e1cf6c7e179",
+      "title": "Where to find Naruo Golf Course in Forza Horizon 6",
+      "summary": "If only you could play car golf.",
+      "link": "https://www.pcgamer.com/games/racing/forza-horizon-6-naruo-golf-course-location/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T15:53:29.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "f387e11ebdc04c88fb7c1563a319199872e9ddff",
+      "title": "HyperX Pulsefire Saga gaming mouse review: modular parts win hearts",
+      "summary": "If the Logitech G Pro X2 Superstrike &rsquo;s analogue clickers were all about fine-tuning the sensation at the very tips of your mousing fingers, the HyperX Pulsefire Saga is all about adjusting the parts nestled in the rest of your hand. To nowhere near the same extent, granted, but the Saga&rsquo;s modular components &ndash; and the fact that it costs a fraction of what the X2 Superstrike does &ndash; make it appealing addition to your wired mouse options . Read more",
+      "link": "https://www.rockpapershotgun.com/hyperx-pulsefire-saga-gaming-mouse-review-modular-parts-win-hearts",
+      "sourceName": "Rock Paper Shotgun",
+      "sourceUrl": "https://www.rockpapershotgun.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T15:48:50.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "5ede353e91749049c813a15f4538e8b8ff7bc7e0",
+      "title": "Epic Games confirms The Simpsons' return to Fortnite",
+      "summary": "Fortnite maker Epic Games confirmed the return of The Simpsons as part of a special event in a fan-favorite game mode, Reload.",
+      "link": "https://www.polygon.com/fortnite-the-simpsons-reload-date/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T15:48:41.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "53565e906e4b1f6d015ed006fb7e73b316390bef",
+      "title": "007 First Light Updated with New TacSim Missions, Available Now on PS5",
+      "summary": "Behind Enemy Lines. IO Interactive has just released a big patch for 007 First Light , introducing new missions to its TacSim mode. Available now as a free update for the game, it's the first of several planned content updates for the James Bond adventure. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/007-first-light-updated-with-new-tacsim-missions-available-now-on-ps5",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T15:45:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "9739081e94e482171220b7058e17e57f3cee1cc4",
+      "title": "It looks like we're getting a Halo 2 remake next, but is that really a surprise?",
+      "summary": "Halo has a proud history of smuggling secret endings into its campaigns. In the very first 2001 game, there is a hidden (non-canon) ending featuring Sgt. Avery Johnson fighting and hugging an Elite. In Halo 2 , there's a mid-credits scene that teases the beginning of Halo 3 . In Halo 3, we get a full scene of Chief drifting, alone, in the cold, indifferent vacuum of space. ODST gives us a glimpse of the Engineers' secret. And in Reach, my personal favourite, we get that phenomenal 'Lone Wolf' ending that still sends shivers down my spine to think about today. Read more",
+      "link": "https://www.eurogamer.net/halo-2-remake-tease-legendary-ending-campaign-evolved",
+      "sourceName": "Eurogamer",
+      "sourceUrl": "https://www.eurogamer.net/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T15:32:41.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "804c2d3cdef584fa79dc629742dc34e3c4bf62c3",
+      "title": "Johnny Depp's Ebenezer gets first trailer at San Diego Comic-Con",
+      "summary": "Ebenezer brings Depp back to the big screen, with Ti West's adaptation of Charles Dickens' A Christmas Carol. The first trailer is now live.",
+      "link": "https://www.polygon.com/johnny-depp-ebenezer-scrooge-trailer/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T15:29:33.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "03f95969d30a6b956fe91ac6f3c1d6b33f8c4236",
+      "title": "AMD Zen 6 server processors have me hopeful for some beefy desktop chips—it shouldn't be too long before Zen 7 and 8 drop either",
+      "summary": "Grab a pinch of salt, but we could be looking at some decent IPC gains.",
+      "link": "https://www.pcgamer.com/hardware/processors/amd-zen-6-server-processors-have-me-hopeful-for-some-beefy-desktop-chips-it-shouldnt-be-too-long-before-zen-7-and-8-drop-either/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T15:25:31.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "df1c05632d738816c2b3ecd5b0d03e8821041f5a",
+      "title": "Doom is stronger than Thanos in Avengers: Doomsday, and the Marvel comics explain why",
+      "summary": "Doom showed impressive might in the Avengers: Doomsday trailer, and the reason for his power lies in the comics that inspired the movie.",
+      "link": "https://www.polygon.com/avengers-doomsday-trailer-doom-powerful/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T15:22:21.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "9f791b8a69891ab4bc2f333b680ab4d20a9a0d0f",
+      "title": "The fourth biggest memory manufacturer could break into America soon, and chances are you've never heard of it",
+      "summary": "DRAM-ing up support.",
+      "link": "https://www.pcgamer.com/hardware/memory/the-fourth-biggest-memory-manufacturer-could-break-into-america-soon-and-chances-are-youve-never-heard-of-it/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T15:10:27.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "080763b7c766f193e387568ffac10eda364273f0",
+      "title": "Is PSN Down? It Was For Hours Today, But It’s Back Up Now",
+      "summary": "Sony's PlaYStation Network was experiencing network issues today, July 24, but those problems now seem to have been resolved. As usual, your mileage may vary, but the hours-long outage now seems to be fixed. The official PlayStation Status page notes that, \"All services are up and running.\" The outage earlier today was severe. All services were initially impacted, including account management, gaming and social, PlayStation Video, PlayStation Store, and PlayStation Direct. The website Downdetector notes that the PSN issues had been going on for hours before things improved. People reported issues with logging in, launching games, and connecting to servers. And.... we're back! Whenever the PSN goes down, it's unfortunate, but the timing was especially tough for people wanting to try the Marvel Tokon multiplayer beta that started today, July 24. \"We're aware that some PlayStation players a",
+      "link": "https://www.gamespot.com/articles/psn-is-down-2/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T15:10:21.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.214Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "2ec8b478bd5fa36dea02867c9e5e74d385346fd5",
+      "title": "PSN Down for 4+ Hours, Sony 'Working to Resolve Issues'",
+      "summary": "\"Thank you for your patience\". PSN appears to be struggling globally, with Sony’s official status page saying “all services are up and running”. Down Detector shows a huge spike in reports over the past few hours in the US, which is gradually easing. In the UK, more reports are coming in as time passes. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/psn-down-for-4plus-hours-sony-working-to-resolve-issues",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T15:10:00.000Z",
+      "fetchedAt": "2026-07-24T16:12:21.135Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "73903686505e00fb695f1d06d16d3e0389008b30",
+      "title": "13 years on, unfinishable survival game Project Zomboid is getting a major update with an expanded Kentucky map, animal husbandry, and revised crafting",
+      "summary": "I return to Project Zomboid exactly like an emaciated survivor crawling back to the undead-ridden town they abandoned many moons ago, having finally exhausted their wilderness stocks of cabbage and duct tape. I poke my head into the Steam forums as though cracking the door on a suspiciously silent mall. Read more",
+      "link": "https://www.rockpapershotgun.com/13-years-on-unfinishable-survival-game-project-zomboid-is-getting-a-major-update-with-an-expanded-kentucky-map-animal-husbandry-and-revised-crafting",
+      "sourceName": "Rock Paper Shotgun",
+      "sourceUrl": "https://www.rockpapershotgun.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T15:08:54.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates"
+      ]
+    },
+    {
+      "id": "27ad5664939ed9109f61044ce598a22ea81f1274",
+      "title": "Bethesda says layoffs haven't affected 'the roadmap' for The Elder Scrolls 6, it hasn't forgotten Oblivion Remastered, and it's not telling you this because Asha Sharma forced it to",
+      "summary": "Well, that clears that up.",
+      "link": "https://www.pcgamer.com/games/the-elder-scrolls/bethesda-says-layoffs-havent-affected-the-roadmap-for-the-elder-scrolls-6-it-hasnt-forgotten-oblivion-remastered-and-its-not-telling-you-this-because-asha-sharma-forced-it-to/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T15:07:25.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "7730179a116849cdb59275e6cabf4eff0edc010a",
+      "title": "Here’s Why The New Resident Evil Movie Has Snow And Smartphones",
+      "summary": "There's undeniable hype and chatter for filmmaker Zach Cregger's Resident Evil movie , but one talking point from fans concerns the evident differences in setting between the adaptation and the Resident Evil 2 game, despite the film \"living in the world\" of that game . But Cregger hasn't been shy to address these creative changes, and he candidly spoke about why his movie is set in the present day with a snowy backdrop. Speaking at San Diego Comic-Con (per DiscussingFilm), Cregger reminded fans that he \"took liberties to tell a story [he] wanted to tell and make a movie look the way [he] wanted to look.\" While the Raccoon City outbreak depicted in Resident Evil 2 and 3 takes place in September 1998, Cregger's film depicts characters using contemporary iPhones and sets the outbreak during wintry weather. \"I am not doing exactly a one-to-one Resident Evil 2 adaptation,\" Cregger said. \"Ther",
+      "link": "https://www.gamespot.com/articles/heres-why-the-new-resident-evil-movie-has-snow-and-smartphones/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T15:04:11.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.216Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "210edc9576749167fca3041a71da007143acc0f5",
+      "title": "Guide: Halo Campaign Evolved Guide: 100% Collectibles Walkthrough",
+      "summary": "The ultimate Halo collectibles resource. In this Halo Campaign Evolved guide , we'll provide a 100% collectibles walkthrough that documents where to find every Skull and Terminal in all the Missions . Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/guides/halo-campaign-evolved-guide-100percent-collectibles-walkthrough",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T15:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "464601847fb96e6b655e2b4f9152f74a5a9ed9f6",
+      "title": "Resident Evil Requiem Just Got A Huge Discount, But Only For Two Days",
+      "summary": "Resident Evil Requiem is one of the best horror games you can play right now. As a certified Resident (I'm assuming that's what fans of the series are called?), Requiem honors the survival horror of the earlier entries while building on the dread that Resident Evil 7 and Village captured. It's the best of both worlds, but less Hannah Montana and more Evil Dead. There's nothing quite like scaring yourself silly, and what's truly terrifying is how cheap the latest entry is right now—but you don't have long to buy it. Playing as two protagonists, the swift-kicking, random-flipping Leon Kennedy and the anxious but extremely capable Grace Ashcroft, Resident Evil Requiem tells a familiar story for the series. Evil mastermind with a zombified face? Check. Creepy manor-like environments and scientists who have gone too far? Check. A mountain of bullets and plenty of infected to use them on? Abso",
+      "link": "https://www.gamespot.com/articles/resident-evil-requiem-just-got-a-huge-discount-but-only-for-two-days/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T15:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.217Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "cf125e8585bd14da99540d52ebb38343bfba68c3",
+      "title": "Xenosaga’s MOMO Becomes a Xenoblade Chronicles 2 Switch 2 Blade",
+      "summary": "Like KOS-MOS, MOMO from Xenosaga will soon be a Rare Blade in Xenoblade Chronicles 2 thanks to the Switch 2 Upgrade.",
+      "link": "https://www.siliconera.com/xenosagas-momo-becomes-a-xenoblade-chronicles-2-switch-2-blade/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T15:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "137c6987abefc5fd9f0e052f5c3be6b8b4e3fd9a",
+      "title": "Amid the recent Xbox devastation, Microsoft is seemingly uncancelling something, which is good news for Age of Empires 3 fans at least",
+      "summary": "Here's something you don't hear very often, especially in a month as destructive as the one Xbox is having: Microsoft is seemingly uncancelling something; specifically its previously announced and then subsequently abandoned Age of Empires 3 DLC, which is now set to arrive this September. Read more",
+      "link": "https://www.eurogamer.net/microsoft-age-of-empires-3-dlc-uncancelled",
+      "sourceName": "Eurogamer",
+      "sourceUrl": "https://www.eurogamer.net/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:45:25.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "3553c74dee4986568aa9b5275529e20d51416e48",
+      "title": "Poll: Did You Know About The Secret Shop In Zelda: Oracle Of Seasons / Ages?",
+      "summary": "You'll need a GBA to see it. Given the widespread fame of the Zelda series, you would assume all of the series' secrets would be common knowledge these days, but with the passage of time, it's becoming clear that some of its hidden features aren't as well known as others. For example, Twitter user TheRealPit0 appears to have surprised a few people with the revelation that there's a secret shop in Zelda: Oracle Of Seasons / Ages on the Game Boy Color that can only be unlocked by inserting the game into the Game Boy Advance. Read the full article on timeextension.com",
+      "link": "https://www.timeextension.com/news/2026/07/poll-did-you-know-about-the-secret-shop-in-zelda-oracle-of-seasons-ages",
+      "sourceName": "Time Extension",
+      "sourceUrl": "https://www.timeextension.com/",
+      "language": "English",
+      "platform": "Retro",
+      "official": false,
+      "publishedAt": "2026-07-24T14:45:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "f6f0331b9e47b7f674420f7a5abf9e3eae6fef29",
+      "title": "A new Guild Wars 3 blog post spills the beans on the game's narrative focus, and perhaps even how magic will work in the upcoming MMORPG",
+      "summary": "A new blog post has been released from ArenaNet, detailing some interesting story details for its upcoming MMORPG Guild Wars 3. However, present within the text might just be a hint to two into how magic will work in-game. Read more",
+      "link": "https://www.eurogamer.net/guild-wars-3-narrative-magic-signets-spirits",
+      "sourceName": "Eurogamer",
+      "sourceUrl": "https://www.eurogamer.net/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:41:05.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "5eaa9d80edac5934e0440c8f00d9559eb6f455e5",
+      "title": "The massive Project Zomboid 'Build 42' update confirmed for July 29",
+      "summary": "The incredibly detailed zombie survival game Project Zomboid is set to level up in a huge way with the proper release of Build 42 on July 29th. Read the full article on GamingOnLinux .",
+      "link": "https://www.gamingonlinux.com/2026/07/the-massive-project-zomboid-build-42-update-confirmed-for-july-29/",
+      "sourceName": "GamingOnLinux",
+      "sourceUrl": "https://www.gamingonlinux.com/",
+      "language": "English",
+      "platform": "Linux / Steam Deck",
+      "official": false,
+      "publishedAt": "2026-07-24T14:36:35.000Z",
+      "fetchedAt": "2026-07-25T03:55:45.070Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates"
+      ]
+    },
+    {
+      "id": "d750b2a19418d4a192ab6f176a67347e8f57df21",
+      "title": "With Secret Lair, Magic: The Gathering Wants To Appeal To As Many People As Possible",
+      "summary": "Since their inception in 2019, Secret Lair drops have offered bespoke, limited-time collections of Magic: The Gathering cards featuring artists and IP in ways that have never been part of the game's history before. From Street Fighter to Stranger Things, and Jaws to The Office, Secret Lair has tried to offer something for everyone, Magic player or not. At MagicCon Amsterdam, the Secret Lair Reveal-A-Thon panel offered a look into the immediate history of Secret Lair, with over a dozen drops and nearly 80 new cards shown off. After the panel, we sat down with Secret Lair's principal product lead Steve Sunu to talk about every drop revealed during the hour-long event. From Miku to Marvel, Stardew Valley to the Masters of the Universe, there was a lot to take in. https://www.youtube.com/watch?v=dGWhAP-gr38 The Secret Lair philosophy If there's one word you're going to hear out of Sunu's mou",
+      "link": "https://www.gamespot.com/articles/with-secret-lair-magic-the-gathering-wants-to-appeal-to-as-many-people-as-possible/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:32:52.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.217Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "7da2e5a05c72ed985507b7c6a5492c0b15cfe3e1",
+      "title": "Resident Evil 4 Has Sold More Than Twice As Much As Any Other Current-Gen Remake",
+      "summary": "The launch of Assassin's Creed Black Flag Resynced has proven that there's still a strong appetite for video game remakes, and at 3.5 million sales and counting, Ubisoft's new game is off to a smashing start. That's not too bad, and if you look at the numbers, the Black Flag remake is already one of the best games in this category of the current generation. It still has a long, long way to go before it can dethrone the current king of remakes, as 2023's Resident Evil 4 is still a sales juggernaut. According to new data by Alinea Analytics , the Resident Evil 4 remake has reached lifetime sales of 16.8 million units across PC and console so far. One thing to note is that the game has lifetime sales of 13.6 million units as of March 31, 2026, according to Capcom, and it hasn't updated those figures yet. If Resident Evil 4 has sold another 3 million units in the last couple of months, then ",
+      "link": "https://www.gamespot.com/articles/resident-evil-4-has-sold-more-than-twice-as-much-as-any-other-current-gen-remake/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:31:30.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.217Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "1831416a868764d5520492ab8dee8d7d4c1a8e94",
+      "title": "Hokubu Time Attack Circuit location in Forza Horizon 6",
+      "summary": "Here's where to find the Hokubu Time Attack Circuit location for the Italian Exotics series in Forza Horizon 6.",
+      "link": "https://www.polygon.com/forza-horizon-6-fh6-hokubu-time-attack-circuit-location/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:31:11.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "3f2c621bca81b910e3ecd79e6162d5f42fd338f1",
+      "title": "Here's A First Look At How Adverts Work With Xbox Cloud Gaming",
+      "summary": "As part of the new \"free\" test for game streaming. Yesterday, Xbox announced that it was introducing a new \"free\" way to access Xbox Cloud Gaming as part of an ad-based tier, which is currently available to test for various members of the Xbox Insider program. Read the full article on purexbox.com",
+      "link": "https://www.purexbox.com/news/2026/07/heres-a-first-look-at-how-adverts-work-with-xbox-cloud-gaming",
+      "sourceName": "Pure Xbox",
+      "sourceUrl": "https://www.purexbox.com/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": false,
+      "publishedAt": "2026-07-24T14:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports"
+      ]
+    },
+    {
+      "id": "0fc978967ab416e36f2f7d904eb0b504d3999dd6",
+      "title": "Reacher Star Alan Ritchson Loves Call Of Duty, Would Be Up For Being In The Movie",
+      "summary": "Alan Ritchson, known for his role as Aquaman on Smallville and Jack Reacher on Reacher, has revealed that Call of Duty is his favorite video game and that he would be interested in appearing in the upcoming Call of Duty movie. Appearing on the Happy Sad Confused podcast , Richtson said video game adaptations \"scare me a little bit\" because \"so few work.\" He's right that video game movies have a spotty track record when it comes to critical and commercial success, with many notable flops, like 2024's Borderlands . There have been huge hits, too, including The Super Mario Bros. Movie, The Super Mario Galaxy Movie, Five Nights at Freddy's, and Minecraft. \"I think the ones that work are the ones that are made directly for kids. Minecraft is a good example. If you make it for kids first, or it's fun... or self-aware, they tend to work. But ones that take themselves too seriously ... [shrugs].",
+      "link": "https://www.gamespot.com/articles/reacher-star-alan-ritchson-loves-call-of-duty-would-be-up-for-being-in-the-movie/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:28:25.000Z",
+      "fetchedAt": "2026-07-24T16:12:20.793Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "9872a5b3c79b58d2ab732dee3c115cadfa84fc90",
+      "title": "'Halo' skulls and terminal locations in Halo Campaign Evolved",
+      "summary": "Where to find all three skulls and the one terminal collectible in the 'Halo' mission in Halo: Campaign Evolved.",
+      "link": "https://www.polygon.com/halo-campaign-evolved-halo-skulls-terminal-locations-where-to-find/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:22:04.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "d7df404ceaf3b4c3814ee31c9280507754bd80b5",
+      "title": "Angry Avatar Legends players call the game a 'rug pull' with key modes missing at launch",
+      "summary": "While Avatar Legends: The Fighting Game has excellent core gameplay, it launched without a ranked mode, doesn't include DLC people paid for, and more.",
+      "link": "https://www.polygon.com/avatar-legends-launch-backlash-no-ranked-missing-dlc/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:19:40.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "01b5f67e2ca7936df6ca51a4a6b7ede01e6c0765",
+      "title": "The Next Kingdom Come Game's Title May Have Leaked Thanks to a New Trademark",
+      "summary": "Czech it out. The name of the third instalment in the Kingdom Come series appears to have leaked before any official announcement thanks to a freshly filed trademark. As reported by The Phrasemaker , a trademark has been discovered on the website for the European Union Intellectual Property Office . The owner of the trademark is listed as Warhorse Studios, developer of the previous two games. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/the-next-kingdom-come-games-title-may-have-leaked-thanks-to-a-new-trademark",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T14:15:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "2e2eed9708bca9dac9717194a4d78f9b4a9ef0b5",
+      "title": "The greatest anime movie of all time officially returns to theaters in 3 weeks",
+      "summary": "This foundational anime film is celebrating its 10th anniversary this year.",
+      "link": "https://www.polygon.com/greatest-romance-anime-returns-theaters-three-weeks/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:00:12.000Z",
+      "fetchedAt": "2026-07-24T16:12:22.509Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "5382a8661a5665f4b9351f04e761009f8310b20f",
+      "title": "Next Week on XBOX: New Games for July 27 to 31",
+      "summary": "The post Next Week on XBOX: New Games for July 27 to 31 appeared first on XBOX Wire .",
+      "link": "https://news.xbox.com/en-us/2026/07/24/next-week-on-xbox-new-games-for-july-27-to-31/",
+      "sourceName": "Xbox Wire",
+      "sourceUrl": "https://news.xbox.com/en-us/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": true,
+      "publishedAt": "2026-07-24T14:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.257Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "df1bbf5c9c46f2d22955b18be5e7ea96f890d750",
+      "title": "The Sega Dreamcast Is Getting A New Resident Evil & D2-Esque Survival Horror Game",
+      "summary": "White Creek is a new game from Storybird Studio. While most people tend to associate survival horror with the original PlayStation console, thanks to it being the first console to introduce players to titles like Resident Evil and Silent Hill , if you were a fan of the genre in the early 2000s, it's worth highlighting that the Sega Dreamcast also had a lot to offer. Not only was it the recipient of ports of various Resident Evil games, Dino Crisis , and Alone in the Dark: New Nightmare , but it was also the original home of Resident Evil: Code Veronica and the Kenji Eno-directed sequel D2 , making it an enticing proposition for anyone whose idea of a good time was exploring claustrophobic hallways, searching for ammo, while avoiding whatever unspeakable horror was lurking around the corner. Read the full article on timeextension.com",
+      "link": "https://www.timeextension.com/news/2026/07/the-sega-dreamcast-is-getting-a-new-resident-evil-and-d2-esque-survival-horror-game",
+      "sourceName": "Time Extension",
+      "sourceUrl": "https://www.timeextension.com/",
+      "language": "English",
+      "platform": "Retro",
+      "official": false,
+      "publishedAt": "2026-07-24T14:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "ca2e0c8309a7f1d1a5cc4ea89210c8674a9ba275",
+      "title": "The big Final Fantasy 7 Revelation interview",
+      "summary": "I think my favourite thing about the Final Fantasy 7 Remake trilogy so far is the specific ways in which the developers at Square Enix inject nostalgia. The games launched to date - Remake and Rebirth - manage to nod warmly towards aspects of the original RPG without it ever feeling trite. You can see it in so many aspects of the way the games are curated: the way certain musical sequences are teased as motifs, and then brought in, full-throated, for certain boss fights; the redesigns of (in)famous monsters, and how certain major enemies are deployed in slightly remixed ways for maximum effect; the reinterpretation and reimagination of dialogue to better fit the bigger, more complex world of 'the Planet' in 2020's version of the world compared to 1997's. Read more",
+      "link": "https://www.eurogamer.net/the-big-final-fantasy-7-revelation-interview",
+      "sourceName": "Eurogamer",
+      "sourceUrl": "https://www.eurogamer.net/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T14:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "1d79e507512ff6575a06b77d7aa4c34c1719d08f",
+      "title": "Jump+ Jumble Rush Game to Shutter Before First Anniversary",
+      "summary": "Ironically, it'll end service a week before its first anniversary.",
+      "link": "https://www.siliconera.com/jump-jumble-rush-game-to-shutter-before-first-anniversary/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T14:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "d67626bf13225480eb409186ea060c47f6caa1a7",
+      "title": "Surprise, Age of Empires 3: Definitive Edition's Baltic Powers expansion has re-emerged from the annals of cancelled DLC history, will come out in September",
+      "summary": "Ah! You hadn't totally retreated from the battlefield following your cancellation in early 2025, Age of Empires III: Definitive Edition 's Baltic Powers DLC! It was just one of your strategic tricks to lull your enemies into a false sense of security. Now, with the time finally being right, you've re-emerged to stake your claim on a September release. Read more",
+      "link": "https://www.rockpapershotgun.com/surprise-age-of-empires-3-definitive-editions-baltic-powers-expansion-has-re-emerged-from-the-annals-of-cancelled-dlc-history-will-come-out-in-september",
+      "sourceName": "Rock Paper Shotgun",
+      "sourceUrl": "https://www.rockpapershotgun.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T13:58:43.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "c2d21b51aa166a0a1b8c648e2c1ca4c2bffa1fcf",
+      "title": "Assassin's Creed Black Flag Resynced trophy guide",
+      "summary": "Here's how to complete every achievement and trophy in Assassin's Creed Black Flag Resynced.",
+      "link": "https://www.polygon.com/assassins-creed-black-flag-resynced-trophy-achievement-guide/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T13:50:08.000Z",
+      "fetchedAt": "2026-07-24T15:33:56.478Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "58e5cd1bf0f51f7bd699204b6ab0c43dcf43c825",
+      "title": "Atari Announces 10-Movie Deal With Universal But Don’t Expect Them All To Get Made",
+      "summary": "Video games are the hot new thing in Hollywood AKA the next content library to mine for ideas and stories. Atari has announced a 10-movie deal with Jurassic World and The Odyssey studio Universal to adapt some of the company's legendary video game properties for the big screen. Announced at San Diego Comic-Con, Atari has partnered with Entertainment 360 to make a deal with Universal Pictures to give the movie studio the option to develop 10 Atari games into films. Not all of them are expected to go forward, as is often the case with development deals in Hollywood. According to Deadline, Universal has, however, already bought the first project from the 10-movie deal and hired Matt Reilly and Carl Hampe to write and produce. What this movie is, however, remains a mystery, but Deadline said it's an \"original spec\" from Reilly. He is a former Universal executive who switched to screenwriting",
+      "link": "https://www.gamespot.com/articles/atari-announces-10-movie-deal-with-universal-but-dont-expect-them-all-to-get-made/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T13:42:23.000Z",
+      "fetchedAt": "2026-07-24T16:12:20.793Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "dbcf268e739d2158b6407b15491a73c794af6154",
+      "title": "STRANGER THAN HEAVEN – Combat Gameplay Trailer",
+      "summary": "Taker a look at this combat gameplay across multiple eras in RGG's latest game, Stranger Than Heaven. A fifty-year, action-adventure saga of men with nowhere to go and their desperate struggle to find a home. Use extreme violence to survive, and musical talent to thrive as a showman across five cities and eras of modern Japan.",
+      "link": "https://www.gamespot.com/videos/stranger-than-heaven-combat-gameplay-trailer/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T13:40:52.000Z",
+      "fetchedAt": "2026-07-24T16:12:20.794Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "4bbb1dc2ece60dfadf8ee1c85d09ea7ad695f35c",
+      "title": "'It Will Not Disturb the Industry Much': Major Publisher Doesn't Believe PS5's Disc Debacle Will Change Anything",
+      "summary": "\"Being only digital will help to have a more accessible machine\". While Sony seems unlikely to provide an update on its decision to stop manufacturing disc-based games in January 2028 , we’re beginning to learn what publishers think about it all. In a statement earlier this week , SEGA described the shift to digital as “crucial”, but promised to not “completely abandon” physical games. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/it-will-not-disturb-the-industry-much-major-publisher-doesnt-believe-ps5s-disc-debacle-will-change-anything",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T13:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "fc70764c216a3034817926e15c26648645399891",
+      "title": "It Sure Sounds Like Xbox 360 Games Are Coming To Backwards Compatibility On PC",
+      "summary": "Better get those wishlists ready. When Xbox backwards compatibility was announced for PC the other day, we were treated to four games from the original Xbox era in the form of Conker: Live & Reloaded , Crimson Skies , Fuzion Frenzy and Blinx: The Time Sweeper . However, it seems very possible we'll be getting some Xbox 360 titles in the future as well, as people have been digging into the files and have seemingly discovered that the four OG games are actually running through an Xbox 360 emulator. Read the full article on purexbox.com",
+      "link": "https://www.purexbox.com/news/2026/07/it-sure-sounds-like-xbox-360-games-are-coming-to-backwards-compatibility-on-pc",
+      "sourceName": "Pure Xbox",
+      "sourceUrl": "https://www.purexbox.com/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": false,
+      "publishedAt": "2026-07-24T13:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "20be7f64e3bb5740277267f0d2c2d0722dd8c8ba",
+      "title": "I enjoy Fallgrade's grainy physics-defying city almost as much as I fear its foggy giant spider",
+      "summary": "It is said that to name a wild thing is to tame it, to delimit and temper it, to defuse its menace. The giant, vaporous spider in Fallgrade is called Karl. Know any Karls? Are you a Karl? I wonder if it's Karl as in Karl Marx. Perhaps it's a reference to arachnid imagery in anti-Communist propaganda , though arachnid imagery isn't the exclusive preserve of anti-Communists. Myself, I tend to associate the name \"Karl\" with paperweights, for reasons my brain refuses to explain to me. And yet, for all these steadying associations, Karl the spider still gives me the willies. Nothing tame about that thing at all. Read more",
+      "link": "https://www.rockpapershotgun.com/i-enjoy-fallgrades-grainy-physics-defying-city-almost-as-much-as-i-fear-its-foggy-giant-spider",
+      "sourceName": "Rock Paper Shotgun",
+      "sourceUrl": "https://www.rockpapershotgun.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T13:27:55.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "5bb7c5e226dcf9a0b369c4dacca92ebfb21d24c2",
+      "title": "Fortnite launches Cuddles and Chaos: Here's what to expect",
+      "summary": "Fortnite launches Cuddles and Chaos, but some fans still aren't quite sure what it is, how to participate, and what they can get from it.",
+      "link": "https://www.polygon.com/what-is-fortnite-cuddles-and-chaos/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T13:22:28.000Z",
+      "fetchedAt": "2026-07-24T15:33:56.478Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "b957dec4586d3c9a9927dc37d9bfd91e696f96a7",
+      "title": "Halo remake reviews totter as fans lament the 3 horsemen of 2026 game releases: Bugs, pointless logins, and duff servers",
+      "summary": "Hold up, Chief.",
+      "link": "https://www.pcgamer.com/games/halo/halo-remake-reviews-totter-as-fans-lament-the-3-horsemen-of-2026-game-releases-bugs-pointless-logins-and-duff-servers/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T13:15:36.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "991c82c236aed662f7de9a23413cdf6320fd51a7",
+      "title": "Resident Evil Movie Star Nearly Died During Filming After 150-Pound Blood Bag Almost Hit Him",
+      "summary": "Zach Cregger, the director of the upcoming Resident Evil movie, appeared at San Diego Comic-Con this week, where he revealed that the movie's star, Austin Abrams, nearly died filming a scene that ended up in the movie. The Resident Evil franchise has a history with this kind of thing, as a member of the production crew on Resident Evil: The Final Chapter was killed from injuries he sustained during an on-set accident . At Comic-Con, Slash Film reported that Cregger said there is a scene in the movie where Abrams' character, the medical courier Bryan, is running through a street, with zombies leaping from the tops of buildings at him. Cregger wanted to film this sequence practically instead of using CGI. https://www.youtube.com/watch?v=mNd1gb19A-c To film the scene, the production team created 150-pound \"body-sized blood bags\" that were dropped from cranes to create the effect. One of the",
+      "link": "https://www.gamespot.com/articles/resident-evil-movie-actor-nearly-died-during-filming-after-150-pound-blood-bag-almost-hit-him/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T13:11:06.000Z",
+      "fetchedAt": "2026-07-24T16:12:20.794Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "da9753cddc87b06a119b4149bb182817a4972666",
+      "title": "Romance of the Three Kingdoms XIV Complete Edition official trailer",
+      "summary": "Publisher Koei Tecmo and developer Kou Shibusawa have released the official trailer for Romance of &hellip;",
+      "link": "https://www.gematsu.com/2026/07/romance-of-the-three-kingdoms-xiv-complete-edition-official-trailer",
+      "sourceName": "Gematsu",
+      "sourceUrl": "https://www.gematsu.com/",
+      "language": "English",
+      "platform": "Japanese / Console",
+      "official": false,
+      "publishedAt": "2026-07-24T13:05:21.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "0bbfe7bc605bdf2b1ea8006fc108dc6308331566",
+      "title": "PlayStation Network down, as tens of thousands of players queue to play Marvel Tokon Fighting Souls newly-launched beta",
+      "summary": "Reports of a PlayStation Network (PSN) outage are currently spiking, as many players are struggling to connect to online services. Read more",
+      "link": "https://www.eurogamer.net/psn-network-down-login-failure",
+      "sourceName": "Eurogamer",
+      "sourceUrl": "https://www.eurogamer.net/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T13:03:51.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "654f8d72bbc723e26613a82bda1ee7c276339292",
+      "title": "Halo: Campaign Evolved just signaled Xbox's strategy for the next 3 years",
+      "summary": "A struggling Microsoft is looking to bolster franchises like Halo, The Elder Scrolls, and Fallout with remakes",
+      "link": "https://www.polygon.com/halo-campaign-evolved-xbox-strategy-franchises-remakes/",
+      "sourceName": "Polygon",
+      "sourceUrl": "https://www.polygon.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T13:00:12.000Z",
+      "fetchedAt": "2026-07-24T15:33:56.478Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "5784807222b0096ce2daa6d7bb001dae70ebb34e",
+      "title": "Castlevania: Belmont’s Curse – How KONAMI and Evil Empire Reimagined Castlevania’s Return",
+      "summary": "The post Castlevania: Belmont’s Curse – How KONAMI and Evil Empire Reimagined Castlevania’s Return appeared first on XBOX Wire .",
+      "link": "https://news.xbox.com/en-us/2026/07/24/castlevania-belmonts-curse-xbox/",
+      "sourceName": "Xbox Wire",
+      "sourceUrl": "https://news.xbox.com/en-us/",
+      "language": "English",
+      "platform": "Xbox",
+      "official": true,
+      "publishedAt": "2026-07-24T13:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.257Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "7afbf25629298a4bad0a34f6b4d8d0bdb5cdb703",
+      "title": "AC Black Flag Resynced Already Outsold Ubisoft's Entire Yearly Expectations",
+      "summary": "Now sold 3.5 million units. Instead of doing a Square Enix, it appears Ubisoft has actually under estimated the demand for Assassin's Creed: Black Flag Resynced . The PS5 pirate remake has now sold more than 3.5 million units, as per the publisher's latest sales results . This is more copies than Ubisoft expected to sell across the entire year , and it's managed it inside two weeks. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/ac-black-flag-resynced-already-outsold-ubisofts-entire-yearly-expectations",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T13:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "00f7fdbe8800bb802bf5feb3e010403fab0c4a51",
+      "title": "Two Decades After Development Started, This Sonic Fan Game Just Got An Amazing New Demo",
+      "summary": "Sonic XG lives! If you ever needed evidence of the Sonic fan community's persistence, then you needn't look much further than Sonic XG . Initially starting development in the early 2000s, the fan game (originally created by Euan Gallacher and Joseph Waters) has gone through many personnel changes and iterations over the last two decades — even at one point being worked on by Sonic Mania's Christian \"The Taxman\" Whitehead, under the name Retro-Sonic XG and Retro Sonic Nexus , after merging with other community projects. Read the full article on timeextension.com",
+      "link": "https://www.timeextension.com/news/2026/07/two-decades-after-development-started-this-sonic-fan-game-just-got-an-amazing-new-demo",
+      "sourceName": "Time Extension",
+      "sourceUrl": "https://www.timeextension.com/",
+      "language": "English",
+      "platform": "Retro",
+      "official": false,
+      "publishedAt": "2026-07-24T13:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "05c6e136aa464ff251492032d7dd8562467b6c16",
+      "title": "Review: Disgaea Mayhem Is a Clunky, Short, Bare-bones Musou",
+      "summary": "Everything about Disgaea Mayhem is disappointing, especially if you love Musou style beat’em ups.",
+      "link": "https://www.siliconera.com/review-disgaea-mayhem-is-a-clunky-short-bare-bones-musou/",
+      "sourceName": "Siliconera",
+      "sourceUrl": "https://www.siliconera.com/",
+      "language": "English",
+      "platform": "Japanese Games",
+      "official": false,
+      "publishedAt": "2026-07-24T13:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "446ac44c8d98221d2d857f1bb91fc57652d708ae",
+      "title": "\"Let's make a better world\": Denshattack's developers on counterculture, biker gangs, and the optimism of fighting a mecha with a train",
+      "summary": "In hindsight, I was a fool for meeting Denshattack &rsquo;s satirical, irreverent, downright countercultural sensibilities with surprise . Upbeat, even goofy as it is for a train driving game, it shares more common ground with skateboarding games, and while the commodification of skater culture is certainly A Thing , few skaters have ever reapplied their asphalt-eating skills to bootlicking. What remains striking, though, is how specifically '2026' Denshattack's targets are. The main baddies are a rogue big tech company, deploying all your current favourite social ills: enforced inequality, mass surveillance, misinformation-spewing talking heads, police violence, and soulless AI replacing true craft and skill. If only it did a bit on mass layoffs , it would have had a full set. You meet them with force, too, assembling a crew that resembles a Greatest Hits of Japanese normbreaker groups ",
+      "link": "https://www.rockpapershotgun.com/lets-make-a-better-world-denshattacks-developers-on-counterculture-biker-gangs-and-the-optimism-of-fighting-a-mecha-with-a-train",
+      "sourceName": "Rock Paper Shotgun",
+      "sourceUrl": "https://www.rockpapershotgun.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T12:47:34.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+      "newsTypes": [
+        "Patches & Updates",
+        "Company & Business News",
+        "Events & Esports",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "3d4f4177230c007406b4d956c732b8155e0c2390",
+      "title": "PSN Down But Slowly Recovering After Amazon Web Services Outage",
+      "summary": "Not quite full health yet. PSN appears to be struggling globally, with Sony’s official status page saying “all services are up and running”. Down Detector shows a huge spike in reports over the past few hours in the US, which is gradually easing. In the UK, more reports are coming in as time passes. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/news/2026/07/psn-down-but-slowly-recovering-after-amazon-web-services-outage",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T12:40:00.000Z",
+      "fetchedAt": "2026-07-24T13:08:30.874Z",
+      "newsTypes": [
+        "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "558905456899a259328878db243b4de4239eddc1",
+      "title": "We now have independent testing confirming Razer's latest innovative mouse sensor tech does what it says it does",
+      "summary": "Not that I doubted it, but it's cool to see it confirmed.",
+      "link": "https://www.pcgamer.com/hardware/gaming-mice/we-now-have-independent-testing-confirming-razers-latest-innovative-mouse-sensor-tech-does-what-it-says-it-does/",
+      "sourceName": "PC Gamer",
+      "sourceUrl": "https://www.pcgamer.com/",
+      "language": "English",
+      "platform": "PC",
+      "official": false,
+      "publishedAt": "2026-07-24T12:33:28.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "f87c892e1b37bc5b06e2a66a414e9e08bb6e3bb6",
+      "title": "There's a Breakout movie on the way as Atari signs deal to bring Pong, Asteroids, and other classic games to the big screen",
+      "summary": "In a surefire sign Hollywood has reached the desperation stage of its insatiable hunger for video game properties to swallow up and spit out in dubiously recognisable big-screen form, Atari has somewhat improbably announced a deal with Universal Pictures to produce ten movies based on classic retro games from its expansive backcatalogue, including Pong, Breakout, and more. Read more",
+      "link": "https://www.eurogamer.net/atari-movie-pong-breakout-asteroids-more",
+      "sourceName": "Eurogamer",
+      "sourceUrl": "https://www.eurogamer.net/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-24T12:21:58.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+      "id": "bb2b44612d091faadde1f84a5c0c413650cb8050",
+      "title": "Kingdom Come Salvation may be the next Medieval RPG from Warhorse, and it could have some sort of multi-player functionality, too",
+      "summary": "It looks like we've had our first hint as to what we can expect next from the Kingdom Come studio, Warhorse. We only heard back in May this year that a third Kingdom Come RPG may be released sooner than we expected , and it seems like the barely-announced title already has a name. Read more",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "link": "https://www.eurogamer.net/kingdom-come-salvation-trademark-filing",
       "sourceName": "Eurogamer",
       "sourceUrl": "https://www.eurogamer.net/",
@@ -11,9 +1906,16 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T12:20:54.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:14.581Z",
       "newsTypes": [
         "Game Releases & Launches"
+=======
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Company & Business News"
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       ]
     },
     {
@@ -27,12 +1929,36 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T12:13:40.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:14.582Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Company & Business News"
       ]
     },
     {
+<<<<<<< HEAD
+=======
+      "id": "2d00a75fb3cfff07def6762fa21e2bb924935ab3",
+      "title": "Warhorse Studios trademarks Kingdom Come Salvation",
+      "summary": "Kingdom Come: Deliverance and Kingdom Come: Deliverance II developer Warhorse Studios filed a trademark for &hellip;",
+      "link": "https://www.gematsu.com/2026/07/warhorse-studios-trademarks-kingdom-come-salvation",
+      "sourceName": "Gematsu",
+      "sourceUrl": "https://www.gematsu.com/",
+      "language": "English",
+      "platform": "Japanese / Console",
+      "official": false,
+      "publishedAt": "2026-07-24T12:10:19.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+      "newsTypes": [
+        "Company & Business News",
+        "Community & Dev Blogs"
+      ]
+    },
+    {
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "id": "6b1f4241484890ecf30eafd1ef1f8afee7a0b27c",
       "title": "PSN Was Down Due to Amazon Web Services Outage",
       "summary": "Slowly recovering to full health. PSN appears to be struggling globally, with Sony’s official status page saying “all services are up and running”. Down Detector shows a huge spike in reports over the past few hours in the US, which is gradually easing. In the UK, more reports are coming in as time passes. Read the full article on pushsquare.com",
@@ -43,7 +1969,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-24T12:10:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.653Z",
+=======
+      "fetchedAt": "2026-07-24T12:18:35.016Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -59,7 +1989,11 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-24T12:02:44.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.486Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.070Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -75,7 +2009,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T12:00:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T15:33:56.478Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -91,7 +2029,11 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-24T12:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.819Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -107,7 +2049,11 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-24T12:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.852Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -123,7 +2069,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T11:30:58.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.861Z",
+=======
+      "fetchedAt": "2026-07-24T16:12:20.796Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -143,7 +2093,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T11:26:27.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.883Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -159,7 +2113,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T11:21:31.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.883Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -176,7 +2134,11 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-24T11:20:36.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.487Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.070Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -192,7 +2154,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T11:12:04.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:12.235Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -208,7 +2174,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T11:06:44.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.861Z",
+=======
+      "fetchedAt": "2026-07-24T16:12:20.796Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Company & Business News"
       ]
@@ -224,7 +2194,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T11:00:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.410Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -240,7 +2214,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-24T11:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Company & Business News",
         "Community & Dev Blogs"
@@ -257,7 +2235,11 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-24T11:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.819Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -275,7 +2257,11 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-24T11:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.852Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -292,7 +2278,11 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-24T10:54:13.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.487Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.070Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -308,7 +2298,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T10:54:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.883Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -324,7 +2318,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T10:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.847Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -341,7 +2339,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T10:18:17.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:14.582Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -375,7 +2377,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T10:05:38.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:12.235Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports",
@@ -393,7 +2399,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T10:00:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.410Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -411,7 +2421,11 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-24T10:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.819Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -427,7 +2441,11 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-24T10:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.852Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -444,7 +2462,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T09:47:15.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.411Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -461,7 +2483,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T09:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.847Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports",
@@ -479,7 +2505,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T09:29:55.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:12.235Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -496,7 +2526,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T09:12:08.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.883Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -512,7 +2546,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T09:07:44.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.411Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Company & Business News",
         "Community & Dev Blogs"
@@ -529,7 +2567,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T09:07:36.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:14.582Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.172Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -545,7 +2587,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T09:06:17.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:14.582Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.173Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports"
@@ -562,7 +2608,11 @@
       "platform": "Retro",
       "official": false,
       "publishedAt": "2026-07-24T09:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.852Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.553Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -578,7 +2628,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T08:46:13.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:14.582Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.173Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -595,7 +2649,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T08:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.847Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -613,7 +2671,11 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-24T08:37:46.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.350Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.597Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -629,7 +2691,11 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-24T08:21:58.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.487Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.071Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -645,7 +2711,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-24T08:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -662,7 +2732,11 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-24T07:54:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.487Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.071Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -680,7 +2754,11 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-24T07:05:30.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.351Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.597Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -696,7 +2774,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T07:00:10.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.072Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -712,9 +2794,30 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-24T07:00:04.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.351Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.597Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Patches & Updates"
+      ]
+    },
+    {
+      "id": "3812b90d6ab07d633823a03556fb18c41ba22ba5",
+      "title": "Guide: Marvel Tokon: Fighting Souls: All Confirmed Characters and Stages",
+      "summary": "Ready, fight. A fighting game is only as strong as its character roster, and with almost 100 years of comic book history to pull from, Arc System Works and PlayStation's Marvel Tokon: Fighting Souls is sure to have one of the most hyped line-ups in recent memory. We’ll be updating and compiling this page with every announcement as it drops. Find all of the details below. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/guides/marvel-tokon-fighting-souls-all-confirmed-characters-and-stages",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T06:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Community & Dev Blogs"
       ]
     },
     {
@@ -728,9 +2831,49 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T05:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.847Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
+      ]
+    },
+    {
+      "id": "e6b53b0b6770e05c66d77d90e39ab09aaa5ec5de",
+      "title": "Guide: New PS5 Games Release Dates in 2026",
+      "summary": "All 2026's upcoming PS5 launch dates. What new PS5 games release dates in 2026 are coming up? There’s never a shortage of new games to play, but if you want to plan out your purchases, we’re keeping tabs on all 2026 PS5 release dates on this page. Please keep in mind that this information is accurate to the best of our knowledge, and is updated on a regular basis. However, publishers may make alterations to their release plans, and so the dates are subject to change. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/guides/new-ps5-games-release-dates-in-2026",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T05:00:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.527Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News"
+      ]
+    },
+    {
+      "id": "223d09f67903dd4a96ef1df082aa212e19ed06b2",
+      "title": "Guide: New PS4 Games Release Dates in 2026",
+      "summary": "All 2026's upcoming PS4 launch dates. What new PS4 games release dates in 2025 are coming up? PS4 is certainly getting towards the end of its life, but there's still plenty of software on the way, and we'll be tracking all 2026 PS4 release dates on this page. Please keep in mind that this information is accurate to the best of our knowledge, and is updated on a regular basis. However, publishers may make alterations to their release plans, and so the dates are subject to change. Read the full article on pushsquare.com",
+      "link": "https://www.pushsquare.com/guides/new-ps4-games-release-dates-in-2026",
+      "sourceName": "Push Square",
+      "sourceUrl": "https://www.pushsquare.com/",
+      "language": "English",
+      "platform": "PlayStation",
+      "official": false,
+      "publishedAt": "2026-07-24T04:30:00.000Z",
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+      "newsTypes": [
+        "Game Releases & Launches",
+        "Patches & Updates",
+        "Company & Business News"
       ]
     },
     {
@@ -744,7 +2887,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T03:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.847Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.531Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -762,7 +2909,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-24T03:33:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -779,7 +2930,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T02:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.847Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.532Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports"
@@ -796,7 +2951,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-24T01:35:58.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -812,7 +2971,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T01:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.848Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.532Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -829,7 +2992,11 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-24T01:24:34.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.351Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.597Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -845,7 +3012,11 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-24T01:20:58.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.351Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.598Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Events & Esports"
       ]
@@ -861,7 +3032,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-24T01:12:08.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -879,7 +3054,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T01:11:37.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.864Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.694Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -898,7 +3077,11 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-24T01:05:55.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.351Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.598Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -914,7 +3097,11 @@
       "platform": "Nintendo",
       "official": true,
       "publishedAt": "2026-07-24T01:01:38.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.351Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.598Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -930,7 +3117,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-24T00:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.848Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.532Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -946,7 +3137,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-24T00:00:11.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.411Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Events & Esports"
       ]
@@ -962,7 +3157,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T23:30:51.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -978,7 +3177,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T23:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.864Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.695Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -997,7 +3200,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T23:18:15.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1013,7 +3220,11 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-23T23:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.981Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1029,7 +3240,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T22:49:11.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1045,7 +3260,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T22:36:42.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.411Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1061,7 +3280,11 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-23T22:05:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.981Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1077,7 +3300,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T22:01:24.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1095,7 +3322,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T22:00:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.411Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1111,7 +3342,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T21:32:40.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Events & Esports"
       ]
@@ -1127,7 +3362,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T21:31:52.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Patches & Updates",
         "Community & Dev Blogs"
@@ -1144,7 +3383,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T21:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.864Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.695Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1160,7 +3403,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T21:17:37.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:32.411Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1176,7 +3423,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T21:12:44.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:13.556Z",
+=======
+      "fetchedAt": "2026-07-24T12:18:36.428Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports"
@@ -1209,7 +3460,11 @@
       "platform": "Xbox",
       "official": true,
       "publishedAt": "2026-07-23T21:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.348Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.257Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1225,7 +3480,11 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-23T21:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.981Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Patches & Updates"
       ]
@@ -1306,7 +3565,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T20:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -1323,7 +3586,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T20:07:34.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1339,7 +3606,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T20:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -1356,7 +3627,11 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-23T20:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.819Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1372,7 +3647,11 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-23T20:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.981Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1388,7 +3667,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T19:58:06.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1404,7 +3687,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T19:51:37.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.864Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.695Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -1421,7 +3708,11 @@
       "platform": "PlayStation",
       "official": true,
       "publishedAt": "2026-07-23T19:46:05.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.941Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.365Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1439,7 +3730,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T19:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1455,7 +3750,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T19:26:01.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.865Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.695Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1473,7 +3772,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T19:20:36.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.865Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.696Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1492,7 +3795,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T19:15:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1508,7 +3815,11 @@
       "platform": "PlayStation",
       "official": true,
       "publishedAt": "2026-07-23T19:14:35.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.941Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.365Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Events & Esports"
       ]
@@ -1524,7 +3835,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T19:12:17.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1543,7 +3858,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T19:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1559,7 +3878,11 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-23T19:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.981Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1575,7 +3898,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T18:57:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.865Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.696Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1591,7 +3918,11 @@
       "platform": "Linux / Steam Deck",
       "official": false,
       "publishedAt": "2026-07-23T18:42:03.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.487Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:45.071Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -1608,7 +3939,11 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-23T18:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.819Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1624,7 +3959,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T18:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Events & Esports"
       ]
@@ -1640,7 +3979,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T18:26:58.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1658,7 +4001,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T18:15:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1674,7 +4021,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T18:14:09.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.865Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.696Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News",
@@ -1692,7 +4043,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T18:00:08.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.866Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.696Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1711,6 +4066,7 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T18:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
       "newsTypes": [
         "Community & Dev Blogs"
@@ -1728,6 +4084,9 @@
       "official": false,
       "publishedAt": "2026-07-23T18:00:00.000Z",
       "fetchedAt": "2026-07-24T12:21:10.866Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1743,10 +4102,30 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-23T18:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.981Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.226Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
+      ]
+    },
+    {
+      "id": "3234b14ee4d3e1344f8a0406c05382d0d92d038e",
+      "title": "Splatoon Raiders 9 Tips We Wish We Knew",
+      "summary": "Splatoon Raiders is a change of pace for the series, and even if you're a veteran of the multiplayer games, Raiders introduces new gear and playstyles. Here's nine tips we wish we knew playing Splatoon Raiders.",
+      "link": "https://www.gamespot.com/videos/splatoon-raiders-9-tips-we-wish-we-knew/",
+      "sourceName": "GameSpot",
+      "sourceUrl": "https://www.gamespot.com/",
+      "language": "English",
+      "platform": "Multi-platform",
+      "official": false,
+      "publishedAt": "2026-07-23T18:00:00.000Z",
+      "fetchedAt": "2026-07-24T13:08:30.697Z",
+      "newsTypes": [
+        "Community & Dev Blogs"
       ]
     },
     {
@@ -1760,7 +4139,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T17:32:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.866Z",
+=======
+      "fetchedAt": "2026-07-24T13:08:30.698Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates",
@@ -1798,7 +4181,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T17:30:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1814,7 +4201,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T17:20:13.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.073Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Company & Business News"
@@ -1831,7 +4222,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T17:20:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.480Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.179Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Community & Dev Blogs"
@@ -1848,7 +4243,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T17:15:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:12.235Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1864,7 +4263,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T17:13:18.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-24T16:12:20.682Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1880,7 +4283,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-23T17:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.848Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.532Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -1896,7 +4303,11 @@
       "platform": "Nintendo",
       "official": false,
       "publishedAt": "2026-07-23T17:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.848Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.532Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1912,7 +4323,11 @@
       "platform": "PlayStation",
       "official": false,
       "publishedAt": "2026-07-23T17:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.654Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.528Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1928,7 +4343,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T17:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:12.235Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.133Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1944,7 +4363,11 @@
       "platform": "Japanese Games",
       "official": false,
       "publishedAt": "2026-07-23T17:00:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.981Z",
+=======
+      "fetchedAt": "2026-07-24T16:12:20.880Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches"
       ]
@@ -1979,7 +4402,11 @@
       "platform": "Xbox",
       "official": false,
       "publishedAt": "2026-07-23T16:45:00.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:10.819Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.529Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Events & Esports"
@@ -1996,7 +4423,11 @@
       "platform": "PC",
       "official": false,
       "publishedAt": "2026-07-23T16:41:12.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.884Z",
+=======
+      "fetchedAt": "2026-07-24T16:12:20.682Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Community & Dev Blogs"
       ]
@@ -2012,7 +4443,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T16:39:32.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.480Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.179Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Company & Business News",
         "Events & Esports"
@@ -2029,7 +4464,11 @@
       "platform": "Multi-platform",
       "official": false,
       "publishedAt": "2026-07-23T16:37:40.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:14.582Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.173Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Company & Business News",
         "Community & Dev Blogs"
@@ -2046,7 +4485,11 @@
       "platform": "Japanese / Console",
       "official": false,
       "publishedAt": "2026-07-23T16:35:30.000Z",
+<<<<<<< HEAD
       "fetchedAt": "2026-07-24T12:21:11.194Z",
+=======
+      "fetchedAt": "2026-07-25T03:55:44.387Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
       "newsTypes": [
         "Game Releases & Launches",
         "Patches & Updates"
@@ -2071,6 +4514,7 @@
         "Events & Esports",
         "Community & Dev Blogs"
       ]
+<<<<<<< HEAD
     },
     {
       "id": "856878e69a70f4eec2eb101fe0efc0332f410876",
@@ -4010,6 +6454,11 @@
     }
   ],
   "lastFetchedAt": "2026-07-24T12:21:14.601Z",
+=======
+    }
+  ],
+  "lastFetchedAt": "2026-07-25T03:55:45.998Z",
+>>>>>>> 2ce4a11747671075e74ef0ddb0f8d605e9193147
   "sourceRuns": [
     {
       "source": "Nintendo Official News",
