@@ -7,6 +7,7 @@ const fs = require('fs');
 const multer = require('multer');
 const path = require('path');
 const multer = require('multer');
+const nodemailer = require('nodemailer');
 const mysql = require('mysql2/promise');
 const pool = require('./config/db');
 const newsHub = require('./src/services/newshub.service');
@@ -145,6 +146,16 @@ const upload = multer({
         }
         cb(null, true);
     }
+});
+
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT || 587),
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: process.env.SMTP_USER && process.env.SMTP_PASS ? {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+    } : undefined
 });
 
 const profileUpload = upload.fields([
@@ -1299,7 +1310,56 @@ app.get('/api/newshub/monthly-report', requireLogin, async (req, res, next) => {
     }
 });
 
-app.get('/contact', (req, res) => res.render('contact', { title: 'Contact Us' }));
+app.get('/contact', (req, res) => res.render('contact', { title: 'Contact Us', success: null, error: null }));
+
+app.post('/contact', async (req, res, next) => {
+    try {
+        const name = String(req.body.name || '').trim();
+        const email = String(req.body.email || '').trim();
+        const message = String(req.body.message || '').trim();
+
+        if (!name || !email || !message) {
+            return res.status(400).render('contact', {
+                title: 'Contact Us',
+                success: null,
+                error: 'Please fill in your name, email and a message.'
+            });
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return res.status(400).render('contact', {
+                title: 'Contact Us',
+                success: null,
+                error: 'Please enter a valid email address.'
+            });
+        }
+
+        const mailOptions = {
+            from: process.env.SMTP_FROM || process.env.SMTP_USER || 'savepoint@example.com',
+            to: process.env.CONTACT_TO || process.env.SMTP_USER || 'support@savepoint.com',
+            subject: `New contact form message from ${name}`,
+            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        };
+
+        if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+            console.warn('SMTP credentials not configured; contact form message was not sent.');
+            return res.status(503).render('contact', {
+                title: 'Contact Us',
+                success: null,
+                error: 'Email delivery is not configured yet. Please contact support@savepoint.com directly.'
+            });
+        }
+
+        await transporter.sendMail(mailOptions);
+        return res.render('contact', {
+            title: 'Contact Us',
+            success: 'Your message has been sent. We will get back to you soon.',
+            error: null
+        });
+    } catch (error) {
+        next(error);
+    }
+});
 
 app.get('/admin', requireAdmin, async (req, res, next) => {
     try {

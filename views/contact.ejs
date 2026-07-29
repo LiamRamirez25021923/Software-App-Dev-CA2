@@ -58,7 +58,13 @@
 
         <article class="contact-card">
           <h2>Send us a message</h2>
-          <form class="contact-form">
+          <% if (success) { %>
+            <p class="contact-success"><%= success %></p>
+          <% } %>
+          <% if (error) { %>
+            <p class="contact-error"><%= error %></p>
+          <% } %>
+          <form class="contact-form" method="POST" action="/contact">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Your name" required />
 

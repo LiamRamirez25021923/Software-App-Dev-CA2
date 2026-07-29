@@ -16,6 +16,7 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     "multer": "^2.0.0",
     "mysql2": "^3.23.1"
@@ -23,6 +24,11 @@
     "mysql2": "^3.14.3",
     "multer": "^2.2.0"
 >>>>>>> 62a7642584602e15e4a4f5e9023d760abfacdc3b
+=======
+    "multer": "^2.2.0",
+    "mysql2": "^3.14.3",
+    "nodemailer": "^9.0.3"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
